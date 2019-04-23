@@ -1,0 +1,9 @@
+<!--pages/bindManagerRole/bindManagerRole.wxml-->
+<view class="login-view">
+  <input class="login-view_input font-size_17" placeholder="请输入店铺密码" auto-focus></input>
+</view>
+<view class="group-view font-size_13">
+  仅在店长第一次登录时需要绑定身份，如果不知道密码，请联系技术支持。
+</view>
+
+<button class="button" type="primary" bindtap="onClickLogin">登录</button>

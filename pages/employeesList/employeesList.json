@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "店员",
+  "usingComponents": {
+    "van-swipe-cell": "../../lib/dist/swipe-cell/index"
+  }
+}

@@ -1,0 +1,37 @@
+/* pages/employeesList/employeesList.wxss */
+
+.add-employees-view {
+  width: 100%;
+  position: fixed;
+  bottom: 10px;
+  height: 84px;
+  border-top: 1rpx solid #e5e5e5;
+}
+
+.add-employees-view_inner {
+  margin-top: 30rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-employees-view_image {
+  width: 20px;
+  height: 20px;
+
+  margin-right: 10px;
+}
+
+.weui-media-box{padding:0px;position:relative;}
+
+.weui-media-box__thumb{width:36px;height:36px;vertical-align:middle;border-radius: 50%;}
+
+.cell-del {
+  color: white;
+  text-align: center;
+  width:80px;
+  height:120rpx; 
+  background-color:red;
+  font-size: 15px;
+  line-height: 120rpx;
+
+}

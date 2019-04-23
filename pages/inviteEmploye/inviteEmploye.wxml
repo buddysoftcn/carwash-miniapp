@@ -1,0 +1,18 @@
+<!--pages/inviteEmploye/inviteEmploye.wxml-->
+<view class="page">
+  <view class="weui-msg">
+      <view class="weui-msg__icon-area">
+          <image class="avatar" src="https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eprsWvMtFlzLqDumbicOePRyib4I5dI7ABvKmTsYbFydG06eBdQnVlFZPL5piaFY4zsVeBVMf460hH7A/132"></image>
+      </view>
+      <view style='margin-top:64px;' class="weui-msg__text-area">
+          <view class="weui-msg__title">邀请内容</view>
+          <view style='margin-top:16px;' class="weui-msg__desc font-color_444 font-size_14">“毛宇” 邀请您加入 “百邦汽车美容”，一起为客户提供优质服务。（30分钟内有效）</view>
+      </view>
+      <view style='margin-top:52px;' class="weui-msg__opr-area">
+          <view class="weui-btn-area">
+              <button class="weui-btn" type="primary" open-type='share'>分享给微信好友</button>              
+          </view>
+      </view>      
+  </view>
+</view>
+

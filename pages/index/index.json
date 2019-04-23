@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "选择身份",
+  "usingComponents": {  
+    "van-popup": "../../lib/dist/popup/index"  
+  }
+}

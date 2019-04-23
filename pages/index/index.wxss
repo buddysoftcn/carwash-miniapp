@@ -1,0 +1,21 @@
+@import "../../template/authView/authView.wxss";
+
+.logo-view {
+  margin-top:96rpx;
+  text-align: center;
+}
+
+.logo{
+  width: 124rpx;
+  height: 124rpx;
+}
+
+.prompt {
+  margin-top: 172rpx;
+  text-align: center;
+}
+
+.button {
+  margin-left:44rpx;
+  margin-right: 44rpx;
+}

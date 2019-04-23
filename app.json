@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/my/my",
+    "pages/authManagerSuccessed/authManagerSuccessed",
+    
+    "pages/bindManagerRole/bindManagerRole",
+    "pages/home/home",
+    "pages/employeesList/employeesList",
+    "pages/inviteEmploye/inviteEmploye"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "预约",
+        "iconPath": "images/tab_home.png",
+        "selectedIconPath": "images/tab_home_on.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "管理",
+        "iconPath": "images/tab_my.png",
+        "selectedIconPath": "images/tab_my_on.png"
+      }
+    ],
+    "color": "#9b9b9b",
+    "selectedColor": "#9b9b9b"
+  },
+  "sitemapLocation": "sitemap.json"
+}

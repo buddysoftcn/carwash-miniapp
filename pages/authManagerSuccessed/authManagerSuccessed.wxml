@@ -1,0 +1,17 @@
+<!--pages/authManagerSuccessed/authManagerSuccessed.wxml-->
+<view class="page">
+  <view class="weui-msg">
+      <view class="weui-msg__icon-area">
+          <icon type="success" size="93"></icon>
+      </view>
+      <view class="weui-msg__text-area">
+          <view class="weui-msg__title">店长身份绑定成功</view>
+          <view class="weui-msg__desc">作为店长，您可以对店铺进行设置，也可以邀请店员加入进来。</view>
+      </view>
+      <view class="weui-msg__opr-area">
+          <view class="weui-btn-area">
+              <button class="weui-btn" type="primary" bindtap='onEnter'>进入店铺</button>              
+          </view>
+      </view>      
+  </view>
+</view>

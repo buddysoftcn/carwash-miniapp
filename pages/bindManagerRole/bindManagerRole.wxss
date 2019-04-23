@@ -1,0 +1,17 @@
+/* pages/bindManagerRole/bindManagerRole.wxss */
+.login-view {
+  margin-top: 76rpx;
+  height: 88rpx;
+  background-color: white;
+}
+
+.login-view_input {
+  margin-left: 44rpx;
+  height: 88rpx;
+}
+
+.button {
+  margin-top:72rpx;
+  margin-left: 44rpx;
+  margin-right: 44rpx;
+}

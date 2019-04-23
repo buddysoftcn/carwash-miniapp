@@ -1,0 +1,51 @@
+/**app.wxss**/
+@import 'weui.wxss';
+
+page{
+  background-color: #efeff4;
+}
+
+.font-color_444 {
+  color:#444;
+}
+
+.font-size_13{
+  font-size: 26rpx;
+}
+.font-size_14 {
+  font-size: 28rpx;
+}
+.font-size_17 {
+  font-size: 34rpx;
+}
+
+
+.line {
+  height: 1px;
+  background-color: #efeff4;
+}
+
+.group-view {
+  margin-left:44rpx;
+  margin-right: 44rpx;
+  margin-top: 10rpx;
+  color: #8E8E93;
+}
+
+.cell_icon {
+  margin-right: 15px;
+  vertical-align: middle;
+  width:16px; 
+  height: 16px;
+  margin-bottom:4px; 
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
