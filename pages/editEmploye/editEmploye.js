@@ -1,4 +1,4 @@
-// pages/my/my.js
+// pages/editEmploye/editEmploye.js
 Page({
 
   /**
@@ -12,7 +12,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.setNavigationBarTitle({
+      title: '毛宇'
+    })
   },
 
   /**
@@ -64,9 +66,9 @@ Page({
 
   },
 
-  onClickMemberCard:function() {
-    wx.navigateTo({
-      url: '../searchMember/searchMember',
+  onSave:function() {
+    wx.navigateBack({
+      
     })
   }
 })

@@ -1,13 +1,23 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/searchMember/searchMember",
     "pages/my/my",
+    "pages/index/index",
+    "pages/goodsList/goodsList",
+    "pages/previewAnnouncement/previewAnnouncement",
+    "pages/announcementList/announcementList",
+    "pages/editAnnouncement/editAnnouncement",
+    "pages/userList/userList",
     "pages/authManagerSuccessed/authManagerSuccessed",
-    
     "pages/bindManagerRole/bindManagerRole",
     "pages/home/home",
     "pages/employeesList/employeesList",
-    "pages/inviteEmploye/inviteEmploye"
+    "pages/inviteEmploye/inviteEmploye",
+    "pages/editEmploye/editEmploye",
+    "pages/previewGoods/previewGoods",
+    "pages/editGoods/editGoods",
+    "pages/employeLoginFailed/employeLoginFailed",
+    "pages/memberDetail/memberDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

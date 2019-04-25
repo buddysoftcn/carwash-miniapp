@@ -32,30 +32,30 @@
       <view class="weui-cell__bd">店员</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
   </navigator>
-  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+  <navigator url="../userList/userList" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__hd">
           <image mode="aspectFit" src="../../images/alert_icon.png" class="cell_icon"></image>
       </view>
       <view class="weui-cell__bd">用户</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-  </view>
+  </navigator>
 </view>
 
 <view class="weui-cells">
-  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+  <navigator url="../announcementList/announcementList" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__hd">
           <image mode="aspectFill" src="../../images/message_icon.png" class="cell_icon"></image>
       </view>
       <view class="weui-cell__bd">公告</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-  </view>
-  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+  </navigator>
+  <navigator url="../goodsList/goodsList" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__hd">
           <image mode="aspectFill" src="../../images/goods_icon.png" class="cell_icon"></image>
       </view>
       <view class="weui-cell__bd">商品</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-  </view>
+  </navigator>
 </view>
 
 <view class="weui-cells">

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "用户",
+  "usingComponents": {
+    "van-popup": "../../lib/dist/popup/index"
+  }
+}

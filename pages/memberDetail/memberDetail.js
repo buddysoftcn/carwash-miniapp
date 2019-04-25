@@ -1,4 +1,4 @@
-// pages/my/my.js
+// pages/memberDetail/memberDetail.js
 Page({
 
   /**
@@ -62,11 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  onClickMemberCard:function() {
-    wx.navigateTo({
-      url: '../searchMember/searchMember',
-    })
   }
 })

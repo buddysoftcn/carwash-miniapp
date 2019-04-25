@@ -1,0 +1,13 @@
+/* pages/userList/userList.wxss */
+.searchbar-result{
+    margin-top: 0;
+    font-size: 14px;
+}
+.searchbar-result:before{
+    display: none;
+}
+
+.popview-btn {
+  width: 133px;
+  height: 44px;
+}

@@ -1,0 +1,25 @@
+/* pages/previewGoods/previewGoods.wxss */
+.swiper-view {
+  width: 750rpx;
+  height: 750rpx;
+}
+
+.title {
+  margin-top:16px;
+  font-size: 48rpx;
+}
+
+.btn {
+  background-color: #d8d8d8;
+  width:153px;
+  height: 41px;
+  line-height: 41px;
+}
+
+.edit-btn {
+  color:black;
+}
+
+.del-btn {
+  color:#e02020;
+}

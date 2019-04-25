@@ -1,4 +1,4 @@
-// pages/my/my.js
+// pages/announcementList/announcementList.js
 Page({
 
   /**
@@ -64,9 +64,14 @@ Page({
 
   },
 
-  onClickMemberCard:function() {
+  onEditAnoncement:function() {
     wx.navigateTo({
-      url: '../searchMember/searchMember',
+      url: '../editAnnouncement/editAnnouncement',
+    })
+  },
+  onPreview:function() {
+    wx.navigateTo({
+      url: '../previewAnnouncement/previewAnnouncement',
     })
   }
 })

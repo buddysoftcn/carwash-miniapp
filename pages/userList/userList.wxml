@@ -1,0 +1,49 @@
+<!--pages/userList/userList.wxml-->
+<view class="page">
+    <view class="page__bd">
+        <view style='border-width:0rpx;' class="weui-search-bar">
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="搜索昵称" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+                    <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                        <icon type="clear" size="14"></icon>
+                    </view>
+                </view>
+                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                    <icon class="weui-icon-search" type="search" size="14"></icon>
+                    <view class="weui-search-bar__text">搜索昵称</view>
+                </label>
+            </view>
+            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+        </view>
+        
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell" hover-class="weui-cell_active" bindtap='onClickUser'>
+                <view class="weui-cell__hd">
+                    <image src="https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIcmzyS3AEgHKmlY4Wl67enrRScxhv0AAlfQ0txCqMqpUYt8DSPF4NSTCbuA4qiaeRiboUNa2qXCibWg/132" class="weui-media-box__thumb_fixed"></image>
+                </view>
+                <view style='margin-left:16px;' class="weui-cell__bd">英叔</view>
+                <view class="weui-cell__ft">
+                  <label class="font-size_12 font-color_cell_value">禁止预约至：</label>
+                  <label class="font-size_14 font-color_cell_value">12月21日</label>
+                </view>
+            </view>            
+        </view>
+    </view>
+</view>
+
+<van-popup show="{{ show }}" bind:close="onClose" custom-class="auth-view">  
+  <view class="popup-view_title">恢复用户信用</view>
+  <view class="line auth-view_line"></view>
+  <view class="popup-view_info auth-view_info">作为店主，您可以恢复用户的信用到</view>
+  <view style='margin-top:3px;' class="popup-view_info auth-view_info">初始值，使用户能够继续预约。但维</view>
+  <view style='margin-top:3px;' class="popup-view_info auth-view_info">护良好的信用体系是保证预约被执行</view>
+  <view style='margin-top:3px;' class="popup-view_info auth-view_info">下去的关键，请您慎重操作。</view>
+  
+  <view style='justify-content: center;align-items: center;' class="popup-view-normal_btn popup-view-button weui-flex">
+    <button style='color:black;background-color:#D8D8D8' class="popview-btn font-weight" type="primary" bindtap='onClickCancel'>再想想</button>
+    <button class="popview-btn font-weight" type="primary" bindtap='onClickRecover'>立即恢复</button>
+  </view>
+ 
+</van-popup>

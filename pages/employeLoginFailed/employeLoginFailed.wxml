@@ -1,0 +1,19 @@
+<!--pages/employeLoginFailed/employeLoginFailed.wxml-->
+<!--pages/authManagerSuccessed/authManagerSuccessed.wxml-->
+<view class="page">
+  <view class="weui-msg">
+      <view class="weui-msg__icon-area">
+          <icon type="warn" color="rgb(255,184,0)" size="93"></icon>
+      </view>
+      <view style='margin-top:64px' class="weui-msg__text-area">
+          <view class="weui-msg__title font-weight">尚未收到邀请</view>
+          <view class="weui-msg__desc font-color_444 font-size_14">店员必须通过店主的邀请才能加进来，请您通知店主发送邀请。</view>
+      </view>
+      <view style='margin-top:60rpx;' class="weui-msg__opr-area">
+          <view class="weui-btn-area">
+              <button class="weui-btn" type="primary" bindtap='onBack'>返回</button>              
+          </view>
+      </view>      
+  </view>
+</view>
+

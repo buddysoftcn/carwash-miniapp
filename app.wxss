@@ -8,7 +8,22 @@ page{
 .font-color_444 {
   color:#444;
 }
+.font-color_4a {
+  color:#4a4a4a;
+}
+.font-color_999 {
+  color:#999;
+}
+.font-color_red {
+  color:#e02020;
+}
+.font-color_cell_value {
+  color:#6D7278;
+}
 
+.font-size_12{
+  font-size: 24rpx;
+}
 .font-size_13{
   font-size: 26rpx;
 }
@@ -19,6 +34,9 @@ page{
   font-size: 34rpx;
 }
 
+.font-weight {
+  font-weight: 500;
+}
 
 .line {
   height: 1px;
@@ -38,6 +56,88 @@ page{
   width:16px; 
   height: 16px;
   margin-bottom:4px; 
+}
+
+.button_margin_16 {
+  margin-left:32rpx;
+  margin-right: 32rpx;
+}
+
+.margin-top_16 {
+  margin-top: 32rpx;
+}
+
+.weui-media-box__thumb_fixed{width:36px;height:36px;vertical-align:middle;border-radius: 50%;}
+
+.weui-media-box__title_fixed{font-size:15px;width:auto;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;-webkit-line-clamp:2;line-clamp: 2;margin-top:5px;height:50px;}
+/**
+  popview
+*/
+.auth-view {
+  width: 318px;
+  height: 336px;
+  border-radius: 10px;
+}
+
+.popup-view_title {
+  margin-top:15px;
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.auth-view_line {
+  margin-top: 15px;
+}
+
+.auth-view_info {
+  margin-top: 36px;
+  text-align:left;
+  margin-left:37px;
+}
+
+.popup-view_info{
+  font-size: 15px;
+  color:#666;
+  text-align: left;
+}
+
+.popup-view-button {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.auth-view_btn {
+  margin-top: 70px;
+  border-radius: 40px;
+}
+
+.popup-view-normal_btn {
+  margin-top: 70px;
+}
+
+/**
+  页面底部按钮区域
+*/
+.add-employees-view {
+  width: 100%;
+  position: fixed;
+  bottom: 10px;
+  height: 84px;
+  border-top: 1rpx solid #e5e5e5;
+}
+
+.add-employees-view_inner {
+  margin-top: 30rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-employees-view_image {
+  width: 20px;
+  height: 20px;
+
+  margin-right: 10px;
 }
 
 .container {

@@ -3,6 +3,7 @@
 const app = getApp()
 
 let authViewTemplate = require('../../template/authView/authView.js')
+let role = 'manager'
 
 Page({
   data: {  
@@ -14,13 +15,23 @@ Page({
   },
 
   onClickManager:function() {
+    role = 'manager'
     authViewTemplate.showView(this,true)
+  },
+  onClickEmploye:function() {
+    role = 'employe'
+    authViewTemplate.showView(this, true)
   },
 
   bindGetUserInfo: function (event) { 
-    console.log(event)
-    wx.navigateTo({
-      url: '../bindManagerRole/bindManagerRole'      
-    })
+    if ('manager' == role) {
+      wx.navigateTo({
+        url: '../bindManagerRole/bindManagerRole'
+      })
+    }else {
+      wx.navigateTo({
+        url: '../employeLoginFailed/employeLoginFailed'
+      })
+    }    
   }
 })

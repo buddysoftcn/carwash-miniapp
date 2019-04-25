@@ -1,0 +1,9 @@
+/* pages/memberDetail/memberDetail.wxss */
+.add-consume-view {
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  color:#1AAD19;
+  margin-top:20px;
+  background-color: white;
+}

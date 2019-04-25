@@ -1,11 +1,11 @@
-// pages/employeesList/employeesList.js
+// pages/editAnnouncement/editAnnouncement.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    files: []
   },
 
   /**
@@ -63,33 +63,30 @@ Page({
   onShareAppMessage: function () {
 
   },
-  onEditEmploye: function (event) {
-    if ("click" == event.type && 'cell' == event.detail) {
-      wx.navigateTo({
-        url: '../editEmploye/editEmploye',
-      })
-    }    
-  },
 
-  onInviteEmploye:function() {
-    wx.navigateTo({
-      url: '../inviteEmploye/inviteEmploye'      
+  onSave:function() {
+    wx.navigateBack({
+      
     })
   },
 
-  onClose:function(event) {
-    const { instance } = event.detail;
-
-    wx.showModal({
-      title: '删除店员',
-      content: '删除后店员将无法使用，确定要删除吗？',
-      success(res) {
-        if (res.confirm) {          
-          instance.close()
-        } else if (res.cancel) {          
-          instance.close()
-        }
+  chooseImage: function (e) {
+    var that = this;
+    wx.chooseImage({
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        that.setData({
+          files: that.data.files.concat(res.tempFilePaths)
+        });
       }
+    })
+  },
+  previewImage: function (e) {
+    wx.previewImage({
+      current: e.currentTarget.id, // 当前显示图片的http链接
+      urls: this.data.files // 需要预览的图片http链接列表
     })
   }
 })

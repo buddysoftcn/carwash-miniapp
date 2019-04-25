@@ -8,7 +8,7 @@
 <view class="prompt font-size_17">请选择您的身份</view>
 
 <button style='margin-top:32rpx;' class="button" type="primary" bindtap="onClickManager">我是店长</button>
-<button style='margin-top:72rpx;' class="button" type="primary" bindtap="">我是店员</button>
+<button style='margin-top:72rpx;' class="button" type="primary" bindtap="onClickEmploye">我是店员</button>
 
 <import src="../../template/authView/authView.wxml"/>
 <template is="authView" data="{{showAuthView}}"/>

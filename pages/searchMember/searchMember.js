@@ -1,4 +1,4 @@
-// pages/my/my.js
+// pages/searchMember/searchMember.js
 Page({
 
   /**
@@ -64,9 +64,9 @@ Page({
 
   },
 
-  onClickMemberCard:function() {
+  onShowMemberDetail:function() {
     wx.navigateTo({
-      url: '../searchMember/searchMember',
+      url: '../memberDetail/memberDetail',
     })
   }
 })

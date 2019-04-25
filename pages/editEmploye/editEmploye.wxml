@@ -1,0 +1,21 @@
+<!--pages/editEmploye/editEmploye.wxml-->
+<view class="weui-cells__title">备注名</view>
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入店员备注名" />
+        </view>
+    </view>
+</view>
+
+<view class="weui-cells__title">开关打开后，店员能够直接从客户的会员卡中扣款</view>
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">会员卡扣款</view>
+        <view class="weui-cell__ft">
+            <switch checked />
+        </view>
+    </view>
+</view>
+
+<button style='margin-top:112rpx;' class="button_margin_16" type="primary" bindtap="onSave">保存</button>

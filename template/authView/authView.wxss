@@ -1,44 +1,5 @@
 /* template/authView.wxss */
-.auth-view {
-  width: 318px;
-  height: 336px;
-  border-radius: 10px;
-}
-
-.popup-view_title {
-  margin-top:15px;
-  font-size: 17px;
-  font-weight: 600;
-  text-align: center;
-}
-
-.auth-view_line {
-  margin-top: 15px;
-}
-
-.auth-view_info {
-  margin-top: 36px;
-  text-align:left;
-  margin-left:37px;
-}
-
-.popup-view_info{
-  font-size: 15px;
-  color:#666;
-  text-align: left;
-}
-
 .auth-view_info_allow {
   color: black;
   margin-top:40px;
-}
-
-.auth-view_btn {
-  margin-top: 80px;
-  border-radius: 40px;
-}
-
-.popup-view-button {
-  margin-left: 16px;
-  margin-right: 16px;
 }

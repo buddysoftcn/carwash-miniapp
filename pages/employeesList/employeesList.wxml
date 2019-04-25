@@ -1,12 +1,12 @@
 <!--pages/employeesList/employeesList.wxml-->
 <view class="weui-panel weui-panel_access">            
     <view class="weui-media-box weui-media-box_appmsg">
-      <van-swipe-cell style="width:100%;" right-width="{{ 80 }}" async-close bind:close="onClose">
+      <van-swipe-cell style="width:100%;" right-width="{{ 80 }}" async-close bind:close="onClose" bind:click="onEditEmploye">
         <van-cell-group>
           <van-cell>
             <view class="weui-media-box weui-media-box_appmsg">
                 <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                    <image class="weui-media-box__thumb" src="https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eprsWvMtFlzLqDumbicOePRyib4I5dI7ABvKmTsYbFydG06eBdQnVlFZPL5piaFY4zsVeBVMf460hH7A/132" />
+                    <image class="weui-media-box__thumb_fixed" src="https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eprsWvMtFlzLqDumbicOePRyib4I5dI7ABvKmTsYbFydG06eBdQnVlFZPL5piaFY4zsVeBVMf460hH7A/132" />
                 </view>
                 <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
                     <view style='margin-left:-20px;' class="weui-media-box__title">毛宇</view>                    
@@ -25,7 +25,7 @@
           <van-cell class="weui-panel">        
             <view class="weui-media-box weui-media-box_appmsg">
               <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                  <image class="weui-media-box__thumb" src="https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIcmzyS3AEgHKmlY4Wl67enrRScxhv0AAlfQ0txCqMqpUYt8DSPF4NSTCbuA4qiaeRiboUNa2qXCibWg/132" />
+                  <image class="weui-media-box__thumb_fixed" src="https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIcmzyS3AEgHKmlY4Wl67enrRScxhv0AAlfQ0txCqMqpUYt8DSPF4NSTCbuA4qiaeRiboUNa2qXCibWg/132" />
               </view>
               <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
                   <view style='margin-left:-20px;' class="weui-media-box__title">英叔</view>                                  

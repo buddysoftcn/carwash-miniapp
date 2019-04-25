@@ -1,4 +1,4 @@
-// pages/my/my.js
+// pages/employeLoginFailed/employeLoginFailed.js
 Page({
 
   /**
@@ -64,9 +64,9 @@ Page({
 
   },
 
-  onClickMemberCard:function() {
-    wx.navigateTo({
-      url: '../searchMember/searchMember',
+  onBack:function() {
+    wx.navigateBack({
+      delta: 1,
     })
   }
 })

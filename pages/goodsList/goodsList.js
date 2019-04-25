@@ -1,4 +1,4 @@
-// pages/my/my.js
+// pages/goodsList/goodsList.js
 Page({
 
   /**
@@ -64,9 +64,15 @@ Page({
 
   },
 
-  onClickMemberCard:function() {
+  onPreview:function() {
     wx.navigateTo({
-      url: '../searchMember/searchMember',
+      url: '../previewGoods/previewGoods'      
+    })
+  },
+
+  onEditGoods:function() {
+    wx.navigateTo({
+      url: '../editGoods/editGoods',
     })
   }
 })

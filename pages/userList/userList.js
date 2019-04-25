@@ -1,11 +1,13 @@
-// pages/my/my.js
+// pages/userList/userList.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    inputShowed: false,
+    inputVal: "",
+    show:false
   },
 
   /**
@@ -63,10 +65,38 @@ Page({
   onShareAppMessage: function () {
 
   },
-
-  onClickMemberCard:function() {
-    wx.navigateTo({
-      url: '../searchMember/searchMember',
+  onClickUser:function() {
+    this.setData({
+      show:true
     })
+  },
+
+  onClickCancel:function() {
+    this.setData({
+      show:false
+    })
+  },
+
+  onClickRecover: function () {
+    this.setData({
+      show: false
+    })
+  },
+
+  showInput: function () {
+    this.setData({
+      inputShowed: true
+    });
+  },
+  hideInput: function () {
+    this.setData({
+      inputVal: "",
+      inputShowed: false
+    });
+  },
+  inputTyping: function (e) {
+    this.setData({
+      inputVal: e.detail.value
+    });
   }
 })

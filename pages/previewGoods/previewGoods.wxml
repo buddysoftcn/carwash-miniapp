@@ -1,0 +1,25 @@
+<!--pages/previewGoods/previewGoods.wxml-->
+<swiper
+  indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}"
+  interval="{{interval}}"
+  duration="{{duration}}"
+  class="swiper-view"
+>
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image lazy-load='true' mode="aspectFill" src="{{item}}" class="swiper-view" />
+    </swiper-item>
+  </block>
+</swiper>
+
+<view class="title button_margin_16 font-weight font-color_red">￥ 299</view>
+<view class="margin-top_16 button_margin_16 font-color_999 font-size_13">商品介绍</view>
+<view class="button_margin_16 font-size_14 font-weight">五座透气四季通用专用坐垫</view>
+
+<view class="add-employees-view">
+  <view class="weui-flex add-employees-view_inner">
+    <button class="btn edit-btn">编辑</button>
+    <button class="btn del-btn">删除</button>
+  </view>
+</view>
