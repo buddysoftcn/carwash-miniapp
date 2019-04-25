@@ -1,7 +1,11 @@
 {
   "pages": [
-    "pages/searchMember/searchMember",
     "pages/my/my",
+    "pages/settingMemberCard/settingMemberCard",
+    "pages/settingList/settingList",
+    "pages/authEmploye/authEmploye",
+   
+    "pages/searchMember/searchMember",
     "pages/index/index",
     "pages/goodsList/goodsList",
     "pages/previewAnnouncement/previewAnnouncement",
@@ -17,7 +21,14 @@
     "pages/previewGoods/previewGoods",
     "pages/editGoods/editGoods",
     "pages/employeLoginFailed/employeLoginFailed",
-    "pages/memberDetail/memberDetail"
+    "pages/memberDetail/memberDetail",
+    "pages/addConsume/addConsume",
+    "pages/creditIntroducion/creditIntroducion",
+    "pages/settingCredit/settingCredit",
+    "pages/settingPrice/settingPrice",
+    "pages/editPayment/editPayment",
+    "pages/settingPayment/settingPayment",
+    "pages/editMemberCard/editMemberCard"
   ],
   "window": {
     "backgroundTextStyle": "light",

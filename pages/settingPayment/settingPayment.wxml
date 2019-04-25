@@ -1,0 +1,39 @@
+<!--pages/settingPayment/settingPayment.wxml-->
+<view class="weui-cells__title">店员进行结账操纵时，付款方式会作为选项显示。</view>
+
+<view class="weui-panel weui-panel_access">            
+    <view class="weui-media-box weui-media-box_appmsg">
+      <van-swipe-cell style="width:100%;" right-width="{{ 80 }}" disabled="false" async-close bind:close="onClose" bind:click="onEditEmploye">
+        <van-cell-group>
+          <van-cell>
+            <view class="weui-media-box weui-media-box_appmsg" style='justify-content: space-between;'>
+                <view class="cell">  1. 会员卡</view>
+                <view class="cell-value">无法删除</view>                                 
+            </view>            
+          </van-cell>
+        </van-cell-group>
+        <view class="cell-del" slot="right">删除</view>
+      </van-swipe-cell>              
+    </view>    
+
+    <view class="weui-media-box weui-media-box_appmsg">
+      <van-swipe-cell style="width:100%;" right-width="{{ 80 }}" async-close bind:close="onClose">
+        <van-cell-group class="weui-panel">
+          <van-cell class="weui-panel">        
+            <view class="weui-media-box weui-media-box_appmsg">              
+              <view class="cell">  2. 现金</view>              
+            </view>            
+          </van-cell>
+        </van-cell-group>
+        <view class="cell-del" slot="right">删除</view>
+      </van-swipe-cell>              
+    </view>           
+                    
+</view>
+
+<view class="add-employees-view">
+  <view class="weui-flex add-employees-view_inner" bindtap='onEditPayment'>
+    <image class="add-employees-view_image" src="../../images/add_employees.png"/> 
+    <label>新增付款方式</label>
+  </view>
+</view>

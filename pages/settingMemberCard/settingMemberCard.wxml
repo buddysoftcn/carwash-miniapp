@@ -1,0 +1,25 @@
+<!--pages/settingMemberCard/settingMemberCard.wxml-->
+<view class="weui-cells__title">单次最小充值额度</view>
+<view class="weui-cells weui-cells_after-title">   
+  <van-swipe-cell style="width:100%;" right-width="{{ 80 }}" async-close bind:close="onClose" bind:click="onEditEmploye">
+    <van-cell-group>
+      <van-cell>    
+        <view class="weui-cell">
+          <view class="weui-cell__bd">200元</view>
+          <view class="weui-cell__ft">
+            <label class="font-color_8e font-size_15">实际到账：</label>
+            <label class="font-size_15 font-color_black">250元</label>
+          </view> 
+        </view>
+      </van-cell>
+    </van-cell-group>
+    <view class="cell-del" slot="right">删除</view>
+  </van-swipe-cell>  
+</view>
+
+<view class="add-employees-view">
+  <view class="weui-flex add-employees-view_inner" bindtap='onEditMemberCard'>
+    <image class="add-employees-view_image" src="../../images/add_employees.png"/> 
+    <label>添加充值额度</label>
+  </view>
+</view>

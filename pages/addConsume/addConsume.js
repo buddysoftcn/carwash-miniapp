@@ -1,11 +1,12 @@
-// pages/memberDetail/memberDetail.js
+// pages/addConsume/addConsume.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    date: "2019-04-25",
+    time: "09:20",
   },
 
   /**
@@ -64,9 +65,9 @@ Page({
 
   },
 
-  onClickAddConsume:function() {
-    wx.navigateTo({
-      url: '../addConsume/addConsume',
+  onSave:function() {
+    wx.navigateBack({
+      
     })
   }
- })
+})

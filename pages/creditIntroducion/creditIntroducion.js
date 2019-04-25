@@ -1,11 +1,11 @@
-// pages/memberDetail/memberDetail.js
+// pages/creditIntroducion/creditIntroducion.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+   
   },
 
   /**
@@ -62,11 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  onClickAddConsume:function() {
-    wx.navigateTo({
-      url: '../addConsume/addConsume',
-    })
   }
- })
+})

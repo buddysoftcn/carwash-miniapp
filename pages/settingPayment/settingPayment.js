@@ -1,4 +1,4 @@
-// pages/memberDetail/memberDetail.js
+// pages/settingPayment/settingPayment.js
 Page({
 
   /**
@@ -64,9 +64,9 @@ Page({
 
   },
 
-  onClickAddConsume:function() {
+  onEditPayment:function() {
     wx.navigateTo({
-      url: '../addConsume/addConsume',
+      url: '../editPayment/editPayment',
     })
   }
- })
+})

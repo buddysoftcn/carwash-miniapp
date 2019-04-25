@@ -1,0 +1,14 @@
+/* pages/settingMemberCard/settingMemberCard.wxss */
+.font-color_black {
+  color:black;
+}
+
+.cell-del {
+  color: white;
+  text-align: center;
+  width:80px;
+  height:44px; 
+  background-color:red;
+  font-size: 15px;
+  line-height: 44px;
+}

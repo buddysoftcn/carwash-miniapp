@@ -1,4 +1,4 @@
-// pages/memberDetail/memberDetail.js
+// pages/settingPrice/settingPrice.js
 Page({
 
   /**
@@ -64,9 +64,9 @@ Page({
 
   },
 
-  onClickAddConsume:function() {
-    wx.navigateTo({
-      url: '../addConsume/addConsume',
+  onSave:function() {
+    wx.navigateBack({
+      
     })
   }
- })
+})

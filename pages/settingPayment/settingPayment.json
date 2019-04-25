@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "付款方式",
+  "usingComponents": {
+    "van-swipe-cell": "../../lib/dist/swipe-cell/index"
+  }
+}

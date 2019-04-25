@@ -17,6 +17,9 @@ page{
 .font-color_red {
   color:#e02020;
 }
+.font-color_8e {
+  color:#8e8e9e;
+}
 .font-color_cell_value {
   color:#6D7278;
 }
@@ -29,6 +32,9 @@ page{
 }
 .font-size_14 {
   font-size: 28rpx;
+}
+.font-size_15 {
+  font-size: 30rpx;
 }
 .font-size_17 {
   font-size: 34rpx;

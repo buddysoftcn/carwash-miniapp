@@ -20,6 +20,6 @@
     </view>  
 </view>
 
-<view class="add-consume-view font-size_17">
+<view class="add-consume-view font-size_17" bindtap='onClickAddConsume'>
   添加消费
 </view>

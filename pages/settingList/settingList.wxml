@@ -1,0 +1,40 @@
+<!--pages/settingList/settingList.wxml-->
+<view class="weui-cells weui-cells_after-title">
+    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">工作时间</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">08:30-18:00</view>
+    </navigator>
+    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">洗车效率</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">20分钟/辆</view>
+    </navigator>
+    <navigator url="../settingCredit/settingCredit" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">预约设置</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+</view>
+
+<view class="weui-cells">
+    <navigator url="../settingPrice/settingPrice" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">洗车价格</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="../settingPayment/settingPayment" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">付款方式</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>    
+</view>
+
+<view class="weui-cells">
+    <navigator url="../settingMemberCard/settingMemberCard" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">会员卡</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>    
+</view>
+
+<view class="weui-cells">
+    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">特殊时段</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>    
+</view>

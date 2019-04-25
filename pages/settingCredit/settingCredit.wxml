@@ -1,0 +1,27 @@
+<!--pages/settingCredit/settingCredit.wxml-->
+<view class="weui-cells">
+    <navigator url="../creditIntroducion/creditIntroducion" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">用户信用说明</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">查看</view>
+    </navigator>   
+</view>
+
+<view class="weui-cells__title">信用参数设置</view>
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">正常取消预约提前量</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">
+          <picker style='width:200px;' value="{{cancelTimeIndex}}" range="{{cancelTimes}}"  bindchange="bindCancelChange">
+            <view>{{cancelTimes[cancelTimeIndex]}}</view>
+          </picker>
+        </view>
+    </view>  
+    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">失信用户停用时间</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">
+          <picker style='width:200px;' value="{{disableTimeIndex}}" range="{{disableTimes}}"  bindchange="bindCancelChange">
+            <view>{{disableTimes[disableTimeIndex]}}</view>
+          </picker>
+        </view>
+    </view>   
+</view>

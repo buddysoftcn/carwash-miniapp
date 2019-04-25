@@ -1,11 +1,14 @@
-// pages/memberDetail/memberDetail.js
+// pages/settingCredit/settingCredit.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    cancelTimes: ['半小时', '1 小时', '2 小时'],
+    cancelTimeIndex: 1,
+    disableTimes:['3 天','7 天','30 天'],
+    disableTimeIndex:1
   },
 
   /**
@@ -62,11 +65,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  onClickAddConsume:function() {
-    wx.navigateTo({
-      url: '../addConsume/addConsume',
-    })
   }
- })
+})

@@ -1,0 +1,12 @@
+/* pages/creditIntroducion/creditIntroducion.wxss */
+.margin-top_21 {
+  margin-top: 42rpx;
+}
+
+.margin-top_5 {
+  margin-top: 10rpx;
+}
+
+.font-color_35 {
+  color: #353535;
+}

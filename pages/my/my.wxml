@@ -15,13 +15,13 @@
 </view>
         
 <view style='margin-top:8px;' class="weui-cells">
-  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+  <navigator url="../settingList/settingList" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__hd">
           <image mode="aspectFill" src="../../images/setting_icon.png" class="cell_icon"></image>
       </view>
       <view class="weui-cell__bd">设置</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-  </view>
+  </navigator>
 </view>
 
 <view class="weui-cells">

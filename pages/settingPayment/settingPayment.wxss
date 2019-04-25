@@ -1,0 +1,26 @@
+/* pages/settingPayment/settingPayment.wxss */
+.weui-media-box{padding:0px;position:relative;}
+
+.cell {
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  margin-left: 22px;
+}
+
+
+.cell-value {
+  font-size: 14px;
+  color:#2e749e;
+  margin-right: 22px;
+}
+
+.cell-del {
+  color: white;
+  text-align: center;
+  width:80px;
+  height:120rpx; 
+  background-color:red;
+  font-size: 15px;
+  line-height: 120rpx;
+}

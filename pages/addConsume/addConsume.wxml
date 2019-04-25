@@ -1,0 +1,39 @@
+<!--pages/addConsume/addConsume.wxml-->
+<view class="weui-cells__title">会员卡号 33180918</view>
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">消费时间</view>
+        </view>
+        <view class="weui-cell__bd weui-flex">
+            <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+                <view class="weui-input">{{date}}</view>
+            </picker>
+            <view class="date-time_line">
+            </view>
+            <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+                <view class="weui-input">{{time}}</view>
+            </picker>
+        </view>
+    </view>    
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">消费金额</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入消费金额"/>
+        </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">效果项目</view>
+        </view>
+        <view class="weui-cell__bd">
+            <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="选填"/>
+            </view>
+        </view>
+    </view>
+</view>
+
+<button style='margin-top:112rpx;' class="button button_margin_16" type="primary" bindtap="onSave">确定</button>

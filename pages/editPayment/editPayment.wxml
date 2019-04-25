@@ -1,0 +1,21 @@
+<!--pages/editPayment/editPayment.wxml-->
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+          <view class="weui-label">名称</view>
+      </view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入"/>
+      </view>
+  </view>
+  <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+          <view class="weui-label">显示顺序</view>
+      </view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="10 以下数字，越小越靠前"/>
+      </view>
+  </view>
+</view>
+
+<button style='margin-top:112rpx;' class="button button_margin_16" type="primary" bindtap="onSave">保存</button>

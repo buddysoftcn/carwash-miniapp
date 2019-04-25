@@ -1,0 +1,20 @@
+<!--pages/creditIntroducion/creditIntroducion.wxml-->
+<view style='font-size:36rpx;margin-top:26rpx;' class="button_margin_16">用户信用体系简单说明</view>
+
+<view class="button_margin_16 margin-top_21 font-size_17">初始信用值</view>
+<view class="button_margin_16 margin-top_5 font-size_14 font-color_35">每个新加入用户，初始信用值设置为 100。</view>
+
+<view class="button_margin_16 margin-top_21 font-size_17">发生违约</view>
+<view class="button_margin_16 margin-top_5 font-size_14 font-color_35">当用户在临近预约时刻一段时间内取消预约，就达到了违约条件；这段时间场段由店主进行设置，默认为一小时。违约由店员主动进行判定。</view>
+
+<view class="button_margin_16 margin-top_21 font-size_17">信用减少</view>
+<view class="button_margin_16 margin-top_5 font-size_14 font-color_35">每当用户产生一次违约，信用值减少 50。</view>
+
+<view class="button_margin_16 margin-top_21 font-size_17">失信用户</view>
+<view class="button_margin_16 margin-top_5 font-size_14 font-color_35">当用户信用值持续降低，直到等于 0 时，达到失信标准，用户状态变为 “失信用户”。对于失信用户，小程序会自动停用该用户预约功能。</view>
+
+<view class="button_margin_16 margin-top_21 font-size_17">自动恢复信用</view>
+<view class="button_margin_16 margin-top_5 font-size_14 font-color_35">用户信用降低到 50 后，假如 7 天内不再发生违约，信用值会自动恢复到 100。（如果 7 天内再次发生违约，就会成为“失信用户”。）</view>
+
+<view class="button_margin_16 margin-top_21 font-size_17">手动恢复信用</view>
+<view class="button_margin_16 margin-top_5 font-size_14 font-color_35">当店主发现某个用户的信用需要恢复时，可以手动恢复用户信用到初始值。</view>

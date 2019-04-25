@@ -1,0 +1,30 @@
+<!--pages/settingPrice/settingPrice.wxml-->
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+          <view class="weui-label">小型车</view>
+      </view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入"/>
+      </view>
+  </view>
+  <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+          <view class="weui-label">中型车</view>
+      </view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入"/>
+      </view>
+  </view>
+  <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+          <view class="weui-label">大型车</view>
+      </view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入"/>
+      </view>
+  </view>
+</view>
+<view class="weui-cells__title">单位：元</view>
+
+<button style='margin-top:60rpx;' class="button button_margin_16" type="primary" bindtap="onSave">确定</button>

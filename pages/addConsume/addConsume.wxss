@@ -1,0 +1,9 @@
+/* pages/addConsume/addConsume.wxss */
+.date-time_line {
+  width: 1px;
+  height: 38px;
+  background-color: #efeff4;
+  margin-top: 3px;
+  margin-left: 10px;
+  margin-right: 10px;
+}

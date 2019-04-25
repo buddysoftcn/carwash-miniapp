@@ -1,4 +1,4 @@
-// pages/memberDetail/memberDetail.js
+// pages/authEmploye/authEmploye.js
 Page({
 
   /**
@@ -62,11 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  onClickAddConsume:function() {
-    wx.navigateTo({
-      url: '../addConsume/addConsume',
-    })
   }
- })
+})
