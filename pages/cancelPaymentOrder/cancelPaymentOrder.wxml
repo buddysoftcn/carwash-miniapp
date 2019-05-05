@@ -1,0 +1,48 @@
+<!--pages/cancelPaymentOrder/cancelPaymentOrder.wxml-->
+<!--pages/paymentOrderFinished/paymentOrderFinished.wxml-->
+<view class="page">
+  <view class="page__bd">      
+      <view class="weui-form-preview">
+          <view class="weui-form-preview__hd">
+              <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">付款金额</view>
+                  <view class="weui-form-preview__value_in-hd">¥30.00</view>
+              </view>
+          </view>
+          <view class="weui-form-preview__bd">
+              <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">车牌号码</view>
+                  <view class="weui-form-preview__value">豫CHP516</view>
+              </view>
+              <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">洗车时间</view>
+                  <view class="weui-form-preview__value">3月15日 08：20</view>
+              </view>
+              <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">付款方式</view>
+                  <view class="weui-form-preview__value">会员卡</view>
+              </view>
+              <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">服务备注</view>
+                  <view class="weui-form-preview__value">无</view>
+              </view>
+          </view>  
+
+          <view class="weui-form-preview__ft" bindtap='onShowCancelView'>
+            <view class="weui-form-preview__btn weui-form-preview__btn_default font-size_17" hover-class="weui-form-preview__btn_active">取消订单</view>
+          </view>         
+      </view>              
+  </view>
+</view>
+
+<!-- 未处理预约视图 -->
+<van-popup show="{{ showOrderView }}" bind:close="onClose" custom-class="order-popup-view" custom-style="top:300px;">  
+  <view class="popup-view_title">取消订单</view>
+  <view class="line auth-view_line"></view>
+  <view class="popup-view_info auth-view_info">取消后，如果用户通过会员卡支付，</view>
+  <view style='margin-top:3px;' class="popup-view_info auth-view_info">钱会退回到会员卡内；如果用户通过</view>
+  <view style='margin-top:3px;' class="popup-view_info auth-view_info">微信支付，钱会退回到用户微信。</view>
+  <button class="auth-view_btn weui-btn popup-view-button font-weight" type="primary" bindtap='onCancel'>确认取消</button>
+  <button style='color:#979797;border-color:#979797;' class="auth-view_btn weui-btn popup-view-button font-weight" type="primary" plain='true' bindtap='onClose'>暂不取消</button>
+</van-popup>
+

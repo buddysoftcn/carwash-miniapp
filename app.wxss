@@ -11,6 +11,12 @@ page{
 .font-color_4a {
   color:#4a4a4a;
 }
+.font-color_666 {
+  color:#666;
+}
+.font-color_888 {
+  color:#888;
+}
 .font-color_999 {
   color:#999;
 }
@@ -38,6 +44,9 @@ page{
 }
 .font-size_17 {
   font-size: 34rpx;
+}
+.font-size_18 {
+  font-size: 36rpx;
 }
 
 .font-weight {
@@ -83,6 +92,7 @@ page{
   width: 318px;
   height: 336px;
   border-radius: 10px;
+  top:300px;
 }
 
 .popup-view_title {
@@ -144,6 +154,17 @@ page{
   height: 20px;
 
   margin-right: 10px;
+}
+
+/** */
+.cells-footer_title {
+  font-size: 13px;
+  color:#8e8e93;
+  font-weight: 500;
+  height: 28px;
+  line-height: 28px;
+  
+  margin-left: 16px;
 }
 
 .container {

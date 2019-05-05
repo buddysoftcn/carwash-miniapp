@@ -1,2 +1,81 @@
 <!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<!-- 头部视图 -->
+<view class="header-view">
+  <view class="weui-flex date-view">
+    <view style='margin-left:16px;width:50px;'><van-icon size="16px" color="#666" name="arrow-left" /></view>
+    <view class="data-view_date font-size_17 font-weight">04月25日 星期四</view>
+    <view style='text-align:right; margin-right:16px;width:50px'><van-icon size="16px" color="#666" name="arrow"  /></view>
+  </view>
+
+  <view class="weui-flex header-view-info button_margin_16">
+    <view>
+      <view class="font-size_18">正在预约 8 辆</view>
+      <view class="font-size_13 font-color_666">已服务 32 辆</view>
+    </view>
+    <view>
+      <button class="header-view-info_btn font-size_14 font-weight" bindtap='onAddMoreOrder'>洗车补录</button>
+    </view>
+  </view>
+</view>
+
+<!-- 预约列表视图 -->
+<view style='margin-top:130px;'>
+  <view class="weui-cells__title">8点</view>
+   <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell" bindtap='onCell'>                
+        <view class="weui-cell__bd">08:00</view>                
+    </view>
+    <view class="weui-cell" bindtap='onCellCancelPayment'>                
+        <view class="weui-cell__bd">08:20</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access order-list-cell_value font-size_16"><label style='width:116px;margin-right:20px;' class="font-size_13 font-color_888">已结账 （会员卡）</label><label class="font-weight">豫CHP516</label></view>
+    </view>
+  </view>
+
+  <view class="weui-cells__title">9点</view>
+   <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell" bindtap='onCellPayment'>                
+        <view class="weui-cell__bd">09:00</view>   
+        <view class="weui-cell__ft weui-cell__ft_in-access order-list-cell_value font-size_16"><label style='width:116px;margin-right:20px;' class="font-size_13 font-color_888"></label><label class="font-weight">豫CPC220</label></view>             
+    </view>  
+  </view>
+</view>
+
+<!-- 未处理预约视图 -->
+<van-popup show="{{ showOrderView }}" bind:close="onClose" custom-class="order-popup-view" custom-style="top:300px;">  
+  <view class="popup-view_title">有未处理的预约</view>
+  <view class="line auth-view_line"></view>
+  <view class="popup-view_info auth-view_info">当前有 3 个未处理的预约尚未处理</view>
+  <view style='margin-top:3px;' class="popup-view_info auth-view_info">完毕。请您尽快处理，以免影响预约</view>
+  <view style='margin-top:3px;' class="popup-view_info auth-view_info">服务顺利进行。</view>
+  <button class="auth-view_btn weui-btn popup-view-button font-weight" type="primary" bindtap='onUnOrder'>开始处理</button>
+  <button style='color:#979797;border-color:#979797;' class="auth-view_btn weui-btn popup-view-button font-weight" type="primary" plain='true' bindtap='onUnOrderLater'>暂不处理</button>
+</van-popup>
+
+<!-- 帮助预约视图 -->
+<van-popup show="{{ showHelpOrderView }}" bind:close="onClose" custom-class="order-popup-view" custom-style="top:300px;">  
+  <view class="popup-view_title">帮助车主预约</view>
+  <view class="line auth-view_line"></view>
+  <view class="popup-view_info auth-view_info">现在是 08:00，您可以帮助车主提前</view>
+  <view style='margin-top:3px;' class="popup-view_info auth-view_info">将车预约到这个时间，也可以将已经</view>
+  <view style='margin-top:3px;' class="popup-view_info auth-view_info">到店的车添加的排队中。</view>
+  <button class="auth-view_btn weui-btn popup-view-button font-weight" type="primary" bindtap='onOrder'>开始预约</button>
+  <button style='color:#979797;border-color:#979797;' class="auth-view_btn weui-btn popup-view-button font-weight" type="primary" plain='true' bindtap='onOrderLater'>取消</button>
+</van-popup>
+
+<!-- 处理结账视图 -->
+<van-popup
+  show="{{ showPaymentView }}"
+  position="bottom"  
+  bind:close="onClose"
+  custom-class="payment-popup-view"
+  custom-style="background-color:#efeff4;"
+>
+  <view class="weui-flex payment-popup-view_header">
+    <view style='color:#6D7278;margin-left:14px;' class="payment-popup-view_header-btn" bindtap='onClose'>取消</view>
+    <view>豫CHP516</view>
+    <view style='margin-right:14px;' class="payment-popup-view_header-btn"></view>
+  </view>
+  <view style='color:#1AAD19' class="payment-popup-view_btn payment-popup-view_line" bindtap='onPayment'>洗车结账</view>
+  <view class="payment-popup-view_btn payment-popup-view_line">取消预约</view>
+  <view class="payment-popup-view_btn">车主违约</view>
+</van-popup>

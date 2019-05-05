@@ -1,7 +1,6 @@
 {
-
+  "navigationBarTitleText": "结账详情",
   "usingComponents": {
-    "van-icon": "../../lib/dist/icon/index",
     "van-popup": "../../lib/dist/popup/index"
   }
 }

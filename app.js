@@ -1,6 +1,12 @@
 //app.js
+let buddysoft = require('/buddysoft/buddysoft.js')
+
 App({
-  onLaunch: function () {
+  buddysoft:null,
+
+  onLaunch: function () {    
+    this.buddysoft = buddysoft.buddysoftShop
+
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())

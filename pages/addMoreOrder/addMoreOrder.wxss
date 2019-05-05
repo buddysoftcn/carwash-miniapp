@@ -1,0 +1,21 @@
+/* pages/addMoreOrder/addMoreOrder.wxss */
+.payment-popup-view {
+  height: 450px;
+}
+
+.payment-popup-view_header {
+  align-items: center;
+  justify-content: space-between;
+  height: 55px;
+  border-bottom: 1rpx solid #d8d8d8;
+}
+
+.payment-popup-view_header-btn {
+  width: 60px;
+}
+
+.payment-popup-view_cell {
+  background-color: #efeff4;
+  height: 60px;
+  align-items: center;
+}

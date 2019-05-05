@@ -1,0 +1,44 @@
+<!--pages/paymentOrderFinished/paymentOrderFinished.wxml-->
+<view class="page">
+  <view class="weui-msg">
+      <view class="weui-msg__icon-area">
+          <icon type="success" size="93"></icon>
+      </view>
+      <view class="weui-msg__text-area">
+          <view class="weui-msg__title">结账完毕</view>          
+      </view>
+
+      <view class="weui-form-preview">
+          <view class="weui-form-preview__hd">
+              <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">付款金额</view>
+                  <view class="weui-form-preview__value_in-hd">¥30.00</view>
+              </view>
+          </view>
+          <view class="weui-form-preview__bd">
+              <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">车牌号码</view>
+                  <view class="weui-form-preview__value">豫CHP516</view>
+              </view>
+              <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">洗车时间</view>
+                  <view class="weui-form-preview__value">3月15日 08：20</view>
+              </view>
+              <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">付款方式</view>
+                  <view class="weui-form-preview__value">会员卡</view>
+              </view>
+              <view class="weui-form-preview__item">
+                  <view class="weui-form-preview__label">服务备注</view>
+                  <view class="weui-form-preview__value">无</view>
+              </view>
+          </view>          
+      </view>
+
+      <view class="weui-msg__opr-area">
+          <view class="weui-btn-area">
+              <button class="weui-btn" type="primary" bindtap='onBack'>返回首页</button>              
+          </view>
+      </view>      
+  </view>
+</view>

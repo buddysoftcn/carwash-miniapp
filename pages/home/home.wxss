@@ -1,1 +1,73 @@
 /* pages/home/home.wxss */
+.header-view {
+  position: fixed;
+  top:0;
+  width: 100%;
+  height: 124px;
+  background-color: white;
+}
+.date-view {
+  height: 44px;
+  background-color: #F7F7F7;
+  align-items: center;
+  justify-content: space-between;
+}
+.data-view_date {
+  color: #6d727b;
+}
+.header-view-info {
+  height: 80px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-view-info_btn {
+  width: 100px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 18px;
+  background-color: #2ECC71;
+  color:white;
+}
+
+.order-popup-view {
+  width: 318px;
+  height: 370px;
+  border-radius: 10px;
+}
+
+.payment-popup-view {
+  height: 424px;
+}
+
+.payment-popup-view_header {
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #d8d8d8;
+  height: 55px;
+}
+
+.payment-popup-view_header-btn {
+  width: 60px;
+}
+
+.payment-popup-view_btn {
+  margin-left: 15%;
+  width:70%;
+  height: 65px;
+  line-height: 65px;
+  text-align: center;
+  
+}
+
+.payment-popup-view_line {
+  border-bottom: 1rpx solid #d8d8d8;
+}
+
+.order-list {
+
+}
+
+.order-list-cell_value {
+  color:#0091FF;
+}

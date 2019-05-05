@@ -1,12 +1,14 @@
 {
   "pages": [
+   
+   
+    "pages/home/home",
+    "pages/index/index",
     "pages/my/my",
     "pages/settingMemberCard/settingMemberCard",
     "pages/settingList/settingList",
     "pages/authEmploye/authEmploye",
-   
     "pages/searchMember/searchMember",
-    "pages/index/index",
     "pages/goodsList/goodsList",
     "pages/previewAnnouncement/previewAnnouncement",
     "pages/announcementList/announcementList",
@@ -14,7 +16,6 @@
     "pages/userList/userList",
     "pages/authManagerSuccessed/authManagerSuccessed",
     "pages/bindManagerRole/bindManagerRole",
-    "pages/home/home",
     "pages/employeesList/employeesList",
     "pages/inviteEmploye/inviteEmploye",
     "pages/editEmploye/editEmploye",
@@ -28,12 +29,21 @@
     "pages/settingPrice/settingPrice",
     "pages/editPayment/editPayment",
     "pages/settingPayment/settingPayment",
-    "pages/editMemberCard/editMemberCard"
+    "pages/editMemberCard/editMemberCard",
+    "pages/editPaymentRemark/editPaymentRemark",
+    "pages/paymentOrderCancelFinished/paymentOrderCancelFinished",
+    "pages/addOrderFinished/addOrderFinished",
+    "pages/addOrder/addOrder",
+    "pages/cancelPaymentOrder/cancelPaymentOrder",
+    "pages/paymentOrderFinished/paymentOrderFinished",
+    "pages/paymentOrder/paymentOrder",
+    "pages/addMoreOrder/addMoreOrder",
+    "pages/addMoreOrderFinished/addMoreOrderFinished"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

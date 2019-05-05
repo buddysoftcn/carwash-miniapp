@@ -1,7 +1,6 @@
 {
-
+  "navigationBarTitleText": "洗车补录",
   "usingComponents": {
-    "van-icon": "../../lib/dist/icon/index",
     "van-popup": "../../lib/dist/popup/index"
   }
 }

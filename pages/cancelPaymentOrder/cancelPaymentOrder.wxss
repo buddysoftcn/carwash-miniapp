@@ -1,0 +1,6 @@
+/* pages/cancelPaymentOrder/cancelPaymentOrder.wxss */
+.order-popup-view {
+  width: 318px;
+  height: 370px;
+  border-radius: 10px;
+}
