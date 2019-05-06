@@ -1,5 +1,13 @@
 <!--pages/settingMemberCard/settingMemberCard.wxml-->
-<view class="weui-cells__title">单次最小充值额度</view>
+<view class="weui-cells">
+  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">会员卡绑定车牌数量</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">1</view>
+  </view>          
+</view>
+<view class="cells-footer_title">车牌绑定到会员卡后,可以通过会员卡消费</view>
+
+<view style='margin-top:32px;' class="weui-cells__title">会员卡充值金额</view>
 <view class="weui-cells weui-cells_after-title">   
   <van-swipe-cell style="width:100%;" right-width="{{ 80 }}" async-close bind:close="onClose" bind:click="onEditEmploye">
     <van-cell-group>
@@ -17,9 +25,8 @@
   </van-swipe-cell>  
 </view>
 
-<view class="add-employees-view">
-  <view class="weui-flex add-employees-view_inner" bindtap='onEditMemberCard'>
-    <image class="add-employees-view_image" src="../../images/add_employees.png"/> 
-    <label>添加充值额度</label>
+<view class="cells-extra_btn weui-cells_after-title" bindtap='onEditMemberCard'>  
+  <view class="weui-cell cells-cell_extra_btn">
+    添加额度
   </view>
 </view>

@@ -1,11 +1,11 @@
-// pages/settingPrice/settingPrice.js
+// pages/editSpecialPrice/editSpecialPrice.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    show:false
   },
 
   /**
@@ -66,13 +66,19 @@ Page({
 
   onSave:function() {
     wx.navigateBack({
-      
+      delta: 1,
     })
   },
 
-  onEditPrice:function() {
-    wx.navigateTo({
-      url: '../editPrice/editPrice',
+  onStart:function() {
+    this.setData({
+      show:false
+    })
+  },
+
+  onCancel:function() {
+    wx.navigateBack({
+      delta: 1,
     })
   }
 })

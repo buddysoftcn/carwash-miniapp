@@ -1,4 +1,4 @@
-// pages/settingPrice/settingPrice.js
+// pages/settingTime/settingTime.js
 Page({
 
   /**
@@ -62,17 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  onSave:function() {
-    wx.navigateBack({
-      
-    })
-  },
-
-  onEditPrice:function() {
-    wx.navigateTo({
-      url: '../editPrice/editPrice',
-    })
   }
 })

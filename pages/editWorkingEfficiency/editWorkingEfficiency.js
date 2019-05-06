@@ -1,11 +1,12 @@
-// pages/settingPrice/settingPrice.js
+// pages/editWorkingEfficiency/editWorkingEfficiency.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    times: ['10分钟/辆', '15分钟/辆', '20分钟/辆', '25分钟/辆', '30分钟/辆', '35分钟/辆', '40分钟/辆'],
+    index:3
   },
 
   /**
@@ -62,17 +63,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  onSave:function() {
-    wx.navigateBack({
-      
-    })
-  },
-
-  onEditPrice:function() {
-    wx.navigateTo({
-      url: '../editPrice/editPrice',
-    })
   }
 })

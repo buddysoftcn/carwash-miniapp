@@ -1,4 +1,4 @@
-// pages/settingPrice/settingPrice.js
+// pages/workingTimeDetail/workingTimeDetail.js
 Page({
 
   /**
@@ -64,15 +64,9 @@ Page({
 
   },
 
-  onSave:function() {
-    wx.navigateBack({
-      
-    })
-  },
-
-  onEditPrice:function() {
+  onEditTime:function () {
     wx.navigateTo({
-      url: '../editPrice/editPrice',
+      url: '../editWorkingTime/editWorkingTime'      
     })
   }
 })

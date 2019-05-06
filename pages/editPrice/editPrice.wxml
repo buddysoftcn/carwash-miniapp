@@ -1,8 +1,8 @@
-<!--pages/editPayment/editPayment.wxml-->
+<!--pages/editPrice/editPrice.wxml-->
 <view class="weui-cells weui-cells_after-title">
   <view class="weui-cell weui-cell_input">
       <view class="weui-cell__hd">
-          <view class="weui-label">方式名称</view>
+          <view class="weui-label">车型描述</view>
       </view>
       <view class="weui-cell__bd">
           <input class="weui-input" placeholder="请输入"/>
@@ -10,10 +10,10 @@
   </view>
   <view class="weui-cell weui-cell_input">
       <view class="weui-cell__hd">
-          <view class="weui-label">显示位置</view>
+          <view class="weui-label">洗车价格</view>
       </view>
       <view class="weui-cell__bd">
-          <input class="weui-input" placeholder="数字越小越靠前"/>
+          <input class="weui-input" placeholder="请输入"/>
       </view>
   </view>
 </view>

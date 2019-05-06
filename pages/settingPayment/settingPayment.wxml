@@ -7,8 +7,8 @@
         <van-cell-group>
           <van-cell>
             <view class="weui-media-box weui-media-box_appmsg" style='justify-content: space-between;'>
-                <view class="cell">  1. 会员卡</view>
-                <view class="cell-value">无法删除</view>                                 
+                <view class="cell">会员卡</view>
+                <view class="cell-value weui-cell__ft_in-access">1</view>                                 
             </view>            
           </van-cell>
         </van-cell-group>
@@ -20,8 +20,9 @@
       <van-swipe-cell style="width:100%;" right-width="{{ 80 }}" async-close bind:close="onClose">
         <van-cell-group class="weui-panel">
           <van-cell class="weui-panel">        
-            <view class="weui-media-box weui-media-box_appmsg">              
-              <view class="cell">  2. 现金</view>              
+            <view class="weui-media-box weui-media-box_appmsg" style='justify-content: space-between;'>              
+              <view class="cell">现金</view>     
+              <view class="cell-value weui-cell__ft_in-access">2</view>            
             </view>            
           </van-cell>
         </van-cell-group>
@@ -31,9 +32,8 @@
                     
 </view>
 
-<view class="add-employees-view">
-  <view class="weui-flex add-employees-view_inner" bindtap='onEditPayment'>
-    <image class="add-employees-view_image" src="../../images/add_employees.png"/> 
-    <label>新增付款方式</label>
+<view class="cells-extra_btn weui-cells_after-title" bindtap='onEditPayment'>  
+  <view class="weui-cell cells-cell_extra_btn">
+    添加付款方式
   </view>
 </view>

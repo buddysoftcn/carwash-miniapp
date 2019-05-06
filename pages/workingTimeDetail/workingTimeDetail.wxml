@@ -1,0 +1,38 @@
+<!--pages/workingTimeDetail/workingTimeDetail.wxml-->
+<view class="weui-cells__title">当前设置</view>
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+        <view class="weui-cell__bd">上班时间</view>
+        <view class="weui-cell__ft">8:00</view>
+    </view>
+    <view class="weui-cell">
+        <view class="weui-cell__bd">下班时间</view>
+        <view class="weui-cell__ft">18:00</view>
+    </view>
+</view>
+
+<view class="cells-extra_btn weui-cells_after-title" bindtap='onEditTime'>  
+  <view class="weui-cell cells-cell_extra_btn">
+    修改
+  </view>
+</view>
+
+<view class="cells-footer_title">新设置生效之前,仍然会使用当前工作时间.</view>
+
+<view style='margin-top:32px;' class="weui-cells__title">新的设置(在 2019-04-18 00:00 自动生效)</view>
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+        <view class="weui-cell__bd">上班时间</view>
+        <view class="weui-cell__ft">8:00</view>
+    </view>
+    <view class="weui-cell">
+        <view class="weui-cell__bd">下班时间</view>
+        <view class="weui-cell__ft">18:00</view>
+    </view>
+</view>
+
+<view class="cells-extra_btn weui-cells_after-title" bindtap=''>  
+  <view style='color:#E02020' class="weui-cell cells-cell_extra_btn">
+    删除
+  </view>
+</view>

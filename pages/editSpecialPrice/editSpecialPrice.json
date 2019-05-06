@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "特别服务日期",
+  "usingComponents": {
+    "van-popup": "../../lib/dist/popup/index"
+  }
+}

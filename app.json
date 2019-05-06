@@ -1,11 +1,10 @@
 {
   "pages": [
-   
+    
    
     "pages/home/home",
-    "pages/index/index",
     "pages/my/my",
-    "pages/settingMemberCard/settingMemberCard",
+    "pages/index/index",
     "pages/settingList/settingList",
     "pages/authEmploye/authEmploye",
     "pages/searchMember/searchMember",
@@ -26,8 +25,9 @@
     "pages/addConsume/addConsume",
     "pages/creditIntroducion/creditIntroducion",
     "pages/settingCredit/settingCredit",
-    "pages/settingPrice/settingPrice",
+    "pages/settingMemberCard/settingMemberCard",
     "pages/editPayment/editPayment",
+    "pages/settingPrice/settingPrice",
     "pages/settingPayment/settingPayment",
     "pages/editMemberCard/editMemberCard",
     "pages/editPaymentRemark/editPaymentRemark",
@@ -38,7 +38,14 @@
     "pages/paymentOrderFinished/paymentOrderFinished",
     "pages/paymentOrder/paymentOrder",
     "pages/addMoreOrder/addMoreOrder",
-    "pages/addMoreOrderFinished/addMoreOrderFinished"
+    "pages/addMoreOrderFinished/addMoreOrderFinished",
+    "pages/workingTimeDetail/workingTimeDetail",
+    "pages/editPrice/editPrice",
+    "pages/editWorkingTime/editWorkingTime",
+    "pages/editWorkingEfficiency/editWorkingEfficiency",
+    "pages/editSpecialPrice/editSpecialPrice",
+    "pages/editHoliday/editHoliday",
+    "pages/settingTime/settingTime"
   ],
   "window": {
     "backgroundTextStyle": "light",

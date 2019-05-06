@@ -1,10 +1,14 @@
-// pages/settingPrice/settingPrice.js
+// pages/editWorkingTime/editWorkingTime.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    startTime:['06:00','06:30','07:00','07:30','08:00','08:30','09:00'],
+    startTimeIndex:4,
+    endTime: ['05:00', '05:30', '06:00', '06:30', '07:00', '07:30', '08:00'],
+    endTimeIndex: 4
 
   },
 
@@ -66,13 +70,7 @@ Page({
 
   onSave:function() {
     wx.navigateBack({
-      
-    })
-  },
-
-  onEditPrice:function() {
-    wx.navigateTo({
-      url: '../editPrice/editPrice',
+      delta: 1,
     })
   }
 })

@@ -1,0 +1,50 @@
+<!--pages/editSpecialPrice/editSpecialPrice.wxml-->
+<view class="weui-cells__title">开始日期至少设置到3月17日 (两天后)</view>
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+        <view class="weui-cell__bd">开始日期</view>
+         <picker style='width:60%;' class="weui-cell__ft weui-cell__ft_in-access" mode="date" data-index="1" bindchange="bindDateChange">
+              <view class="picker">请选择</view>
+          </picker>
+        
+    </view>
+
+    <view class="weui-cell" data-index="2">
+        <view class="weui-cell__bd">结束日期</view>
+         <picker style='width:60%;' class="weui-cell__ft weui-cell__ft_in-access" mode="date" data-index="2" bindchange="bindDateChange">
+                <view class="picker">请选择</view>
+            </picker>
+    </view>
+</view>
+
+<view class="weui-cells__title">洗车价格</view>
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+        <view class="weui-cell__bd">轿车</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">35元</view>                 
+    </view>
+
+    <view class="weui-cell" data-index="2">
+      <view class="weui-cell__bd">SUV</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">45元</view> 
+    </view>
+</view>
+
+<view class="weui-btn-area">
+    <button bindtap="onSave" class="weui-btn" type="primary">保存</button>
+</view>
+
+<view style='text-align:center; line-height: 44px;' class="cells-extra_btn font-size_17 font-color_red">
+    删除
+</view>
+
+<van-popup show="{{ show }}" bind:close="onClose" custom-class="order-popup-view" custom-style="top:300px;">  
+  <view class="popup-view_title">尚未设置特别服务日期</view>
+  <view class="line auth-view_line"></view>
+  <view class="popup-view_info auth-view_info">您可以通过设置特别服务日期,来重</view>
+  <view style='margin-top:3px;' class="popup-view_info auth-view_info">定义洗车服务的价格,比如节假日</view>
+  <view style='margin-top:3px;' class="popup-view_info auth-view_info">时,特别服务日期不影响日常洗车价格.</view>
+  <view style='margin-top:3px;' class="popup-view_info auth-view_info">格.</view>
+  <button class="auth-view_btn weui-btn popup-view-button font-weight" type="primary" bindtap='onStart'>开始设置</button>
+  <button style='color:#979797;border-color:#979797;' class="auth-view_btn weui-btn popup-view-button font-weight" type="primary" plain='true' bindtap='onCancel'>暂不设置</button>
+</van-popup>

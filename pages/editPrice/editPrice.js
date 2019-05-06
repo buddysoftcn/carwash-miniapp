@@ -1,4 +1,4 @@
-// pages/settingPrice/settingPrice.js
+// pages/editPrice/editPrice.js
 Page({
 
   /**
@@ -66,13 +66,7 @@ Page({
 
   onSave:function() {
     wx.navigateBack({
-      
-    })
-  },
-
-  onEditPrice:function() {
-    wx.navigateTo({
-      url: '../editPrice/editPrice',
+      delta: 1,
     })
   }
 })
