@@ -1,5 +1,5 @@
 var shops = [
-  {'index':0,'name':'百邦汽车美容中心'}
+  {'index':0,'name':'百邦汽车美容中心店铺端'}
 ]
 
 var shop = shops[0]
