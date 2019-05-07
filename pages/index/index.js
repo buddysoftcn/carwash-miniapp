@@ -24,6 +24,10 @@ Page({
   },
 
   bindGetUserInfo: function (event) { 
+    this.setData({
+      showAuthView:false
+    })
+    
     if ('manager' == role) {
       wx.navigateTo({
         url: '../bindManagerRole/bindManagerRole'
