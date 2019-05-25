@@ -3,7 +3,8 @@
 const app = getApp()
 
 let authViewTemplate = require('../../template/authView/authView.js')
-let role = 'manager'
+let userModel = require('../../model/user.js')
+let mode = 'manager'
 
 Page({
   data: {  
@@ -13,29 +14,48 @@ Page({
   onLoad: function () {
     
   },
+  
+  /**
+    * 用户点击右上角分享
+  */
+  onShareAppMessage: function () {
+
+  },
 
   onClickManager:function() {
-    role = 'manager'
+    mode = 'manager'
     authViewTemplate.showView(this,true)
   },
   onClickEmploye:function() {
-    role = 'employe'
+    mode = 'employe'
     authViewTemplate.showView(this, true)
   },
 
-  bindGetUserInfo: function (event) { 
+  bindGetUserInfo: function (event) {     
     this.setData({
       showAuthView:false
     })
-    
-    if ('manager' == role) {
-      wx.navigateTo({
-        url: '../bindManagerRole/bindManagerRole'
-      })
-    }else {
-      wx.navigateTo({
-        url: '../employeLoginFailed/employeLoginFailed'
-      })
-    }    
+
+    getApp().login(event.detail,function(userInfo,message) {      
+      if (null != userInfo) {
+        userModel.setCurrentUser(userInfo)
+        let role = userModel.getRole()
+        if ('manager' == mode) {
+          if (userModel.ROLE_NORMAL == role.role) {
+            wx.navigateTo({
+              url: '../bindManagerRole/bindManagerRole'
+            })
+          }else if (userModel.ROLE_OWNER == role.role) {
+            wx.reLaunch({
+              url: '../home/home',
+            })
+          }
+        }else {
+          wx.navigateTo({
+            url: '../employeLoginFailed/employeLoginFailed'
+          })
+        }    
+      }
+    })
   }
 })

@@ -1,4 +1,6 @@
 // pages/bindManagerRole/bindManagerRole.js
+let request = require('../../operation/operation.js')
+
 Page({
 
   /**
@@ -57,16 +59,39 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+  onClickLogin: function (event) {
+    
+    let password = event.detail.value.password.trim()
+    if (0 == password.length) {
+      wx.showModal({
+        title: '提示',
+        content: '请输入店铺密码',
+        showCancel: false
+      })
+    }else {
+      wx.showLoading({
+        title: '请稍候',
+        mask: true
+      })
 
-  },
+      request.postRequest('/user/bind-owner', {'password':password}, true)
+        .then(data => {
+          wx.hideLoading()
 
-  onClickLogin:function() {
-    wx.navigateTo({
-      url: '../authManagerSuccessed/authManagerSuccessed'     
-    })
+          if (request.SUCCESSED == data.status) {
+            wx.navigateTo({
+              url: '../authManagerSuccessed/authManagerSuccessed'
+            })
+          }else {           
+            wx.showModal({
+              title: '提示',
+              content: data.msg,
+              showCancel: false
+            })
+          }
+        }).catch(e => {
+          wx.hideLoading()
+        })
+    }
   }
 })

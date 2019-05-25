@@ -57,16 +57,20 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
   onEnter:function() {
-    wx.reLaunch({
-      url: '../home/home',
+    wx.showLoading({
+      title: '请稍候',
+      mask: true
+    })
+
+    getApp().getUserInfo(function(user) {
+      wx.hideLoading()
+      
+      if (null != user) {
+        wx.reLaunch({
+          url: '../home/home',
+        })
+      }
     })
   }
 })

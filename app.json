@@ -1,10 +1,9 @@
 {
   "pages": [
-    
+      
     "pages/index/index",
     "pages/home/home",
-    "pages/my/my",
-   
+    "pages/my/my",   
     "pages/settingList/settingList",
     "pages/authEmploye/authEmploye",
     "pages/searchMember/searchMember",
