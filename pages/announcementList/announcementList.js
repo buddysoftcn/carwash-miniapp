@@ -1,18 +1,22 @@
 // pages/announcementList/announcementList.js
+let request = require('../../operation/operation.js')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    announces:[],
+    height:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.initView()
+    this.getAnnouncements()
   },
 
   /**
@@ -57,13 +61,6 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
   onEditAnoncement:function() {
     wx.navigateTo({
       url: '../editAnnouncement/editAnnouncement',
@@ -73,5 +70,30 @@ Page({
     wx.navigateTo({
       url: '../previewAnnouncement/previewAnnouncement',
     })
+  },
+
+  getAnnouncements:function() {
+    let self = this
+
+    request.getRequest('/announces', null, true)
+    .then(data => {
+      self.setData({
+        announces:data.items
+      })
+    }).catch(e => {
+
+    })
+  },
+
+  initView:function() {
+    let that = this
+    wx.getSystemInfo({
+      success: function(res) {      
+        that.setData({
+          height: (res.windowHeight - 94)
+        })
+      },
+    })
   }
+
 })

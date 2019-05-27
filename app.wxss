@@ -138,9 +138,10 @@ page{
 .add-employees-view {
   width: 100%;
   position: fixed;
-  bottom: 10px;
-  height: 84px;
+  /* bottom: 10px; */
+  height: 94px;
   border-top: 1rpx solid #e5e5e5;
+  background-color:#efeff4;
 }
 
 .add-employees-view_inner {

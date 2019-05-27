@@ -1,0 +1,15 @@
+<!--pages/editWeight/editWeight.wxml-->
+<form bindsubmit="onSave">
+  <view class="weui-cells">  
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">显示位置</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input focus="true" type="number" name="weight" class="weui-input" placeholder="数字越小越靠前" value="{{weight}}"/>
+        </view>
+    </view>
+  </view>
+
+  <button style='margin-top:112rpx;' class="button button_margin_16" type="primary" formType="submit">保存</button>
+</form>

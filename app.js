@@ -5,6 +5,8 @@ let userModel = require('/model/user.js')
 
 App({
   buddysoft:null,
+  MODE_CREATE : 1,
+  MODE_EDIT : 2,
 
   onLaunch: function () {    
     this.buddysoft = buddysoft.buddysoftShop
@@ -16,9 +18,9 @@ App({
   initView:function() {
     let role = userModel.getRole()
     if (userModel.ROLE_OWNER == role.role || userModel.ROLE_CLERK == role.role) {
-      wx.reLaunch({
-        url: '/pages/home/home',
-      })      
+      // wx.reLaunch({
+      //   url: '/pages/home/home',
+      // })      
     }
   },
 
