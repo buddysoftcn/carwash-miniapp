@@ -1,6 +1,6 @@
 <!--pages/announcementList/announcementList.wxml-->
 <view style="height:{{height}}px; z-index:1" class="page">
-  <view wx:for="{{announces}}" wx:key="*this" wx:for-item="announce" class="weui-panel weui-panel_access" bindtap='onPreview'>                        
+  <view wx:for="{{announces}}" wx:key="*this" wx:for-item="announce" class="weui-panel weui-panel_access" data-announce="{{announce}}" bindtap='onPreview'>                        
     <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
         <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
             <image mode="aspectFill" style='border-radius:5px;width:64px;height:64px;' lazy-load="true" class="weui-media-box__thumb" src="{{announce.images[0].url}}" />

@@ -1,4 +1,6 @@
 // pages/editWeight/editWeight.js
+let carWash = require('../../utils/carWash.js')
+
 Page({
 
   /**
@@ -69,7 +71,10 @@ Page({
         showCancel:false
       })
     }else {
-
+      getApp().notificationCenter.post(carWash.EDIT_WEIGHT_MESSAGE, { 'weight':weight })
+      wx.navigateBack({
+        delta: 1,
+      })
     }
   }
 })

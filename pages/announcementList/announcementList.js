@@ -1,5 +1,6 @@
 // pages/announcementList/announcementList.js
 let request = require('../../operation/operation.js')
+let carWash = require('../../utils/carWash.js')
 
 Page({
 
@@ -17,6 +18,8 @@ Page({
   onLoad: function (options) {
     this.initView()
     this.getAnnouncements()
+
+    getApp().notificationCenter.register(carWash.UPDATE_ANNOUNCE_MESSAGE, this, "getAnnouncements");
   },
 
   /**
@@ -44,7 +47,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    getApp().notificationCenter.remove(carWash.UPDATE_ANNOUNCE_MESSAGE, this)
   },
 
   /**
@@ -66,7 +69,8 @@ Page({
       url: '../editAnnouncement/editAnnouncement',
     })
   },
-  onPreview:function() {
+  onPreview: function (event) {
+    getApp().globalData.param = event.currentTarget.dataset.announce
     wx.navigateTo({
       url: '../previewAnnouncement/previewAnnouncement',
     })

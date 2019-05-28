@@ -2,14 +2,17 @@
 let buddysoft = require('/buddysoft/buddysoft.js')
 let request = require('/operation/operation.js')
 let userModel = require('/model/user.js')
+let notificationCenter = require('/utils/notification.js');
 
 App({
   buddysoft:null,
+  notificationCenter: null,
   MODE_CREATE : 1,
   MODE_EDIT : 2,
 
   onLaunch: function () {    
     this.buddysoft = buddysoft.buddysoftShop
+    this.notificationCenter = notificationCenter.center();
 
     this.initView()
   },
@@ -70,6 +73,7 @@ App({
   },
 
   globalData: {
-    userInfo: null
+    userInfo: null,
+    param: {},  // 用于保存页面参数传值
   }
 })

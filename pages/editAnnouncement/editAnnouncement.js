@@ -3,6 +3,7 @@ let mode = getApp().MODE_CREATE
 let request = require('../../operation/operation.js')
 let requestCreateImage = require('../../operation/createImge.js')
 let upyun = require('../../utils/upyun.js')
+let carWash = require('../../utils/carWash.js')
 
 let uploadedImageIndex = 0 // 当前上传图片序号
 let title,desc
@@ -22,7 +23,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    getApp().notificationCenter.register(carWash.EDIT_WEIGHT_MESSAGE, this, "handleEditWeightMessage");
   },
 
   /**
@@ -50,7 +51,9 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    announce = null
+    uploadedImageIndex = 0
+    getApp().notificationCenter.remove(carWash.EDIT_WEIGHT_MESSAGE, this)
   },
 
   /**
@@ -96,9 +99,6 @@ Page({
     }
 
     this.uploadAnnounce()
-    // wx.navigateBack({
-      
-    // })
   },
 
   // 选择图片
@@ -130,6 +130,11 @@ Page({
   },
 
   uploadAnnounce:function() {
+    wx.showLoading({
+      title: '请稍候',
+      mask: true
+    })
+
     if (getApp().MODE_CREATE == mode) {            
       this.create()      
     }
@@ -150,7 +155,7 @@ Page({
 
   // 创建图片
   addImage:function() {
-    let path = ''
+    let path = '',that = this
 
     for (var index = 0; index < this.data.images.length; index++) {
       if (this.data.images[index].dirty) {
@@ -165,7 +170,7 @@ Page({
     if ('' != path) {      
       requestCreateImage.createImage(announce.sid,path,1)
       .then(data => {
-        console.log(data)
+        that.back()
       }).catch(e => {
         console.log(e)
       })
@@ -220,5 +225,19 @@ Page({
     }
   },
 
+  handleEditWeightMessage: function (object) {
+    this.setData({
+      weight: object.weight
+    });
+  },
 
+  back:function() {
+    wx.hideLoading()
+    
+    getApp().notificationCenter.post(carWash.UPDATE_ANNOUNCE_MESSAGE, null)
+
+    wx.navigateBack({
+      delta: 1,
+    })
+  }
 })

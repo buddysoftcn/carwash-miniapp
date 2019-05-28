@@ -1,15 +1,15 @@
 // pages/previewAnnouncement/previewAnnouncement.js
+let request = require('../../operation/operation.js')
+let upyun = require('../../utils/upyun.js')
+let carWash = require('../../utils/carWash.js')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imgUrls: [
-      'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
-      'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
-      'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
-    ],
+    announce:null,
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
@@ -20,7 +20,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      announce: getApp().globalData.param
+    })
   },
 
   /**
@@ -48,7 +50,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+  
   },
 
   /**
@@ -65,10 +67,44 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+  onDel:function() {
+    let that = this
 
+    wx.showModal({
+      title: '删除公告',
+      content: '删除公告后，将无法找回，确定要删除吗？',
+      success(res) {
+        if (res.confirm) {
+          that.delAnnounce()
+        } else if (res.cancel) {          
+        }
+      }
+    })
+  },
+
+  delAnnounce:function() {
+    wx.showLoading({
+      title: '请稍候',
+      mask: true
+    })
+
+    let announce = this.data.announce
+    // 删除又拍云上的图片
+    if (announce.images && 0 < announce.images.length) {
+      for (let index = 0; index < announce.images.length; index++) {
+        upyun.delImage(announce.images[index].url)
+      }
+    }
+    
+    request.deleteRequest('/announces/' + announce.sid, null, true)
+      .then(data => {
+        wx.hideLoading()
+        getApp().notificationCenter.post(carWash.UPDATE_ANNOUNCE_MESSAGE,{})
+        wx.navigateBack({
+          delta: 1,
+        })
+      }).catch(e => {
+
+      })
   }
 })
