@@ -15,6 +15,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    title:'',
+    desc:'',
     images: [],  // 界面中显示的图片数据
     weight: 1
   },
@@ -23,6 +25,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (options.mode) {
+      mode = options.mode
+      announce = getApp().globalData.param
+      this.initView()
+      wx.setNavigationBarTitle({title:'编辑公告'})
+    }
+
     getApp().notificationCenter.register(carWash.EDIT_WEIGHT_MESSAGE, this, "handleEditWeightMessage");
   },
 
@@ -109,10 +118,9 @@ Page({
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片、
-        console.log(res)
         let tmpImage =[]
         for (let index = 0; index < res.tempFilePaths.length;index ++) {
-          tmpImage.push({ 'path': res.tempFilePaths[index], 'dirty': true })
+          tmpImage.push({ 'sid':'0','path': res.tempFilePaths[index], 'dirty': true })
         }
         that.setData({
           images: that.data.images.concat(tmpImage)
@@ -123,9 +131,29 @@ Page({
 
   // 预览图片
   previewImage: function (e) {
+    let tmpImage = []
+    for (let index = 0;index < this.data.images.length;index++) {
+      tmpImage.push(this.data.images[index].path)
+    }
+    
     wx.previewImage({
       current: e.currentTarget.id, // 当前显示图片的http链接
-      urls: this.data.images // 需要预览的图片http链接列表
+      urls: tmpImage // 需要预览的图片http链接列表
+    })
+  },
+
+  // 删除图片
+  onDelImage:function(event) {
+    let tmpfiles = this.data.images;
+    let index = event.currentTarget.id
+    
+    // if (event.currentTarget.dataset.sid && '0' != event.currentTarget.dataset.sid) {
+    //   delImages.push({ 'sid': event.currentTarget.dataset.sid, 'url': event.currentTarget.dataset.url})    
+    // }
+    
+    tmpfiles.splice(index, 1)
+    this.setData({
+      images: tmpfiles
     })
   },
 
@@ -137,6 +165,8 @@ Page({
 
     if (getApp().MODE_CREATE == mode) {            
       this.create()      
+    }else {
+      this.edit()
     }
   },
 
@@ -146,35 +176,51 @@ Page({
     request.postRequest('/announces', {'title':title,'desc':desc,'weight':this.data.weight}, true)
     .then(data => {
       announce = data.object
-
       that.uploadImage()
     }).catch(e => {
 
     })
   },
 
+  // 编辑公告
+  edit:function() {
+    let that = this
+    request.putRequest('/announces/' + announce.sid, { 'title': title, 'desc': desc, 'weight': this.data.weight }, true)
+      .then(data => {
+        that.uploadImage()
+      }).catch(e => {
+
+      })
+  },
+
   // 创建图片
   addImage:function() {
-    let path = '',that = this
+    if (this.checkUploadImages()) {
+      let path = '', that = this
 
-    for (var index = 0; index < this.data.images.length; index++) {
-      if (this.data.images[index].dirty) {
+      for (var index = 0; index < this.data.images.length; index++) {
         if (0 < index) {
           path = path + '|'
         }
 
         path = path + this.data.images[index].path
       }
+
+      if ('' != path) { // 有新图需要添加     
+        requestCreateImage.createImage(announce.sid, path, 1)
+          .then(data => {        
+            that.back()            
+          }).catch(e => {
+            console.log(e)
+          })
+      }
+
+    }else {
+      that.back()
     }
+    
+
    
-    if ('' != path) {      
-      requestCreateImage.createImage(announce.sid,path,1)
-      .then(data => {
-        that.back()
-      }).catch(e => {
-        console.log(e)
-      })
-    }
   },
 
   /**
@@ -222,6 +268,23 @@ Page({
     } else {
       // 图片上传完成处理流程
       that.addImage()
+    }
+  },
+
+  initView:function() {
+    if (announce) {
+      let tmpImages = []
+
+      for (let index = 0; index < announce.images.length; index ++) {
+        tmpImages.push({'sid':announce.images[index].sid,'path':announce.images[index].url,'dirty':false})
+      }
+
+      this.setData({
+        title:announce.title,
+        desc:announce.desc,
+        weight:announce.weight,
+        images:tmpImages
+      })
     }
   },
 

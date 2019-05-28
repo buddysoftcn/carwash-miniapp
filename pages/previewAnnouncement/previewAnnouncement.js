@@ -67,6 +67,14 @@ Page({
 
   },
 
+  onEdit:function() {
+    getApp().globalData.param = this.data.announce
+
+    wx.navigateTo({
+      url: '../editAnnouncement/editAnnouncement?mode=' + getApp().MODE_EDIT    
+    })
+  },
+
   onDel:function() {
     let that = this
 
@@ -82,6 +90,7 @@ Page({
     })
   },
 
+  // 删除公告
   delAnnounce:function() {
     wx.showLoading({
       title: '请稍候',
@@ -89,12 +98,12 @@ Page({
     })
 
     let announce = this.data.announce
-    // 删除又拍云上的图片
-    if (announce.images && 0 < announce.images.length) {
-      for (let index = 0; index < announce.images.length; index++) {
-        upyun.delImage(announce.images[index].url)
-      }
-    }
+    // // 删除又拍云上的图片
+    // if (announce.images && 0 < announce.images.length) {
+    //   for (let index = 0; index < announce.images.length; index++) {
+    //     upyun.delImage(announce.images[index].url)
+    //   }
+    // }
     
     request.deleteRequest('/announces/' + announce.sid, null, true)
       .then(data => {

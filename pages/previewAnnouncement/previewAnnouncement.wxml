@@ -19,7 +19,7 @@
 
 <view class="add-employees-view">
   <view class="weui-flex add-employees-view_inner">
-    <button class="btn edit-btn">编辑</button>
+    <button class="btn edit-btn" bindtap='onEdit'>编辑</button>
     <button class="btn del-btn" bindtap='onDel'>删除</button>
   </view>
 </view>
