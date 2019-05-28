@@ -195,32 +195,24 @@ Page({
 
   // 创建图片
   addImage:function() {
-    if (this.checkUploadImages()) {
-      let path = '', that = this
+    let path = '', that = this
 
-      for (var index = 0; index < this.data.images.length; index++) {
-        if (0 < index) {
-          path = path + '|'
-        }
-
-        path = path + this.data.images[index].path
+    for (var index = 0; index < this.data.images.length; index++) {
+      if (0 < index) {
+        path = path + '|'
       }
 
-      if ('' != path) { // 有新图需要添加     
-        requestCreateImage.createImage(announce.sid, path, 1)
-          .then(data => {        
-            that.back()            
-          }).catch(e => {
-            console.log(e)
-          })
-      }
-
-    }else {
-      that.back()
+      path = path + this.data.images[index].path
     }
-    
 
-   
+    if ('' != path) {     
+      requestCreateImage.createImage(announce.sid, path, 1)
+        .then(data => {        
+          that.back()            
+        }).catch(e => {
+          console.log(e)
+        })
+    }
   },
 
   /**
@@ -300,7 +292,7 @@ Page({
     getApp().notificationCenter.post(carWash.UPDATE_ANNOUNCE_MESSAGE, null)
 
     wx.navigateBack({
-      delta: 1,
+      delta: 2,
     })
   }
 })
