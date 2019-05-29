@@ -288,11 +288,14 @@ Page({
 
   back:function() {
     wx.hideLoading()
-    
     getApp().notificationCenter.post(carWash.UPDATE_ANNOUNCE_MESSAGE, null)
 
+    let delta = 1
+    if (getApp().MODE_EDIT == mode) {
+      delta = 2
+    }
     wx.navigateBack({
-      delta: 2,
+      delta: delta,
     })
   }
 })

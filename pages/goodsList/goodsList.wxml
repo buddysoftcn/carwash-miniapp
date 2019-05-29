@@ -1,17 +1,19 @@
 <!--pages/goodsList/goodsList.wxml-->
-<!--pages/announcementList/announcementList.wxml-->
-<view class="page">
-  <view class="weui-panel weui-panel_access" bindtap='onPreview'>                        
-    <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+<view style="height:{{height}}px; z-index:1" class="page">
+  <view class="weui-panel weui-panel_access">                        
+    <view wx:for="{{goodses}}" wx:key="*this" wx:for-item="goods" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" data-goods="{{goods}}" bindtap='onPreview'>
         <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-            <image mode="aspectFill" style='border-radius:5px;width:64px;height:64px;' lazy-load="true" class="weui-media-box__thumb" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556099700243&di=48ede8a1e75fe0ba4522f696154ea376&imgtype=0&src=http%3A%2F%2Fimg12.360buyimg.com%2FpopWaterMark%2Fjfs%2Ft229%2F57%2F1308633488%2F409680%2F7cd47085%2F53f940e2Nd0aee585.jpg" />
+            <image mode="aspectFill" style='border-radius:5px;width:64px;height:64px;' lazy-load="true" class="weui-media-box__thumb" src="{{goods.images[0].url}}" />
         </view>
         <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-            <view class="weui-media-box__title_fixed">仅售198元，价值415元【汽车美容】五座轿车漆面抛光祛污，节假日通用！</view>
-            <view class="weui-media-box__desc">显示位置：1</view>
+            <view class="weui-media-box__title_fixed">{{goods.name}}</view>
+            <view class="weui-media-box__desc">显示位置：{{goods.weight}}</view>
         </view>
     </view>                        
-  </view>    
+  </view>  
+
+  <view style="width:1px; height:94px;"></view> 
+
 </view>
 
 <view class="add-employees-view">

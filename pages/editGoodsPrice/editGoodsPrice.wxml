@@ -1,0 +1,15 @@
+<!--pages/editGoodsPrice/editGoodsPrice.wxml-->
+<form bindsubmit="onSave">
+  <view class="weui-cells">  
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">实际价格</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input focus="true" type="number" name="price" class="weui-input" placeholder="请输入商品实际价格" value="{{price}}"/>
+        </view>
+    </view>
+  </view>
+
+  <button style='margin-top:112rpx;' class="button button_margin_16" type="primary" formType="submit">保存</button>
+</form>

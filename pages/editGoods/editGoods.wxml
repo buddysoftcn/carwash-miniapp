@@ -1,55 +1,57 @@
 <!--pages/editGoods/editGoods.wxml-->
-<view class="weui-cells__title">商品简介</view>
-<view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell">
-        <view class="weui-cell__bd">
-            <textarea class="weui-textarea" style="height: 240rpx" />
-            <view class="weui-textarea-counter">0/200</view>
-        </view>
-    </view>
-</view>
+<form bindsubmit="onSave">
+  <view class="weui-cells__title">商品简介</view>
+  <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+          <view class="weui-cell__bd">
+              <textarea name="name" value="{{name}}" class="weui-textarea" style="height: 240rpx" />              
+          </view>
+      </view>
+  </view>
 
-<view class="weui-cells">
-  <view class="weui-cell">
-    <view class="weui-cell__bd">
-      <view class="weui-uploader">
-        <view class="weui-uploader__hd">
-            <view style='color:#6D7278' class="weui-uploader__title font-size_14">商品图片</view>
-            <view class="weui-uploader__info">{{files.length}}/9</view>
-        </view>
-        <view class="weui-uploader__bd">
-            <view class="weui-uploader__files" id="uploaderFiles">
-                <block wx:for="{{files}}" wx:key="*this">
-                    <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
-                        <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
-                    </view>
-                </block>                      
-            </view>
-            <view class="weui-uploader__input-box">
-                <view class="weui-uploader__input" bindtap="chooseImage"></view>
-            </view>
+  <view class="weui-cells">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <view class="weui-uploader">
+          <view class="weui-uploader__hd">
+              <view style='color:#6D7278' class="weui-uploader__title font-size_14">商品图片</view>
+              <view class="weui-uploader__info">{{images.length}}/9</view>
+          </view>
+          <view class="weui-uploader__bd">
+              <view class="weui-uploader__files" id="uploaderFiles">
+                  <block wx:for="{{images}}" wx:key="*this">
+                      <view class="weui-uploader__file" >
+                          <image bindtap="previewImage" id="{{item}}" class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                           <view bindtap='onDelImage' id="{{index}}" data-sid="{{item.sid}}" data-url="{{item.path}}" class="uploader__img_del"><wxc-icon class="uploader__img_del" size='40' type='no'></wxc-icon></view>
+                      </view>
+                  </block>                      
+              </view>
+              <view class="weui-uploader__input-box">
+                  <view class="weui-uploader__input" bindtap="chooseImage"></view>
+              </view>
+          </view>
         </view>
       </view>
     </view>
   </view>
-</view>
 
- <view class="weui-cells">
-    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-        <view class="weui-cell__bd">实际价格</view>
-        <view class="weui-cell__ft weui-cell__ft_in-access">399</view>
-    </view>   
-    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-        <view class="weui-cell__bd">打折状况</view>
-        <view class="weui-cell__ft weui-cell__ft_in-access">4.9折</view>
-    </view>   
-</view>
+  <view class="weui-cells">
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='onShowEditPrice'>
+          <view class="weui-cell__bd">实际价格</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access">{{price}}</view>
+      </view>   
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='onShowEditDiscount'>
+          <view class="weui-cell__bd">打折状况</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access">{{discount}}折</view>
+      </view>   
+  </view>
 
-<view class="weui-cells">
-    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-        <view class="weui-cell__bd">显示位置</view>
-        <view class="weui-cell__ft weui-cell__ft_in-access">3</view>
-    </view>    
-</view>
+  <view class="weui-cells">
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='onShowEditWeight'>
+          <view class="weui-cell__bd">显示位置</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access">{{weight}}</view>
+      </view>    
+  </view>
 
-<button style='margin-top:112rpx;' class="button button_margin_16" type="primary" bindtap="onSave">确定</button>
+  <button style='margin-top:112rpx;' class="button button_margin_16" type="primary" formType="submit">确定</button>
+</form>

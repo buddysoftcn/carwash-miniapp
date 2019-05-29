@@ -1,18 +1,24 @@
 // pages/goodsList/goodsList.js
+let request = require('../../operation/operation.js')
+let carWash = require('../../utils/carWash.js')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    goodses:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.initView()
+    this.getGoods()
 
+    getApp().notificationCenter.register(carWash.UPDATE_GOODS_MESSAGE, this, "getGoods");
   },
 
   /**
@@ -40,7 +46,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    getApp().notificationCenter.remove(carWash.UPDATE_GOODS_MESSAGE, this)
   },
 
   /**
@@ -57,14 +63,8 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
-  onPreview:function() {
+  onPreview:function(event) {
+    getApp().globalData.param = event.currentTarget.dataset.goods
     wx.navigateTo({
       url: '../previewGoods/previewGoods'      
     })
@@ -73,6 +73,30 @@ Page({
   onEditGoods:function() {
     wx.navigateTo({
       url: '../editGoods/editGoods',
+    })
+  },
+
+  getGoods: function () {
+    let self = this
+
+    request.getRequest('/items', null, true)
+      .then(data => {
+        self.setData({
+          goodses: data.items
+        })
+      }).catch(e => {
+
+      })
+  },
+
+  initView: function () {
+    let that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          height: (res.windowHeight - 94)
+        })
+      },
     })
   }
 })

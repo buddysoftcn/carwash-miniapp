@@ -1,1 +1,5 @@
 /* pages/editGoods/editGoods.wxss */
+.uploader__img_del {
+  width: 100%;
+  text-align: center;
+}
