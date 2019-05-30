@@ -1,21 +1,25 @@
 {
   "pages": [
-    "pages/goodsList/goodsList",
-    "pages/index/index",
-    "pages/announcementList/announcementList",
-    "pages/home/home",
+    "pages/settingPayment/settingPayment",
     "pages/my/my",
-    "pages/settingList/settingList",
+    "pages/index/index",
     "pages/authEmploye/authEmploye",
-    "pages/searchMember/searchMember",
+    "pages/announcementList/announcementList",
+    "pages/editGoods/editGoods",
+    "pages/editPayment/editPayment",
+    "pages/goodsList/goodsList",
+    "pages/home/home",
     
+    
+    "pages/settingList/settingList",    
+    "pages/searchMember/searchMember",    
     "pages/previewAnnouncement/previewAnnouncement",
     "pages/userList/userList",
     "pages/authManagerSuccessed/authManagerSuccessed",
     "pages/bindManagerRole/bindManagerRole",
     "pages/employeesList/employeesList",
     "pages/editAnnouncement/editAnnouncement",
-    "pages/editGoods/editGoods",
+    
     "pages/inviteEmploye/inviteEmploye",
     "pages/editEmploye/editEmploye",
     "pages/previewGoods/previewGoods",
@@ -25,9 +29,9 @@
     "pages/creditIntroducion/creditIntroducion",
     "pages/settingCredit/settingCredit",
     "pages/settingMemberCard/settingMemberCard",
-    "pages/editPayment/editPayment",
+   
     "pages/settingPrice/settingPrice",
-    "pages/settingPayment/settingPayment",
+   
     "pages/editMemberCard/editMemberCard",
     "pages/editPaymentRemark/editPaymentRemark",
     "pages/paymentOrderCancelFinished/paymentOrderCancelFinished",

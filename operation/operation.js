@@ -74,7 +74,12 @@ function startRequest(method,relativePath,params={},auth=false,loading = true) {
               
               console.log('startRequest success')
               console.log(res.data)
-              resolve(res.data)
+              if (SUCCESSED == res.data.status) {
+                resolve(res.data)
+              }else {
+                reject(res.data)
+              }
+             
 
               if (401 == res.data.statusCode) {  // 如果是验证问题，重新登录
                 getApp().getUserInfo(null,true)

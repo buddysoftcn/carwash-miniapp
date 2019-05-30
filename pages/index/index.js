@@ -41,6 +41,7 @@ Page({
         userModel.setCurrentUser(userInfo)
         let role = userModel.getRole()
         if ('manager' == mode) {
+          console.log(role.role)
           if (userModel.ROLE_NORMAL == role.role) {
             wx.navigateTo({
               url: '../bindManagerRole/bindManagerRole'

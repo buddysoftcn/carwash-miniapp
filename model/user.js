@@ -17,11 +17,11 @@ function getRole() {
   let user = getCurrentUser()
 
   if (null != user) {
-    if (false == user.asOwner && null == user.asClerk) {
+    if (false == user.asOwner && false == user.asClerk) {
       return { 'role': ROLE_NORMAL, 'desc': '授权登录,未绑定身份' }    
     }else if (true == user.asOwner) {
       return { 'role': ROLE_OWNER, 'desc': '店长' }    
-    }else if (null != user.asClerk) {
+    }else if (true == user.asClerk) {
       return { 'role': ROLE_CLERK, 'desc': '店员' }    
     }
   }

@@ -1,21 +1,23 @@
 <!--pages/editPayment/editPayment.wxml-->
-<view class="weui-cells weui-cells_after-title">
-  <view class="weui-cell weui-cell_input">
-      <view class="weui-cell__hd">
-          <view class="weui-label">方式名称</view>
-      </view>
-      <view class="weui-cell__bd">
-          <input class="weui-input" placeholder="请输入"/>
-      </view>
+<form bindsubmit="onSave">
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">方式名称</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input name="name" class="weui-input" placeholder="请输入" value='{{payType.name}}'/>
+        </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">显示位置</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input name="weight" class="weui-input" placeholder="数字越小越靠前" value="{{payType.weight}}"/>
+        </view>
+    </view>
   </view>
-  <view class="weui-cell weui-cell_input">
-      <view class="weui-cell__hd">
-          <view class="weui-label">显示位置</view>
-      </view>
-      <view class="weui-cell__bd">
-          <input class="weui-input" placeholder="数字越小越靠前"/>
-      </view>
-  </view>
-</view>
 
-<button style='margin-top:112rpx;' class="button button_margin_16" type="primary" bindtap="onSave">保存</button>
+  <button style='margin-top:112rpx;' class="button button_margin_16" type="primary" formType="submit">保存</button>
+</form>

@@ -2,37 +2,22 @@
 <view class="weui-cells__title">店员进行结账操纵时，付款方式会作为选项显示。</view>
 
 <view class="weui-panel weui-panel_access">            
-    <view class="weui-media-box weui-media-box_appmsg">
-      <van-swipe-cell style="width:100%;" right-width="{{ 80 }}" disabled="false" async-close bind:close="onClose" bind:click="onEditEmploye">
+    <view wx:for="{{payTypes}}" wx:key="*this" wx:for-item="payType" class="weui-media-box weui-media-box_appmsg">
+      <van-swipe-cell style="width:100%;" right-width="{{ 80 }}" disabled="{{payType.type == 0 ? true : false}}" async-close bind:close="onDel" data-payType="{{payType}}" bind:click="onEditPayment">
         <van-cell-group>
           <van-cell>
             <view class="weui-media-box weui-media-box_appmsg" style='justify-content: space-between;'>
-                <view class="cell">会员卡</view>
-                <view class="cell-value weui-cell__ft_in-access">1</view>                                 
+                <view class="cell">{{payType.weight}}. {{payType.name}}</view>
+                <view class="cell-value weui-cell__ft_in-access"></view>                                 
             </view>            
           </van-cell>
         </van-cell-group>
         <view class="cell-del" slot="right">删除</view>
       </van-swipe-cell>              
-    </view>    
-
-    <view class="weui-media-box weui-media-box_appmsg">
-      <van-swipe-cell style="width:100%;" right-width="{{ 80 }}" async-close bind:close="onClose">
-        <van-cell-group class="weui-panel">
-          <van-cell class="weui-panel">        
-            <view class="weui-media-box weui-media-box_appmsg" style='justify-content: space-between;'>              
-              <view class="cell">现金</view>     
-              <view class="cell-value weui-cell__ft_in-access">2</view>            
-            </view>            
-          </van-cell>
-        </van-cell-group>
-        <view class="cell-del" slot="right">删除</view>
-      </van-swipe-cell>              
-    </view>           
-                    
+    </view>                         
 </view>
 
-<view class="cells-extra_btn weui-cells_after-title" bindtap='onEditPayment'>  
+<view class="cells-extra_btn weui-cells_after-title" bindtap='onCreatePayment'>  
   <view class="weui-cell cells-cell_extra_btn">
     添加付款方式
   </view>
