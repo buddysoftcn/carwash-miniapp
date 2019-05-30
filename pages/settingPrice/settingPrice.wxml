@@ -1,16 +1,21 @@
 <!--pages/settingPrice/settingPrice.wxml-->
-<view class="weui-cells weui-cells_after-title">
-  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__bd">轿车</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access">30元</view>
-  </view>
-  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__bd">SUV</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access">45元</view>
-  </view>
+<view class="weui-panel weui-panel_access">            
+    <view wx:for="{{carModels}}" wx:key="*this" wx:for-item="carModel" class="weui-media-box weui-media-box_appmsg">
+      <van-swipe-cell style="width:100%;" right-width="{{ 80 }}" async-close bind:close="onDel" data-carModel="{{carModel}}" bind:click="onEditCar">
+        <van-cell-group>
+          <van-cell>
+            <view class="weui-media-box weui-media-box_appmsg" style='justify-content: space-between;'>
+                <view class="cell">{{carModel.weight}}. {{carModel.model}}</view>
+                <view class="cell-value weui-cell__ft_in-access">{{carModel.normalPrice}}元</view>                                 
+            </view>            
+          </van-cell>
+        </van-cell-group>
+        <view class="cell-del" slot="right">删除</view>
+      </van-swipe-cell>              
+    </view>                         
 </view>
 
-<view class="cells-extra_btn weui-cells_after-title" bindtap='onEditPrice'>  
+<view class="cells-extra_btn weui-cells_after-title" bindtap='onCreateCar'>  
   <view class="weui-cell cells-cell_extra_btn">
     添加车型
   </view>

@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "洗车价格",
-  "usingComponents": {}
+  "usingComponents": {
+    "van-swipe-cell": "../../lib/dist/swipe-cell/index"
+  }
 }

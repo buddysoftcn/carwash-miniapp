@@ -1,1 +1,27 @@
 /* pages/settingPrice/settingPrice.wxss */
+.weui-media-box{padding:0px;position:relative;}
+
+.cell {
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  margin-left: 16px;
+  font-size: 17px;
+}
+
+
+.cell-value {
+  font-size: 14px;
+  color:#999;
+  margin-right: 16px;
+}
+
+.cell-del {
+  color: white;
+  text-align: center;
+  width:80px;
+  height:88rpx; 
+  background-color:red;
+  font-size: 15px;
+  line-height: 88rpx;
+}

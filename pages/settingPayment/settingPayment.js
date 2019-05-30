@@ -97,7 +97,6 @@ Page({
 
   delPayType:function(payType) {
     let that = this
-    console.log(payType)
     wx.showLoading({
       title: '请稍候',
       mask: true
