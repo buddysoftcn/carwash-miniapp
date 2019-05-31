@@ -105,11 +105,23 @@ Page({
 
   initShopInfo:function() {
     shop = shopModel.getShopInfo()
-    console.log(shop)
     if (shop) {
       this.setData({
         carCountIndex:shop.shopSetting.bindingPlates - 1
       })
+
+      if (shop.shopSetting.validityMonths) {
+        let index = 0
+        for (index = 0; index < this.data.validityMonths.length; index++) {
+          if (shop.shopSetting.validityMonths == this.data.validityMonths[index].value) {
+            break
+          }
+        }
+
+        this.setData({
+          validityMonthIndex: index
+        })
+      }
     }
   },
 
