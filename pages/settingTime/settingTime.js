@@ -1,18 +1,21 @@
 // pages/settingTime/settingTime.js
+let shopModel = require('../../model/shop.js')
+let util = require('../../utils/util.js')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    restDate:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.initView()
   },
 
   /**
@@ -57,10 +60,19 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+  initView:function() {
+    let shop = shopModel.getShopInfo()
 
+    this.initRestDate(shop)
+  },
+
+  initRestDate:function(shop) {
+    if (shop) {
+      if (shop.shopSetting.restBegin && shop.shopSetting.restEnd) {
+        this.setData({
+          restDate: util.formatDate(shop.shopSetting.restBegin) + '-' + util.formatDate(shop.shopSetting.restEnd)
+        })
+      }
+    }
   }
 })

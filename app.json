@@ -1,12 +1,14 @@
 {
   "pages": [
-    "pages/settingCredit/settingCredit",
+   
+    "pages/settingTime/settingTime",
     "pages/my/my",
     "pages/index/index",
     "pages/authEmploye/authEmploye",
     "pages/announcementList/announcementList",
     "pages/editGoods/editGoods",
     "pages/editPayment/editPayment",
+    "pages/editHoliday/editHoliday",
     "pages/goodsList/goodsList",
     "pages/home/home",
     
@@ -15,6 +17,7 @@
     "pages/searchMember/searchMember",  
     "pages/settingPayment/settingPayment",  
     "pages/settingMemberCard/settingMemberCard",
+    "pages/settingCredit/settingCredit",
     "pages/previewAnnouncement/previewAnnouncement",
     "pages/userList/userList",
     "pages/authManagerSuccessed/authManagerSuccessed",
@@ -29,11 +32,6 @@
     "pages/memberDetail/memberDetail",
     "pages/addConsume/addConsume",
     "pages/creditIntroducion/creditIntroducion",
-    
-   
-   
-    
-   
     "pages/editMemberCard/editMemberCard",
     "pages/editPaymentRemark/editPaymentRemark",
     "pages/paymentOrderCancelFinished/paymentOrderCancelFinished",
@@ -49,8 +47,8 @@
     "pages/editWorkingTime/editWorkingTime",
     "pages/editWorkingEfficiency/editWorkingEfficiency",
     "pages/editSpecialPrice/editSpecialPrice",
-    "pages/editHoliday/editHoliday",
-    "pages/settingTime/settingTime",
+   
+  
     "pages/editWeight/editWeight",
     "pages/editGoodsPrice/editGoodsPrice",
     "pages/editGoodsDiscount/editGoodsDiscount"
