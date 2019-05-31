@@ -2,10 +2,22 @@
 <view class="weui-cells">
   <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__bd">会员卡绑定车牌数量</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access">1</view>
+      <picker style='width:50%;' class="weui-cell__ft weui-cell__ft_in-access" value="{{carCountIndex}}" range="{{carCount}}" bindchange="bindCarCountChange">
+          <view class="picker">{{carCount[carCountIndex]}}</view>
+      </picker>
   </view>          
 </view>
 <view class="cells-footer_title">车牌绑定到会员卡后,可以通过会员卡消费</view>
+
+<view class="weui-cells">
+  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">充值有效期</view>
+      <picker style='width:50%;' class="weui-cell__ft weui-cell__ft_in-access" range-key="text" value="{{validityMonthIndex}}" range="{{validityMonths}}" bindchange="bindValidityMonthsChange">
+          <view class="picker">{{validityMonths[validityMonthIndex].text}}</view>
+      </picker>
+  </view>          
+</view>
+<view class="cells-footer_title">每次充值，有效期都会相应的延长。</view>
 
 <view style='margin-top:32px;' class="weui-cells__title">会员卡充值金额</view>
 <view class="weui-cells weui-cells_after-title">   

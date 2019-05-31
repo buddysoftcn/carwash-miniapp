@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/settingPrice/settingPrice",
+    "pages/settingMemberCard/settingMemberCard",
     "pages/my/my",
     "pages/index/index",
     "pages/authEmploye/authEmploye",
@@ -29,7 +29,7 @@
     "pages/addConsume/addConsume",
     "pages/creditIntroducion/creditIntroducion",
     "pages/settingCredit/settingCredit",
-    "pages/settingMemberCard/settingMemberCard",
+   
    
     
    

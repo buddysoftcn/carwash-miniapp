@@ -2,6 +2,7 @@
 //获取应用实例
 const app = getApp()
 
+let getShopInfoRequest = require('../../operation/getShopInfo.js')
 let authViewTemplate = require('../../template/authView/authView.js')
 let userModel = require('../../model/user.js')
 let mode = 'manager'
@@ -12,7 +13,7 @@ Page({
   },
  
   onLoad: function () {
-    
+    getShopInfoRequest.getShopInfo()
   },
   
   /**
