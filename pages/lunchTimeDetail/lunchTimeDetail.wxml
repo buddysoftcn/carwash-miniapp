@@ -1,0 +1,40 @@
+<!--pages/lunchTimeDetail/lunchTimeDetail.wxml-->
+<view class="weui-cells__title">当前设置</view>
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+        <view class="weui-cell__bd">开始时间</view>
+        <view class="weui-cell__ft">{{lunchTimeBegin}}</view>
+    </view>
+    <view class="weui-cell">
+        <view class="weui-cell__bd">结束时间</view>
+        <view class="weui-cell__ft">{{lunchTimeEnd}}</view>
+    </view>
+</view>
+
+<view wx:if="{{'create' == mode}}" class="cells-extra_btn weui-cells_after-title" bindtap='onEditTime'>  
+  <view class="weui-cell cells-cell_extra_btn">
+    修改
+  </view>
+</view>
+
+<block wx:if="{{'edit' == mode}}">
+  <view style='margin-top:32px;' class="weui-cells__title">新的设置</view>
+  <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+          <view class="weui-cell__bd">开始时间</view>
+          <view class="weui-cell__ft">{{lunchTimeBeginNew}}</view>
+      </view>
+      <view class="weui-cell">
+          <view class="weui-cell__bd">结束时间</view>
+          <view class="weui-cell__ft">{{lunchTimeEndNew}}</view>
+      </view>
+  </view>
+
+  <view class="cells-extra_btn weui-cells_after-title" bindtap='onDel'>  
+    <view style='color:#E02020' class="weui-cell cells-cell_extra_btn">
+      删除
+    </view>
+  </view>
+  <view class="cells-footer_title">新设置在 {{lunchTimeEnableDate}} 零点自动生效，生效前使用当前设置。</view>
+</block>
+

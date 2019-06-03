@@ -1,6 +1,5 @@
 {
   "pages": [
-   
     "pages/settingTime/settingTime",
     "pages/my/my",
     "pages/index/index",
@@ -11,11 +10,9 @@
     "pages/editHoliday/editHoliday",
     "pages/goodsList/goodsList",
     "pages/home/home",
-    
-    
-    "pages/settingList/settingList",    
-    "pages/searchMember/searchMember",  
-    "pages/settingPayment/settingPayment",  
+    "pages/settingList/settingList",
+    "pages/searchMember/searchMember",
+    "pages/settingPayment/settingPayment",
     "pages/settingMemberCard/settingMemberCard",
     "pages/settingCredit/settingCredit",
     "pages/previewAnnouncement/previewAnnouncement",
@@ -24,7 +21,6 @@
     "pages/bindManagerRole/bindManagerRole",
     "pages/employeesList/employeesList",
     "pages/editAnnouncement/editAnnouncement",
-    
     "pages/inviteEmploye/inviteEmploye",
     "pages/editEmploye/editEmploye",
     "pages/previewGoods/previewGoods",
@@ -47,11 +43,11 @@
     "pages/editWorkingTime/editWorkingTime",
     "pages/editWorkingEfficiency/editWorkingEfficiency",
     "pages/editSpecialPrice/editSpecialPrice",
-   
-  
     "pages/editWeight/editWeight",
     "pages/editGoodsPrice/editGoodsPrice",
-    "pages/editGoodsDiscount/editGoodsDiscount"
+    "pages/editGoodsDiscount/editGoodsDiscount",
+    "pages/lunchTimeDetail/lunchTimeDetail",
+    "pages/editLunchTime/editLunchTime"
   ],
   "window": {
     "backgroundTextStyle": "light",

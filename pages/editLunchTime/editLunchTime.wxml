@@ -1,0 +1,19 @@
+<!--pages/editLunchTime/editLunchTime.wxml-->
+<view class="weui-cells weui-cells_after-title">  
+  <view class="weui-cell">
+    <view class="weui-cell__bd">上班时间</view>
+    <picker style='width:60%;' class="weui-cell__ft weui-cell__ft_in-access" bindchange="bindWorkTimeBeginChange" value="{{startTimeIndex}}" range="{{startTime}}">
+      <view class="picker">{{startTime[startTimeIndex]}}</view>
+    </picker>      
+  </view>
+
+  <view class="weui-cell">
+    <view class="weui-cell__bd">下班时间</view>
+    <picker style='width:60%;' class="weui-cell__ft weui-cell__ft_in-access" bindchange="bindWorkTimeEndChange" value="{{endTimeIndex}}" range="{{endTime}}">
+      <view class="picker">{{endTime[endTimeIndex]}}</view>
+    </picker>      
+  </view>
+
+</view>
+
+<button style='margin-top:112rpx;' class="button button_margin_16" type="primary" bindtap="onSave">保存</button>
