@@ -70,13 +70,11 @@ Page({
   },
 
   bindMinutesChange:function(event) {
-    console.log(event)
     let that = this
     let washMinutesNew = this.data.times[event.detail.value].value
     
     request.putRequest('/shop-settings/' + shop.shopSetting.sid, { 'washMinutesNew': washMinutesNew }, true)
-      .then(data => {
-        console.log(data)
+      .then(data => {      
         shop.shopSetting.washMinutesNew = washMinutesNew
         shop.shopSetting.washMinutesEnableDate = data.object.washMinutesEnableDate
         shopModel.setShopInfo(shop)
@@ -135,8 +133,7 @@ Page({
         break
       }
     }
-    console.log(mode)
-    console.log(shop)
+    
     this.setData({
       mode: mode,
       index: timeIndex,

@@ -10,7 +10,9 @@ Page({
    */
   data: {
     restDate:'',
-    washMinutes:''
+    washMinutes:'',
+    workTimeBegin:'',
+    workTimeEnd: ''
   },
 
   /**
@@ -73,6 +75,7 @@ Page({
 
     this.initRestDate(shop)
     this.initWashMinutes(shop)
+    this.initWorkTime(shop)
   },
 
   initRestDate:function(shop) {
@@ -97,6 +100,20 @@ Page({
     }else {
       this.setData({
         washMinutes:''
+      })
+    }
+  },
+
+  initWorkTime:function(shop) {
+    if (shop.shopSetting.workTimeBegin) {
+      this.setData({
+        workTimeBegin: util.formatTime(shop.shopSetting.workTimeBegin),
+        workTimeEnd: util.formatTime(shop.shopSetting.workTimeEnd)
+      })
+    } else {
+      this.setData({
+        workTimeBegin: '',
+        workTimeEnd:''
       })
     }
   }
