@@ -1,6 +1,7 @@
 // pages/settingTime/settingTime.js
 let shopModel = require('../../model/shop.js')
 let util = require('../../utils/util.js')
+let carWash = require('../../utils/carWash.js')
 
 Page({
 
@@ -8,7 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    restDate:''
+    restDate:'',
+    washMinutes:''
   },
 
   /**
@@ -16,6 +18,8 @@ Page({
    */
   onLoad: function (options) {
     this.initView()
+
+    getApp().notificationCenter.register(carWash.UPDATE_SHOP_MESSAGE, this, "handleUpdateShopMessage")
   },
 
   /**
@@ -43,7 +47,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    getApp().notificationCenter.remove(carWash.UPDATE_SHOP_MESSAGE, this)
   },
 
   /**
@@ -60,10 +64,15 @@ Page({
 
   },
 
+  handleUpdateShopMessage:function(object) {
+    this.initView()
+  },
+
   initView:function() {
     let shop = shopModel.getShopInfo()
 
     this.initRestDate(shop)
+    this.initWashMinutes(shop)
   },
 
   initRestDate:function(shop) {
@@ -72,7 +81,23 @@ Page({
         this.setData({
           restDate: util.formatDate(shop.shopSetting.restBegin) + '-' + util.formatDate(shop.shopSetting.restEnd)
         })
+      }else {
+        this.setData({
+          restDate:''
+        })
       }
+    }
+  },
+
+  initWashMinutes:function(shop) {  
+    if (shop.shopSetting.washMinutes) {
+      this.setData({
+        washMinutes: shop.shopSetting.washMinutes
+      })
+    }else {
+      this.setData({
+        washMinutes:''
+      })
     }
   }
 })

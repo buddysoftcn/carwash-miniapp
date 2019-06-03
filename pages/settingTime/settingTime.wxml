@@ -14,7 +14,7 @@
 <view class="weui-cells">
     <navigator url="../editWorkingEfficiency/editWorkingEfficiency" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__bd">洗车效率</view>
-        <view class="weui-cell__ft weui-cell__ft_in-access">25分钟/辆</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{washMinutes}}分钟/辆</view>
     </navigator>    
 </view>
 <view class="cells-footer_title">每小时60分钟除以洗车效率,就能得出每小时服务的洗车数量</view>

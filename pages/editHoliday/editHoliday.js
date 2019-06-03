@@ -2,6 +2,7 @@
 let shopModel = require('../../model/shop.js')
 let util = require('../../utils/util.js')
 let request = require('../../operation/operation.js')
+let carWash = require('../../utils/carWash.js')
 let shop = null
 
 Page({
@@ -77,18 +78,13 @@ Page({
       return
     }
 
+    let that = this
     request.putRequest('/shop-settings/' + shop.shopSetting.sid, { 'restBegin': this.data.restBegin,'restEnd':this.data.restEnd }, true)
       .then(data => {        
         shop.shopSetting.restBegin = this.data.restBegin
         shop.shopSetting.restEnd = this.data.restEnd
         shopModel.setShopInfo(shop)
-        wx.showToast({
-          title: '设置成功',
-        })
-
-        wx.navigateBack({
-          delta: 1,
-        })
+        that.back('设置成功')
       }).catch(e => {
 
       })
@@ -96,6 +92,8 @@ Page({
   },
 
   onDel:function() {
+    let that = this
+
     wx.showModal({
       title: '删除',
       content: '删除后，您可以创建新的放假日期，确定要删除吗？',
@@ -106,13 +104,8 @@ Page({
               shop.shopSetting.restBegin = null
               shop.shopSetting.restEnd = null
               shopModel.setShopInfo(shop)
-              wx.showToast({
-                title: '删除成功',
-              })
+              that.back('删除成功')
 
-              wx.navigateBack({
-                delta: 1,
-              })
             }).catch(e => {
 
             })
@@ -154,6 +147,18 @@ Page({
       afterTomorrow: afterTomorrow,
       restBegin: restBegin,
       restEnd: restEnd
+    })
+  },
+
+  back:function(title) {
+    getApp().notificationCenter.post(carWash.UPDATE_SHOP_MESSAGE, null)
+
+    wx.showToast({
+      title: title,
+    })
+
+    wx.navigateBack({
+      delta: 1,
     })
   }
 

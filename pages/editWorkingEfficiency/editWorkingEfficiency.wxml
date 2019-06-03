@@ -3,29 +3,31 @@
 <view class="weui-cells weui-cells_after-title">  
   <view class="weui-cell">  
     <view class="weui-cell__bd">洗车效率</view>
-    <view class="weui-cell__ft">25分钟/辆</view>      
+    <view class="weui-cell__ft">{{washMinutes}}分钟/辆</view>      
   </view>
 </view>
-<view class="cells-extra_btn weui-cells_after-title">  
+<view wx:if="{{'create' == mode}}" class="cells-extra_btn weui-cells_after-title">  
   <view class="weui-cell cells-cell_extra_btn">
-    <picker style='width:100%;text-align: center' value="{{index}}" range="{{times}}" bindchange="bindDateChange">
+    <picker style='width:100%;text-align: center' range-key='text' value="{{index}}" range="{{times}}" bindchange="bindMinutesChange">
         <view class="">修改</view>
     </picker>
   </view>
 </view>
 
-<view class="cells-footer_title">新设置生效之前,仍然会使用当前洗车效率.</view>
+<block wx:if="{{'del' == mode}}">
+  <view class="cells-footer_title">新设置生效之前,仍然会使用当前洗车效率.</view>
 
-<view style='margin-top:32px;' class="weui-cells__title">新的设置(在 2019-04-18 00:00 自动生效)</view>
-<view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell">
-        <view class="weui-cell__bd">洗车效率</view>
-        <view class="weui-cell__ft">15分钟/辆</view>
-    </view>    
-</view>
-
-<view class="cells-extra_btn weui-cells_after-title" bindtap=''>  
-  <view style='color:#E02020' class="weui-cell cells-cell_extra_btn">
-    删除
+  <view style='margin-top:32px;' class="weui-cells__title">新设置在 {{washMinutesEnableDate}} 零点自动生效</view>
+  <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+          <view class="weui-cell__bd">洗车效率</view>
+          <view class="weui-cell__ft">{{washMinutesNew}}分钟/辆</view>
+      </view>    
   </view>
-</view>
+
+  <view class="cells-extra_btn weui-cells_after-title" bindtap='onDel'>  
+    <view style='color:#E02020' class="weui-cell cells-cell_extra_btn">
+      删除
+    </view>
+  </view>
+</block>
