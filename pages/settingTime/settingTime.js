@@ -12,7 +12,10 @@ Page({
     restDate:'',
     washMinutes:'',
     workTimeBegin:'',
-    workTimeEnd: ''
+    workTimeEnd: '',
+    lunchTimeBegin:'',
+    lunchTimeEnd: '',
+    specialDate:''
   },
 
   /**
@@ -76,6 +79,8 @@ Page({
     this.initRestDate(shop)
     this.initWashMinutes(shop)
     this.initWorkTime(shop)
+    this.initLunchTime(shop)
+    this.initSpecialDate(shop)
   },
 
   initRestDate:function(shop) {
@@ -116,5 +121,32 @@ Page({
         workTimeEnd:''
       })
     }
+  },
+
+  initLunchTime:function(shop) {
+    if (shop.shopSetting.lunchTimeBegin) {
+      this.setData({
+        lunchTimeBegin: util.formatTime(shop.shopSetting.lunchTimeBegin),
+        lunchTimeEnd: util.formatTime(shop.shopSetting.lunchTimeEnd)
+      })
+    } else {
+      this.setData({
+        lunchTimeBegin: '',
+        lunchTimeEnd: ''
+      })
+    }
+  },
+
+  initSpecialDate:function(shop) {
+    if (shop.shopSetting.specialDateBegin) {
+      this.setData({
+        specialDate: util.formatDate(shop.shopSetting.specialDateBegin) + '-' + util.formatDate(shop.shopSetting.specialDateEnd),
+      })
+    }else {
+      this.setData({
+        specialDate:''
+      })
+    }
   }
+
 })

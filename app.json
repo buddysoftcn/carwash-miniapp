@@ -47,7 +47,8 @@
     "pages/editGoodsPrice/editGoodsPrice",
     "pages/editGoodsDiscount/editGoodsDiscount",
     "pages/lunchTimeDetail/lunchTimeDetail",
-    "pages/editLunchTime/editLunchTime"
+    "pages/editLunchTime/editLunchTime",
+    "pages/editSpecialDatePrice/editSpecialDatePrice"
   ],
   "window": {
     "backgroundTextStyle": "light",

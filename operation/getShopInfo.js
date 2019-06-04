@@ -1,5 +1,6 @@
 let request = require('operation.js')
 let shop = require('../model/shop.js')
+let carModel = require('../model/carModel.js')
 
 module.exports.getShopInfo = getShopInfo
 
@@ -9,6 +10,7 @@ function getShopInfo() {
       .then(data => {
         if (request.SUCCESSED == data.status) {
           shop.setShopInfo(data)
+          carModel.setCurrentCarModels(data.carModels)
           resolve()
         } else {
           reject(null)

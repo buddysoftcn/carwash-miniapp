@@ -7,7 +7,7 @@
     </navigator>
     <navigator url="../lunchTimeDetail/lunchTimeDetail" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__bd">午休时间</view>
-        <view class="weui-cell__ft weui-cell__ft_in-access">12:30-13:30</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{lunchTimeBegin}}-{{lunchTimeEnd}}</view>
     </navigator>
 </view>
 
@@ -22,7 +22,7 @@
 <view class="weui-cells">
     <navigator url="../editSpecialPrice/editSpecialPrice" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__bd">特别服务日期</view>
-        <view class="weui-cell__ft weui-cell__ft_in-access">5月1日-5月4日</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{specialDate}}</view>
     </navigator>    
 </view>
 <view class="cells-footer_title">设置过年前\或节假日的洗车价格</view>

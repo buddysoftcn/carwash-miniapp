@@ -1,0 +1,17 @@
+<!--pages/editSpecialDatePrice/editSpecialDatePrice.wxml-->
+<form bindsubmit="onSave">
+  <view class="weui-cells">
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">{{carModel.model}}</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input focus='true' type='number' name="price" class="weui-input" placeholder="请输入价格（单位元）" value="{{carModel.specialPrice/100}}"/>
+        </view>
+    </view>
+  </view>
+
+  <view class="weui-btn-area">
+      <button formType="submit" class="weui-btn" type="primary">保存</button>
+  </view>
+</form>
