@@ -21,14 +21,14 @@
 
 <view style='margin-top:32px;' class="weui-cells__title">会员卡充值金额</view>
 <view class="weui-cells weui-cells_after-title">   
-  <van-swipe-cell style="width:100%;" right-width="{{ 80 }}" async-close bind:close="onClose" bind:click="onEditEmploye">
+  <van-swipe-cell wx:for="{{rechargeTypes}}" wx:key="*this" wx:for-item="rechargeType" style="width:100%;" right-width="{{ 80 }}" async-close bind:close="onClose" bind:click="onEditEmploye">
     <van-cell-group>
       <van-cell>    
-        <view class="weui-cell">
-          <view class="weui-cell__bd">200元</view>
+        <view class="weui-cell border-bottom">
+          <view class="weui-cell__bd">{{rechargeType.payAmount}}元</view>
           <view class="weui-cell__ft">
             <label class="font-color_8e font-size_15">实际到账：</label>
-            <label class="font-size_15 font-color_black">250元</label>
+            <label class="font-size_15 font-color_black">{{rechargeType.rechargeAmount}}元</label>
           </view> 
         </view>
       </van-cell>

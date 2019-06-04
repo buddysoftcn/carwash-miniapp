@@ -12,3 +12,7 @@
   font-size: 15px;
   line-height: 44px;
 }
+
+.border-bottom {
+  border-bottom: 1rpx solid #d9d9d9;
+}

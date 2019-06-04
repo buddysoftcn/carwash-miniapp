@@ -1,6 +1,8 @@
 // pages/settingMemberCard/settingMemberCard.js
 let shopModel = require('../../model/shop.js')
 let request = require('../../operation/operation.js')
+let getRechargeTypeRequest = require('../../operation/getRechargeTypes.js')
+let carWash = require('../../utils/carWash.js')
 let shop = null
 
 Page({
@@ -13,7 +15,9 @@ Page({
     carCountIndex:0,
 
     validityMonths: [{ 'text': '半年', 'value': '6' }, { 'text': '1年', 'value': '12' }, { 'text': '2年', 'value': '24' }],
-    validityMonthIndex:0
+    validityMonthIndex:0,
+
+    rechargeTypes:[]
 
   },
 
@@ -22,6 +26,9 @@ Page({
    */
   onLoad: function (options) {
     this.initShopInfo()
+    this.getRechargeTypes()
+
+    getApp().notificationCenter.register(carWash.UPDATE_RECHARGE_TYPE_MESSAGE, this, "getRechargeTypes");
   },
 
   /**
@@ -50,6 +57,7 @@ Page({
    */
   onUnload: function () {
     shop = null
+    getApp().notificationCenter.remove(carWash.UPDATE_RECHARGE_TYPE_MESSAGE, this)
   },
 
   /**
@@ -105,6 +113,7 @@ Page({
 
   initShopInfo:function() {
     shop = shopModel.getShopInfo()
+    console.log(shop)
     if (shop) {
       this.setData({
         carCountIndex:shop.shopSetting.bindingPlates - 1
@@ -128,6 +137,17 @@ Page({
   onEditMemberCard:function() {
     wx.navigateTo({
       url: '../editMemberCard/editMemberCard',
+    })
+  },
+
+  getRechargeTypes:function() {
+    let that = this
+
+    getRechargeTypeRequest.getRechargeTypes()
+    .then(data => {
+      that.setData({
+        rechargeTypes:data
+      })
     })
   }
 })

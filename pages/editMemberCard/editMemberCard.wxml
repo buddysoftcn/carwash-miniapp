@@ -1,21 +1,23 @@
 <!--pages/editMemberCard/editMemberCard.wxml-->
-<view class="weui-cells weui-cells_after-title">
-  <view class="weui-cell weui-cell_input">
-      <view class="weui-cell__hd">
-          <view class="weui-label">充值额度</view>
-      </view>
-      <view class="weui-cell__bd">
-          <input class="weui-input" placeholder="请输入数字金额"/>
-      </view>
+<form bindsubmit="onSave">
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">充值额度</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input type="number" class="weui-input" placeholder="请输入数字金额" name="payAmount" />
+        </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">实际到账</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input type="number" class="weui-input" placeholder="请输入数字金额" name="rechargeAmount"/>
+        </view>
+    </view>
   </view>
-  <view class="weui-cell weui-cell_input">
-      <view class="weui-cell__hd">
-          <view class="weui-label">实际到账</view>
-      </view>
-      <view class="weui-cell__bd">
-          <input class="weui-input" placeholder="请输入数字金额"/>
-      </view>
-  </view>
-</view>
 
-<button style='margin-top:112rpx;' class="button button_margin_16" type="primary" bindtap="onSave">保存</button>
+  <button style='margin-top:112rpx;' class="button button_margin_16" type="primary" formType="submit">保存</button>
+</form>

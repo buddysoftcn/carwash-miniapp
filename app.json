@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/settingTime/settingTime",
+    "pages/settingMemberCard/settingMemberCard",
     "pages/my/my",
     "pages/index/index",
     "pages/authEmploye/authEmploye",
@@ -11,9 +11,10 @@
     "pages/goodsList/goodsList",
     "pages/home/home",
     "pages/settingList/settingList",
+    "pages/settingTime/settingTime",
     "pages/searchMember/searchMember",
     "pages/settingPayment/settingPayment",
-    "pages/settingMemberCard/settingMemberCard",
+   
     "pages/settingCredit/settingCredit",
     "pages/previewAnnouncement/previewAnnouncement",
     "pages/userList/userList",

@@ -1,4 +1,8 @@
 // pages/editMemberCard/editMemberCard.js
+let request = require('../../operation/operation.js')
+let carWash = require('../../utils/carWash.js')
+let mode = 'create'
+
 Page({
 
   /**
@@ -57,16 +61,51 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+  onSave:function(event) {
+    let payAmount = event.detail.value.payAmount
+    let rechargeAmount = event.detail.value.rechargeAmount
+    let message = ''
+    if (0 == payAmount.length) {
+      message = '请输入充值额度'
+    }else if (0 == rechargeAmount.length) {
+      message = '请输入实际到账额度'
+    }
+
+    if ('' != message) {
+      wx.showModal({
+        title: '提示',
+        content: message,
+        showCancel:false
+      })
+    }else {
+      if ('create' == mode) {
+        this.create(payAmount, rechargeAmount)
+      }
+    }
 
   },
 
-  onSave:function() {
+  create: function (payAmount, rechargeAmount) {
+    let that = this
+
+    request.postRequest('/recharge-types', { 'payAmount': payAmount, 'rechargeAmount': rechargeAmount},true)
+    .then(data => {
+      that.back('添加成功')  
+    }).catch(e => {
+
+    })
+  },
+
+  back: function (title) {    
+    getApp().notificationCenter.post(carWash.UPDATE_RECHARGE_TYPE_MESSAGE, null)
+
+    wx.showToast({
+      title: title,
+    })
+
     wx.navigateBack({
-      
+      delta: 1,
     })
   }
+
 })
