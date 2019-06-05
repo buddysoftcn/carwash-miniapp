@@ -21,7 +21,7 @@
 
 <view style='margin-top:32px;' class="weui-cells__title">会员卡充值金额</view>
 <view class="weui-cells weui-cells_after-title">   
-  <van-swipe-cell wx:for="{{rechargeTypes}}" wx:key="*this" wx:for-item="rechargeType" style="width:100%;" right-width="{{ 80 }}" async-close bind:close="onClose" bind:click="onEditEmploye">
+  <van-swipe-cell wx:for="{{rechargeTypes}}" wx:key="*this" wx:for-item="rechargeType" style="width:100%;" right-width="{{ 80 }}" async-close data-rechargetype="{{rechargeType}}" bind:close="onClose" bind:click="onEditMemberCard">
     <van-cell-group>
       <van-cell>    
         <view class="weui-cell border-bottom">
@@ -37,7 +37,7 @@
   </van-swipe-cell>  
 </view>
 
-<view class="cells-extra_btn weui-cells_after-title" bindtap='onEditMemberCard'>  
+<view class="cells-extra_btn weui-cells_after-title" bindtap='onCreateMemberCard'>  
   <view class="weui-cell cells-cell_extra_btn">
     添加额度
   </view>

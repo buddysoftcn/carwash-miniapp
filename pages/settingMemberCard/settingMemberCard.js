@@ -111,12 +111,60 @@ Page({
       })
   },
 
-  initShopInfo:function() {
-    shop = shopModel.getShopInfo()
-    console.log(shop)
+  onClose:function(event) {
+    let that = this
+    const { position, instance } = event.detail;
+
+    wx.showModal({
+      title: '提示',
+      content: '删除后，将无法找回，确定要删除吗？',
+      success(res) {
+        if (res.confirm) {
+          instance.close()
+          that.delRechargeType(event.currentTarget.dataset.rechargetype)
+        } else if (res.cancel) {
+          instance.close()
+        }
+      }
+    })
+  },
+
+  onEditMemberCard:function(event) {
+    if ('cell' == event.detail) {
+      getApp().globalData.param = event.currentTarget.dataset.rechargetype
+      wx.navigateTo({
+        url: '../editMemberCard/editMemberCard?mode=' + getApp().MODE_EDIT,
+      })
+    }
+  },
+
+  onCreateMemberCard:function() {
+    wx.navigateTo({
+      url: '../editMemberCard/editMemberCard',
+    })
+  },
+
+  delRechargeType: function (rechargetype) {
+    let that = this
+    wx.showLoading({
+      title: '请稍候',
+      mask: true
+    })
+
+    request.deleteRequest('/recharge-types/' + rechargetype.sid, null, true)
+      .then(data => {
+        wx.hideLoading()
+        that.getRechargeTypes()
+      }).catch(e => {
+
+      })
+  },
+
+  initShopInfo: function () {
+    shop = shopModel.getShopInfo()    
     if (shop) {
       this.setData({
-        carCountIndex:shop.shopSetting.bindingPlates - 1
+        carCountIndex: shop.shopSetting.bindingPlates - 1
       })
 
       if (shop.shopSetting.validityMonths) {
@@ -132,12 +180,6 @@ Page({
         })
       }
     }
-  },
-
-  onEditMemberCard:function() {
-    wx.navigateTo({
-      url: '../editMemberCard/editMemberCard',
-    })
   },
 
   getRechargeTypes:function() {

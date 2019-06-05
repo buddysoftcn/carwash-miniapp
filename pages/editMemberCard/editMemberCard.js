@@ -9,14 +9,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    rechargeType:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (options.mode) {
+      mode = 'edit'
+      wx.setNavigationBarTitle({title:'编辑充值额度'})
 
+      this.setData({
+        rechargeType: getApp().globalData.param
+      })
+    }
   },
 
   /**
@@ -80,6 +87,8 @@ Page({
     }else {
       if ('create' == mode) {
         this.create(payAmount, rechargeAmount)
+      }else {
+        this.edit(payAmount, rechargeAmount)      
       }
     }
 
@@ -94,6 +103,17 @@ Page({
     }).catch(e => {
 
     })
+  },
+
+  edit: function (payAmount, rechargeAmount) {
+    let that = this
+
+    request.putRequest('/recharge-types/' + this.data.rechargeType.sid, { 'payAmount': payAmount, 'rechargeAmount': rechargeAmount }, true)
+      .then(data => {
+        that.back('修改成功')
+      }).catch(e => {
+
+      })
   },
 
   back: function (title) {    
