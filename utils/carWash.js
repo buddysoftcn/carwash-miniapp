@@ -1,11 +1,11 @@
 // 又拍云
-const UP_YUN_BUCKET = 'wash-car-shop'
-const UP_YUN_API = 'https://v0.api.upyun.com/wash-car-shop'
-const UP_YUN_DELETE_API = 'http://v0.api.upyun.com/wash-car-shop'
-const UP_YUN_IMAGE_DOMAIN = 'wash-car-shop.test.upcdn.net'
-const UP_YUN_IMAGE_PATH = '/images/'
-const UP_YUN_OPERATOR = 'washcarshop'
-const UP_YUN_PASSWORD = '2RVdpcGzHYL1MdvufMGgf7p7DsEOjzzM'
+const UP_YUN_BUCKET = ''
+const UP_YUN_API = ''
+const UP_YUN_DELETE_API = ''
+const UP_YUN_IMAGE_DOMAIN = 't'
+const UP_YUN_IMAGE_PATH = ''
+const UP_YUN_OPERATOR = ''
+const UP_YUN_PASSWORD = ''
 
 // 内部消息
 const EDIT_WEIGHT_MESSAGE = 'editWeightMessage'
