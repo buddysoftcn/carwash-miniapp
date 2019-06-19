@@ -1,18 +1,28 @@
 // pages/cancelPaymentOrder/cancelPaymentOrder.js
+let util = require('../../utils/util.js')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    showOrderView:false
+    showOrderView:false,
+    order:{},
+    datatime: '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let order = getApp().globalData.param
 
+    let datetime = util.formatDate(order.date) + ' ' + util.formatTime(order.time)
+    this.setData({
+      order: order,
+      datetime: datetime
+    })
   },
 
   /**

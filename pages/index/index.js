@@ -40,9 +40,10 @@ Page({
     getApp().login(event.detail,function(userInfo,message) {      
       if (null != userInfo) {
         userModel.setCurrentUser(userInfo)
-        let role = userModel.getRole()
+
+        let role = userModel.getRole()        
         if ('manager' == mode) {
-          console.log(role.role)
+          
           if (userModel.ROLE_NORMAL == role.role) {
             wx.navigateTo({
               url: '../bindManagerRole/bindManagerRole'
@@ -52,12 +53,20 @@ Page({
               url: '../home/home',
             })
           }
-        }else {
-          wx.navigateTo({
-            url: '../employeLoginFailed/employeLoginFailed'
-          })
+        }else if ('employe' == mode) {
+          if (userModel.ROLE_CLERK == role.role) {
+            wx.reLaunch({
+              url: '../home/home',
+            })
+          }else {
+            wx.navigateTo({
+              url: '../employeLoginFailed/employeLoginFailed'
+            })
+          }
+          
         }    
       }
     })
   }
+  
 })

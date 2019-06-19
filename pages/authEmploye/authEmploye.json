@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "收到邀请",
-  "usingComponents": {}
+  "usingComponents": {
+    "van-popup": "../../lib/dist/popup/index"
+  }
 }

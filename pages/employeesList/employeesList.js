@@ -1,18 +1,28 @@
 // pages/employeesList/employeesList.js
+let util = require('../../utils/util.js')
+let request = require('../../operation/operation.js')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    clerks:[],
+    waitingClerks:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this
 
+    request.getRequest('/clerks',{},true)
+    .then(data => {
+      that.filterData(data.items)
+      console.log(data)
+    })
   },
 
   /**
@@ -57,12 +67,7 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
+ 
   onEditEmploye: function (event) {
     if ("click" == event.type && 'cell' == event.detail) {
       wx.navigateTo({
@@ -90,6 +95,30 @@ Page({
           instance.close()
         }
       }
+    })
+  },
+
+  filterData:function(data) {
+    let clerks = [],waitingClerks = [],now = new Date()
+    for (let index = 0,size = data.length; index < size; index++) {
+      if (0 == data[index].state) {
+        data[index].createdAtUI = data[index].createdAt.substring(0,15)
+        
+        if (parseInt(now - util.makeDate(data[index].createdAt))/1000/60 > 30) {
+          data[index].waiting = '链接失效'
+        }else {
+          data[index].waiting = '等待回应'
+        }
+        
+        waitingClerks.push(data[index])
+      }else {
+        clerks.push(data[index])
+      }
+    }
+
+    this.setData({
+      clerks:clerks,
+      waitingClerks: waitingClerks
     })
   }
 })

@@ -1,22 +1,24 @@
 <!--pages/addOrder/addOrder.wxml-->
-<view class="weui-cells weui-cells_after-title">
-  <view class="weui-cell weui-cell_input">
-      <view class="weui-cell__hd">
-          <view class="weui-label">车牌号</view>
-      </view>
-      <view class="weui-cell__bd">
-          <input class="weui-input" placeholder="请输入车牌号"/>
-      </view>
+<form bindsubmit="onAdd">
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">车牌号</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input name="plateNumber" maxlength='7' bindinput="bindPlateNumberInput" class="weui-input" placeholder="请输入完整的车牌号" value="{{plateNumber}}"/>
+        </view>
+    </view>
+
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">洗车时间</view>
+        </view>
+        <view class="weui-cell__bd">
+            <view class="weui-input">{{date}} {{time}}</view>
+        </view>
+    </view>
   </view>
 
-  <view class="weui-cell weui-cell_input">
-      <view class="weui-cell__hd">
-          <view class="weui-label">洗车时间</view>
-      </view>
-      <view class="weui-cell__bd">
-          <view class="weui-input">03月15日 08:20</view>
-      </view>
-  </view>
-</view>
-
-<button style='margin-top:112rpx;' class="button_margin_16" type="primary" bindtap="onAdd">添加预约</button>
+  <button style='margin-top:112rpx;' class="button_margin_16" type="primary" formType="submit">添加预约</button>
+</form>

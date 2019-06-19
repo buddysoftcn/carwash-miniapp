@@ -1,29 +1,18 @@
-// pages/addOrderFinished/addOrderFinished.js
-let util = require('../../utils/util.js')
-let currentOrder = null
-
+// pages/authEmployeFailed/authEmployeFailed.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    date: '',
-    time: '',
-    plateNumber: ''
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    currentOrder = getApp().globalData.param
 
-    this.setData({
-      date: util.formatDate(currentOrder.date),
-      time: util.formatTime(currentOrder.time),
-      plateNumber:currentOrder.plateNumber
-    })
   },
 
   /**
@@ -68,16 +57,9 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
-  onBack:function() {
-    wx.switchTab({
-      url: '../home/home',
+  onHome:function() {
+    wx.reLaunch({
+      url: '../index/index',
     })
   }
 })

@@ -4,13 +4,13 @@
       <view class="weui-cell__hd">
           <view class="weui-label">车牌号</view>
       </view>
-      <view class="weui-cell__bd weui-input">豫CPC220</view>
+      <view class="weui-cell__bd weui-input">{{plateNumber}}</view>
   </view>
   <view class="weui-cell weui-cell_input">
       <view class="weui-cell__hd">
           <view class="weui-label">洗车时间</view>
       </view>
-      <view class="weui-cell__bd weui-input">4月25日 8：20</view>
+      <view class="weui-cell__bd weui-input">{{datetime}}</view>
   </view>
   <view class="weui-cell weui-cell_input" bindtap='onShowPaymentView'>
       <view class="weui-cell__hd">
@@ -22,23 +22,25 @@
 </view>
 
 <!-- 现金结账视图 -->
-<view wx:if="{{'会员卡' != mode.value}}" class="weui-cells__title">补充信息（选填）</view>
-<view wx:if="{{'现金' == mode.value}}" class="weui-cells weui-cells_after-title">
-    <view class="weui-cell weui-cell_input">
-        <view class="weui-cell__hd">
-            <view class="weui-label">现金</view>
-        </view>
-        <view class="weui-cell__bd">
-            <input class="weui-input" placeholder="请输入现金数额"/>
-        </view>
-    </view>
-</view>
-<view wx:if="{{'会员卡' != mode.value}}" class="button_margin_16 margin-top_16">
-  <view style='color:#40739e' class="font-size_13" bindtap='onShowEditRemark'>添加备注</view>
-  <view class="font-size_13 font-color_cell_value">“通过微信转账给我”</view>
-</view>
+<form bindsubmit="onPayment">
+  <view wx:if="{{'会员卡' != mode.value}}" class="weui-cells__title">补充信息</view>
+  <view wx:if="{{'现金' == mode.value}}" class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+              <view class="weui-label">现金</view>
+          </view>
+          <view class="weui-cell__bd">
+              <input formType="submit" name="amount" type="number" class="weui-input" placeholder="请输入现金数额"/>
+          </view>
+      </view>
+  </view>
+  <!-- <view wx:if="{{'会员卡' != mode.value}}" class="button_margin_16 margin-top_16">
+    <view style='color:#40739e' class="font-size_13" bindtap='onShowEditRemark'>添加备注</view>
+    <view class="font-size_13 font-color_cell_value">“通过微信转账给我”</view>
+  </view> -->
 
-<button style='margin-top:112rpx;' class="button button_margin_16" type="primary" bindtap="onPayment">确认结账</button>
+  <button style='margin-top:112rpx;' class="button button_margin_16" type="primary" formType="submit">确认结账</button>
+</form>
 
 <!-- 结账方式选择视图 -->
 <van-popup
@@ -56,7 +58,7 @@
   
   <view class="weui-cells weui-cells_after-title">
       <checkbox-group bindchange="checkboxChange">
-          <label class="weui-cell weui-check__label payment-popup-view_cell" wx:for="{{checkboxItems}}" wx:key="value">
+          <label class="weui-cell weui-check__label payment-popup-view_cell" wx:for="{{payTypes}}" wx:key="value">
               <checkbox class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
 
               <view class="weui-cell__hd weui-check__hd_in-checkbox">

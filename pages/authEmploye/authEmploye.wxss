@@ -1,4 +1,6 @@
 /* pages/authEmploye/authEmploye.wxss */
+@import "../../template/authView/authView.wxss";
+
 .avatar {
   width: 88px;
   height: 88px;

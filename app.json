@@ -1,9 +1,14 @@
 {
   "pages": [
-    "pages/home/home",
-    
     "pages/index/index",
     "pages/authEmploye/authEmploye",
+    
+    "pages/employeesList/employeesList",
+    "pages/home/home",
+    
+    "pages/addOrder/addOrder",
+    
+    "pages/authEmployeFailed/authEmployeFailed",
     "pages/authManagerSuccessed/authManagerSuccessed",
     "pages/announcementList/announcementList",
     "pages/bindManagerRole/bindManagerRole",
@@ -11,9 +16,8 @@
     "pages/editPayment/editPayment",
     "pages/editHoliday/editHoliday",
     "pages/editAnnouncement/editAnnouncement",
-    "pages/employeesList/employeesList",
+    "pages/inviteEmploye/inviteEmploye",
     "pages/goodsList/goodsList",
-  
     "pages/settingList/settingList",
     "pages/settingTime/settingTime",
     "pages/searchMember/searchMember",
@@ -23,10 +27,6 @@
     "pages/previewAnnouncement/previewAnnouncement",
     "pages/userList/userList",
     "pages/my/my",
-    
-    
-    
-    "pages/inviteEmploye/inviteEmploye",
     "pages/editEmploye/editEmploye",
     "pages/previewGoods/previewGoods",
     "pages/employeLoginFailed/employeLoginFailed",
@@ -37,7 +37,6 @@
     "pages/editPaymentRemark/editPaymentRemark",
     "pages/paymentOrderCancelFinished/paymentOrderCancelFinished",
     "pages/addOrderFinished/addOrderFinished",
-    "pages/addOrder/addOrder",
     "pages/cancelPaymentOrder/cancelPaymentOrder",
     "pages/paymentOrderFinished/paymentOrderFinished",
     "pages/paymentOrder/paymentOrder",

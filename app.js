@@ -21,9 +21,17 @@ App({
   initView:function() {
     let role = userModel.getRole()
     if (userModel.ROLE_OWNER == role.role || userModel.ROLE_CLERK == role.role) {
-      // wx.reLaunch({
-      //   url: '/pages/home/home',
-      // })      
+      wx.reLaunch({
+        url: '/pages/home/home',
+      })      
+    }
+  },
+
+  onShow: function (options) {
+    if (options.path.indexOf('authEmploye/authEmploye') >= 0 && (options.scene == 1007 || options.scene == 1008 || options.scene == 1044)) {      
+      // 通过群/个人分享卡片进来      
+      this.globalData.param = { 'clerkSid': options.query.sid, 'nickname': options.query.nickname, 'shopname': options.query.shopname, 'avatar': options.query.avatar}
+      // this.initView()
     }
   },
 
@@ -38,6 +46,9 @@ App({
           params.encryptedData = wxUserInfo.encryptedData
           params.iv = wxUserInfo.iv
         }
+        // console.log(res.code)
+        // console.log(params)
+        // return 
 
         request.postRequest('/user/wx-login', params, false)
           .then(data => {

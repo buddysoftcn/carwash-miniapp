@@ -1,0 +1,6 @@
+/* pages/authEmployeFailed/authEmployeFailed.wxss */
+.button {
+  color: black;
+  background-color: #efeff4;
+  margin-top: 100rpx;
+}

@@ -5,8 +5,8 @@
           <icon type="success" size="93"></icon>
       </view>
       <view class="weui-msg__text-area">
-          <view class="weui-msg__title">豫CHP516 预约成功</view>
-          <view class="weui-msg__desc">您已经帮助车主预约成功，预约时间为：03月15日 08:20</view>
+          <view class="weui-msg__title">{{plateNumber}} 预约成功</view>
+          <view class="weui-msg__desc">您已经帮助车主预约成功，预约时间为：{{date}} {{time}}</view>
       </view>
       <view class="weui-msg__opr-area">
           <view class="weui-btn-area">

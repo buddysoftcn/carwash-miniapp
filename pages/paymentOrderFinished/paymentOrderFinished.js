@@ -1,18 +1,26 @@
 // pages/paymentOrderFinished/paymentOrderFinished.js
+let util = require('../../utils/util.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    order:{},
+    datetime:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let currentOrder = getApp().globalData.param
 
+    let datetime = util.formatDate(currentOrder.date) + ' ' + util.formatTime(currentOrder.time)
+    this.setData({
+      order: currentOrder,
+      datetime: datetime
+    })
   },
 
   /**
@@ -54,13 +62,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   },
 

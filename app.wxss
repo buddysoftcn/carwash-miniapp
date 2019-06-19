@@ -29,6 +29,9 @@ page{
 .font-color_cell_value {
   color:#6D7278;
 }
+.font-color_9b {
+  color:#9b9b9b;
+}
 
 .font-size_12{
   font-size: 24rpx;

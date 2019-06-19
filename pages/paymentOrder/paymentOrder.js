@@ -1,16 +1,20 @@
 // pages/paymentOrder.js
+let currentOrder = null
+let util = require('../../utils/util.js')
+let carWash = require('../../utils/carWash.js')
+let payTypeModel = require('../../model/payType.js')
+let request = require('../../operation/operation.js')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    plateNumber:'',
+    datatime:'',
     showPopupView:false,
-    checkboxItems: [
-      { name: '会员卡 （33061089）', value: '会员卡', checked: true },
-      { name: '现金', value: '现金' },
-      { name: '建行信用卡', value: '建行信用卡' }
-    ],
+    payTypes: [],
     mode: {}
   },
 
@@ -18,9 +22,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      mode: this.data.checkboxItems[0]
-    })
+    currentOrder = getApp().globalData.param
+    console.log(currentOrder)
+
+    this.initView()   
   },
 
   /**
@@ -66,55 +71,114 @@ Page({
   },
 
   /**
-   * 用户点击右上角分享
+   * 结账事件
    */
-  onShareAppMessage: function () {
+  onPayment:function(event) {
+    let amount = event.detail.value.amount
+    if (0 == amount.length) {
+      wx.showModal({
+        title: '提示',
+        content: '请输入现金数额',
+        showCancel:false
+      })
 
-  },
-  onPayment:function() {
-    wx.navigateTo({
-      url: '../paymentOrderFinished/paymentOrderFinished',
+      return
+    }
+
+    wx.showLoading({
+      title: '请稍候',
+      make:true
+    })
+
+    request.postRequest('/orders/finish/' + currentOrder.sid, { 'payTypeName': this.data.mode.name, 'amount': amount},true)
+    .then(data => {
+      currentOrder.payTypeName = this.data.mode.name
+      currentOrder.amount = amount
+
+      getApp().globalData.param = currentOrder
+      getApp().notificationCenter.post(carWash.UPDATE_WORKTIMES_MESSAGE, null)
+
+      wx.hideLoading()
+      wx.navigateTo({
+        url: '../paymentOrderFinished/paymentOrderFinished',
+      })
+    }).catch(e => {      
+      wx.hideLoading()
+
+      wx.showToast({
+        title: e.msg,
+        icon: 'none'
+      })
     })
   },
+
   onShowPaymentView:function() {
     this.setData({
       showPopupView: true
     })
   },
+
   onShowEditRemark:function() {
     wx.navigateTo({
       url: '../editPaymentRemark/editPaymentRemark',
     })
   },
+
   checkboxChange:function(e) {    
-    var checkboxItems = this.data.checkboxItems, values = e.detail.value,item = null
+    let payTypes = this.data.payTypes, values = e.detail.value,item = null
     
-    for (var i = 0, lenI = checkboxItems.length; i < lenI; ++i) {
-      checkboxItems[i].checked = false;
+    for (var i = 0, lenI = payTypes.length; i < lenI; ++i) {
+      payTypes[i].checked = false;
 
       for (var j = 0, lenJ = values.length; j < lenJ; ++j) {
-        if (checkboxItems[i].value == values[j]) {          
-          checkboxItems[i].checked = true;          
+        if (payTypes[i].value == values[j]) {          
+          payTypes[i].checked = true;          
         }else {
-          checkboxItems[i].checked = false;
+          payTypes[i].checked = false;
         }
       }
     }
     
-    for (let index = 0, size = checkboxItems.length; index < size; index++) {
-      if (true == checkboxItems[index].checked) {
-        item = checkboxItems[index]
+    for (let index = 0, size = payTypes.length; index < size; index++) {
+      if (true == payTypes[index].checked) {
+        item = payTypes[index]
       }
     }
     this.setData({
       mode: item,
       showPopupView:false,
-      checkboxItems: checkboxItems
+      payTypes: payTypes
     });
   },
+
   onClose:function() {
     this.setData({
       showPopupView:false
     })
+  },
+
+  /**
+   * 初始化视图界面
+   */
+  initView:function() {
+    let datetime = util.formatDate(currentOrder.date) + ' ' + util.formatTime(currentOrder.time)
+    this.setData({
+      plateNumber:currentOrder.plateNumber,
+      datetime: datetime
+    })
+
+    this.initPayTypeView()
+  },
+
+  initPayTypeView:function() {
+    if ('clerk' == currentOrder.createdBy) {
+      this.setData({
+        payTypes: [{ 'name': '现金', 'value': '现金', 'checked': true}],        
+      })   
+
+      this.setData({        
+        mode: this.data.payTypes[0]
+      })             
+    }
   }
 })

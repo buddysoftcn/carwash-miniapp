@@ -1,13 +1,13 @@
-// const formatTime = date => {
-//   const year = date.getFullYear()
-//   const month = date.getMonth() + 1
-//   const day = date.getDate()
-//   const hour = date.getHours()
-//   const minute = date.getMinutes()
-//   const second = date.getSeconds()
+const formatDateTime = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
 
-//   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-// }
+  return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+}
 
 const formatNumber = n => {
   n = n.toString()
@@ -53,6 +53,14 @@ function formatTime(time) {
   return time[0] + ":" + time[1]
 }
 
+function makeDate(datetime) {
+  datetime = datetime.replace(/-/g, ':').replace(' ', ':'); // 将字符串转换成正确的格式
+  datetime = datetime.split(':');
+  datetime = new Date(datetime[0], (datetime[1] - 1), datetime[2], datetime[3], datetime[4], datetime[5]) 
+
+  return datetime
+}
+
 function week(date) {
   date = date.split('-')
   date = new Date(date[0], date[1], date[2])
@@ -66,10 +74,12 @@ function week(date) {
 }
 
 module.exports = {
-  // formatTime: formatTime,
+  formatDateTime: formatDateTime,
   today: today,
   afterTomorrow: afterTomorrow,
   week: week,
   formatDate: formatDate,
-  formatTime: formatTime
+  formatTime: formatTime,
+  makeDate: makeDate,
+  formatNumber: formatNumber
 }

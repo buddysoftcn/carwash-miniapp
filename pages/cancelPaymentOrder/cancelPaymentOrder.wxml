@@ -6,31 +6,31 @@
           <view class="weui-form-preview__hd">
               <view class="weui-form-preview__item">
                   <view class="weui-form-preview__label">付款金额</view>
-                  <view class="weui-form-preview__value_in-hd">¥30.00</view>
+                  <view class="weui-form-preview__value_in-hd">¥{{order.amount}}</view>
               </view>
           </view>
           <view class="weui-form-preview__bd">
               <view class="weui-form-preview__item">
                   <view class="weui-form-preview__label">车牌号码</view>
-                  <view class="weui-form-preview__value">豫CHP516</view>
+                  <view class="weui-form-preview__value">{{order.plateNumber}}</view>
               </view>
               <view class="weui-form-preview__item">
                   <view class="weui-form-preview__label">洗车时间</view>
-                  <view class="weui-form-preview__value">3月15日 08：20</view>
+                  <view class="weui-form-preview__value">{{datetime}}</view>
               </view>
               <view class="weui-form-preview__item">
                   <view class="weui-form-preview__label">付款方式</view>
-                  <view class="weui-form-preview__value">会员卡</view>
+                  <view class="weui-form-preview__value">{{order.payTypeName}}</view>
               </view>
-              <view class="weui-form-preview__item">
+              <!-- <view class="weui-form-preview__item">
                   <view class="weui-form-preview__label">服务备注</view>
                   <view class="weui-form-preview__value">无</view>
-              </view>
+              </view> -->
           </view>  
 
-          <view class="weui-form-preview__ft" bindtap='onShowCancelView'>
+          <!-- <view class="weui-form-preview__ft" bindtap='onShowCancelView'>
             <view class="weui-form-preview__btn weui-form-preview__btn_default font-size_17" hover-class="weui-form-preview__btn_active">取消订单</view>
-          </view>         
+          </view>          -->
       </view>              
   </view>
 </view>

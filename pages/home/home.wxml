@@ -20,24 +20,15 @@
 
 <!-- 预约列表视图 -->
 <view style='margin-top:130px;'>
-  <view class="weui-cells__title">8点</view>
-   <view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell" bindtap='onCell'>                
-        <view class="weui-cell__bd">08:00</view>                
+  <block wx:for="{{worktimes}}" wx:key="this">
+    <view class="weui-cells__title">{{item.hour}}点</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view wx:for="{{item.worktimes}}" wx:key="this" wx:for-item="worktime" class="weui-cell" data-worktime="{{worktime}}" bindtap='onCell'>                
+          <view class="weui-cell__bd">{{worktime.time}}</view>   
+          <view wx:if="{{null != worktime.order}}" class="weui-cell__ft weui-cell__ft_in-access order-list-cell_value font-size_16"><label wx:if="{{'finished' == worktime.order.state}}" style='width:116px;margin-right:20px;' class="font-size_13 font-color_888">已结账 ({{worktime.order.payTypeName}})</label><label class="font-weight">{{worktime.order.plateNumber}}</label></view>              
+      </view>
     </view>
-    <view class="weui-cell" bindtap='onCellCancelPayment'>                
-        <view class="weui-cell__bd">08:20</view>
-        <view class="weui-cell__ft weui-cell__ft_in-access order-list-cell_value font-size_16"><label style='width:116px;margin-right:20px;' class="font-size_13 font-color_888">已结账 （会员卡）</label><label class="font-weight">豫CHP516</label></view>
-    </view>
-  </view>
-
-  <view class="weui-cells__title">9点</view>
-   <view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell" bindtap='onCellPayment'>                
-        <view class="weui-cell__bd">09:00</view>   
-        <view class="weui-cell__ft weui-cell__ft_in-access order-list-cell_value font-size_16"><label style='width:116px;margin-right:20px;' class="font-size_13 font-color_888"></label><label class="font-weight">豫CPC220</label></view>             
-    </view>  
-  </view>
+  </block>
 </view>
 
 <!-- 未处理预约视图 -->
@@ -55,7 +46,7 @@
 <van-popup show="{{ showHelpOrderView }}" bind:close="onClose" custom-class="order-popup-view" custom-style="top:300px;">  
   <view class="popup-view_title">帮助车主预约</view>
   <view class="line auth-view_line"></view>
-  <view class="popup-view_info auth-view_info">现在是 08:00，您可以帮助车主提前</view>
+  <view class="popup-view_info auth-view_info">现在是 {{popViewMessage}}，您可以帮助车主提前</view>
   <view style='margin-top:3px;' class="popup-view_info auth-view_info">将车预约到这个时间，也可以将已经</view>
   <view style='margin-top:3px;' class="popup-view_info auth-view_info">到店的车添加的排队中。</view>
   <button class="auth-view_btn weui-btn popup-view-button font-weight" type="primary" bindtap='onOrder'>开始预约</button>
@@ -72,10 +63,10 @@
 >
   <view class="weui-flex payment-popup-view_header">
     <view style='color:#6D7278;margin-left:14px;' class="payment-popup-view_header-btn" bindtap='onClose'>取消</view>
-    <view>豫CHP516</view>
+    <view>{{popViewMessage}}</view>
     <view style='margin-right:14px;' class="payment-popup-view_header-btn"></view>
   </view>
   <view style='color:#1AAD19' class="payment-popup-view_btn payment-popup-view_line" bindtap='onPayment'>洗车结账</view>
-  <view class="payment-popup-view_btn payment-popup-view_line">取消预约</view>
+  <view class="payment-popup-view_btn payment-popup-view_line" bindtap='onCancelOrder'>取消预约</view>
   <view class="payment-popup-view_btn">车主违约</view>
 </van-popup>
