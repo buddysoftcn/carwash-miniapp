@@ -23,7 +23,6 @@ Page({
    */
   onLoad: function (options) {
     currentOrder = getApp().globalData.param
-    console.log(currentOrder)
 
     this.initView()   
   },

@@ -1,18 +1,27 @@
 // pages/addMoreOrderFinished/addMoreOrderFinished.js
+let util = require('../../utils/util.js')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    order:{},
+    dateUI:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let order = getApp().globalData.param
+    let dateUI = util.formatDate(order.date)
 
+    this.setData({
+      order:order,
+      dateUI:dateUI
+    })
   },
 
   /**
@@ -54,13 +63,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   },
 
