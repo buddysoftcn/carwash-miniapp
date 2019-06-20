@@ -65,13 +65,45 @@ function week(date) {
   date = date.split('-')
   date = new Date(date[0], date[1], date[2])
 
-  console.log(date)
-
   let weeks = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
   let day = date.getDay()
   
   return weeks[day]
 }
+
+function subtractOneDay(date) {
+  date = date.split('-')
+  date = new Date(date[0], date[1], date[2])
+
+  let year = date.getFullYear()
+  let month = date.getMonth()
+  let day = date.getDate()
+
+  date = new Date(year, month, day -1)
+  year = date.getFullYear()
+  month = date.getMonth()
+  day = date.getDate()
+
+  return [year, month, day].map(formatNumber).join('-')
+}
+
+function addOneDay(date) {
+  date = date.split('-')
+  date = new Date(date[0], date[1], date[2])
+
+  let year = date.getFullYear()
+  let month = date.getMonth()
+  let day = date.getDate()
+
+  date = new Date(year, month, day + 1)
+  year = date.getFullYear()
+  month = date.getMonth()
+  day = date.getDate()
+
+  return [year, month, day].map(formatNumber).join('-')
+}
+
+
 
 module.exports = {
   formatDateTime: formatDateTime,
@@ -81,5 +113,7 @@ module.exports = {
   formatDate: formatDate,
   formatTime: formatTime,
   makeDate: makeDate,
+  subtractOneDay: subtractOneDay,
+  addOneDay: addOneDay,
   formatNumber: formatNumber
 }

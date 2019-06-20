@@ -21,9 +21,12 @@ Page({
     showHelpOrderView:false,
     showOrderView:false,
     showPaymentView:false,
-    popViewMessage:'',
-
-    worktimes:[]
+    showWYBtn:true, // 显示违约按钮
+    popViewMessage:'',  // 弹出视图动态显示的信息
+    
+    worktimes:[],
+    worktimesCreatedCount:0,
+    worktimesFinishedCount:0
   },
 
   /**
@@ -93,7 +96,6 @@ Page({
 
   onCell:function(event) {    
     currentWorkTime = event.currentTarget.dataset.worktime
-    console.log(currentWorkTime)
 
     if (null == currentWorkTime.order) {  // 显示帮助预约视图
       this.setData({
@@ -108,9 +110,14 @@ Page({
           url: '../cancelPaymentOrder/cancelPaymentOrder',
         })
       }else {
+        let showWYBtn = true
+        if ('clerk' == currentWorkTime.order.createdBy) {
+          showWYBtn = false
+        }
         this.setData({  // 显示洗车结账、取消预约、车主违约视图
           popViewMessage: currentWorkTime.order.plateNumber,
-          showPaymentView: true
+          showPaymentView: true,
+          showWYBtn: showWYBtn
         })
       }
       
@@ -208,6 +215,21 @@ Page({
     })
   },
 
+  /**
+   * 日期向前事件
+   */
+  onForwardDay:function() {
+    currentDate = util.subtractOneDay(currentDate)    
+    this.initDate(currentDate)
+    this.initWorktimeList()
+  },
+
+  onNextDay:function() {
+    currentDate = util.addOneDay(currentDate)
+    this.initDate(currentDate)
+    this.initWorktimeList()
+  },
+
   initDate:function(date) {
     this.setData({
       date:util.formatDate(date),
@@ -288,7 +310,7 @@ Page({
 
   renderWorkTimeList:function(orders) {
     if (orders) {
-      let worktime = null
+      let worktime = null, worktimesCreatedCount = 0, worktimesFinishedCount = 0
 
       for (let index = 0, size = orders.length; index < size; index++) {
         worktime = worktimesMap.get(orders[index].date + ' ' + orders[index].time)
@@ -297,21 +319,40 @@ Page({
             worktime.order = orders[index]
           }          
         }
+
+        if ('created' == orders[index].state) {
+          worktimesCreatedCount++
+        }
+
+        if ('finished' == orders[index].state) {
+          worktimesFinishedCount++
+        }
       }
+
+      this.setData({
+        worktimesCreatedCount: worktimesCreatedCount,
+        worktimesFinishedCount: worktimesFinishedCount
+      })
     }
     
-    console.log(worktimes)
     this.setData({
-      worktimes: worktimes
+      worktimes: worktimes      
     })
   },
 
   getOrders:function() {
+    wx.showLoading({
+      title: '请稍候',
+      mask:true
+    })
+
     let that = this
     request.getRequest('/orders?type=0&date=' + currentDate,null,true)
     .then(data => {
-      console.log(data)
+      wx.hideLoading()
       that.renderWorkTimeList(data.items)
+    }).catch(e => {
+      wx.hideLoading()
     })
   },
 

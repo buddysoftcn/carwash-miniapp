@@ -2,15 +2,15 @@
 <!-- 头部视图 -->
 <view class="header-view">
   <view class="weui-flex date-view">
-    <view style='margin-left:16px;width:50px;'><van-icon size="16px" color="#666" name="arrow-left" /></view>
+    <view bindtap='onForwardDay' style='margin-left:16px;width:50px;'><van-icon size="16px" color="#666" name="arrow-left" /></view>
     <view class="data-view_date font-size_17 font-weight">{{date}} {{week}}</view>
-    <view style='text-align:right; margin-right:16px;width:50px'><van-icon size="16px" color="#666" name="arrow"  /></view>
+    <view bindtap='onNextDay' style='text-align:right; margin-right:16px;width:50px'><van-icon size="16px" color="#666" name="arrow"  /></view>
   </view>
 
   <view class="weui-flex header-view-info button_margin_16">
     <view>
-      <view class="font-size_18">正在预约 8 辆</view>
-      <view class="font-size_13 font-color_666">已服务 32 辆</view>
+      <view class="font-size_18">正在预约 {{worktimesCreatedCount}} 辆</view>
+      <view class="font-size_13 font-color_666">已服务 {{worktimesFinishedCount}} 辆</view>
     </view>
     <view>
       <button class="header-view-info_btn font-size_14 font-weight" bindtap='onAddMoreOrder'>洗车补录</button>
@@ -68,5 +68,5 @@
   </view>
   <view style='color:#1AAD19' class="payment-popup-view_btn payment-popup-view_line" bindtap='onPayment'>洗车结账</view>
   <view class="payment-popup-view_btn payment-popup-view_line" bindtap='onCancelOrder'>取消预约</view>
-  <view class="payment-popup-view_btn">车主违约</view>
+  <view wx:if="{{true == showWYBtn}}" class="payment-popup-view_btn">车主违约</view>
 </van-popup>
