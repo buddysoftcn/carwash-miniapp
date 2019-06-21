@@ -77,7 +77,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.initWorktimeList()
   },
 
   /**
@@ -309,6 +309,8 @@ Page({
   },
 
   renderWorkTimeList:function(orders) {
+    wx.stopPullDownRefresh()
+    
     if (orders) {
       let worktime = null, worktimesCreatedCount = 0, worktimesFinishedCount = 0
 

@@ -1,5 +1,5 @@
 <!--pages/my/my.wxml-->
-<view style='margin-top:8px;border-width:0px;' class="">
+<!-- <view style='margin-top:8px;border-width:0px;' class="">
   <view style='border-width:0rpx;' class="weui-search-bar"  bindtap='onClickMemberCard'>
     <view class="weui-search-bar__form">
         <view class="weui-search-bar__box">
@@ -12,58 +12,83 @@
         </label>
     </view>            
   </view>
-</view>
-        
-<view style='margin-top:8px;' class="weui-cells">
-  <navigator url="../settingList/settingList" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__hd">
-          <image mode="aspectFill" src="../../images/setting_icon.png" class="cell_icon"></image>
-      </view>
-      <view class="weui-cell__bd">设置</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-  </navigator>
-</view>
+</view> -->
 
-<view class="weui-cells">
-  <navigator url="../employeesList/employeesList" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__hd">
-          <image mode="aspectFit" src="../../images/users_icon.png" class="cell_icon"></image>
-      </view>
-      <view class="weui-cell__bd">店员</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-  </navigator>
-  <navigator url="../userList/userList" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__hd">
-          <image mode="aspectFit" src="../../images/alert_icon.png" class="cell_icon"></image>
-      </view>
-      <view class="weui-cell__bd">用户</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-  </navigator>
-</view>
-
-<view class="weui-cells">
-  <navigator url="../announcementList/announcementList" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__hd">
-          <image mode="aspectFill" src="../../images/message_icon.png" class="cell_icon"></image>
-      </view>
-      <view class="weui-cell__bd">公告</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-  </navigator>
-  <navigator url="../goodsList/goodsList" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__hd">
-          <image mode="aspectFill" src="../../images/goods_icon.png" class="cell_icon"></image>
-      </view>
-      <view class="weui-cell__bd">商品</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-  </navigator>
-</view>
-
-<view class="weui-cells">
-  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__hd">
-          <image mode="aspectFill" src="../../images/data_icon.png" class="cell_icon"></image>
-      </view>
-      <view class="weui-cell__bd">数据</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+<!-- 店员视图 -->
+<block wx:if="{{true == clerk}}">
+  <view class="weui-cells__title">查找用户</view>
+   <view class="weui-cells weui-cells_after-title">
+    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+            <image mode="aspectFit" src="../../images/search.png" class="cell_icon"></image>
+        </view>
+        <view class="weui-cell__bd">根据会员卡号查询</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+            <image mode="aspectFit" src="../../images/search.png" class="cell_icon"></image>
+        </view>
+        <view class="weui-cell__bd">根据车牌号码查询</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
   </view>
-</view>
+
+</block>
+
+<!-- 店长视图 -->
+<block wx:if="{{false == clerk}}">
+  <view style='margin-top:8px;' class="weui-cells">
+    <navigator url="../settingList/settingList" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+            <image mode="aspectFill" src="../../images/setting_icon.png" class="cell_icon"></image>
+        </view>
+        <view class="weui-cell__bd">服务设置</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+  </view>
+
+  <view class="weui-cells">
+    <navigator url="../employeesList/employeesList" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+            <image mode="aspectFit" src="../../images/all-employees.png" class="cell_icon"></image>
+        </view>
+        <view class="weui-cell__bd">店员</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="../userList/userList" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+            <image mode="aspectFit" src="../../images/users_icon.png" class="cell_icon"></image>
+        </view>
+        <view class="weui-cell__bd">用户</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+  </view>
+
+  <view class="weui-cells">
+    <navigator url="../announcementList/announcementList" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+            <image mode="aspectFill" src="../../images/message_icon.png" class="cell_icon"></image>
+        </view>
+        <view class="weui-cell__bd">公告</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <navigator url="../goodsList/goodsList" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+            <image mode="aspectFill" src="../../images/goods_icon.png" class="cell_icon"></image>
+        </view>
+        <view class="weui-cell__bd">商品</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+  </view>
+
+  <view class="weui-cells">
+    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+            <image mode="aspectFill" src="../../images/data_icon.png" class="cell_icon"></image>
+        </view>
+        <view class="weui-cell__bd">数据</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+  </view>
+</block>

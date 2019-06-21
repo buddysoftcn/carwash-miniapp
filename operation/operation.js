@@ -1,4 +1,4 @@
-const API_URL = ''
+const API_URL = 'http://cwfe.buddysoft.cn'
 const SUCCESSED = 0
 
 var base64 = require('../utils/base64.js')
