@@ -1,6 +1,7 @@
 // pages/employeesList/employeesList.js
 let util = require('../../utils/util.js')
 let request = require('../../operation/operation.js')
+let carWash = require('../../utils/carWash.js')
 
 Page({
 
@@ -15,14 +16,10 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    let that = this
+  onLoad: function (options) {  
+    getApp().notificationCenter.register(carWash.UPDATE_CLERKS_MESSAGE, this, "getEmployees");
 
-    request.getRequest('/clerks',{},true)
-    .then(data => {
-      that.filterData(data.items)
-      console.log(data)
-    })
+    this.getEmployees()
   },
 
   /**
@@ -50,8 +47,8 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
-  },
+    getApp().notificationCenter.remove(carWash.UPDATE_CLERKS_MESSAGE, this)
+  },  
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -69,7 +66,10 @@ Page({
 
  
   onEditEmploye: function (event) {
+    console.log(event)
     if ("click" == event.type && 'cell' == event.detail) {
+      getApp().globalData.param = event.currentTarget.dataset.clerk
+      
       wx.navigateTo({
         url: '../editEmploye/editEmploye',
       })
@@ -98,11 +98,20 @@ Page({
     })
   },
 
+  getEmployees:function() {
+    let that = this
+
+    request.getRequest('/clerks', {}, true)
+      .then(data => {
+        that.filterData(data.items)        
+      })
+  },
+
   filterData:function(data) {
     let clerks = [],waitingClerks = [],now = new Date()
     for (let index = 0,size = data.length; index < size; index++) {
       if (0 == data[index].state) {
-        data[index].createdAtUI = data[index].createdAt.substring(0,15)
+        data[index].createdAtUI = data[index].createdAt.substring(0,16)
         
         if (parseInt(now - util.makeDate(data[index].createdAt))/1000/60 > 30) {
           data[index].waiting = '链接失效'

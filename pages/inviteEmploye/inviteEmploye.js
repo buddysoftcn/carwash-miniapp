@@ -2,6 +2,7 @@
 let userModel = require('../../model/user.js')
 let shopModel = require('../../model/shop.js')
 let request = require('../../operation/operation.js')
+let carWash = require('../../utils/carWash.js')
 
 let clerk = null
 
@@ -80,6 +81,7 @@ Page({
     request.postRequest('/clerks', {}, true)
       .then(data => {
         clerk = data.object
+        getApp().notificationCenter.post(carWash.UPDATE_CLERKS_MESSAGE, null)
 
         that.setData({
           showShare:true
@@ -95,7 +97,7 @@ Page({
     this.setData({
       showShare: false
     })
-    console.log('/pages/authEmploye/authEmploye?sid=' + clerk.sid + '&nickname=' + this.data.nickName + '&shopname=' + this.data.shopName + '&avatar=' + this.data.avatar)
+    
     return {
       title:'店员邀请',
       path: '/pages/authEmploye/authEmploye?sid=' + clerk.sid + '&nickname=' + this.data.nickName + '&shopname=' + this.data.shopName + '&avatar=' + this.data.avatar

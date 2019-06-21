@@ -87,7 +87,7 @@ Page({
     })
 
     getApp().login(event.detail, function (userInfo, message) {
-      if (null != userInfo) {        
+      if (null != userInfo) {                   
         userModel.setCurrentUser(userInfo)        
         that.joinShop()
       }else {
@@ -103,8 +103,15 @@ Page({
     })    
     request.postRequest('/clerks/join/' + clerk.clerkSid,{},true)
       .then(data => {
-        wx.hideLoading()
-        console.log(data)
+        getApp().getUserInfo(function (user) {
+          wx.hideLoading()
+
+          if (null != user) {
+            wx.reLaunch({
+              url: '../home/home',
+            })
+          }
+        })            
       }).catch(e => {
         wx.hideLoading()
         if (-1 == e.status) {

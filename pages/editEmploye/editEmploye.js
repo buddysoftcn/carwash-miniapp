@@ -1,19 +1,31 @@
 // pages/editEmploye/editEmploye.js
+let request = require('../../operation/operation.js')
+let carWash = require('../../utils/carWash.js')
+let clerk = null
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    alias:'',
+    useBalance:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    clerk = getApp().globalData.param
+
     wx.setNavigationBarTitle({
-      title: '毛宇'
+      title: clerk.user.nickName
+    })
+
+    this.setData({
+      alias:clerk.alias,
+      useBalance:clerk.useBalance
     })
   },
 
@@ -59,16 +71,32 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
-  onSave:function() {
-    wx.navigateBack({
-      
+  onSave:function(event) {
+    wx.showLoading({
+      title: '请稍候',
+      mask:true
     })
+
+    let useBalance = 0
+    if (true == event.detail.value.useBalance) {
+      useBalance = 1
+    }
+
+    request.putRequest('/clerks/' + clerk.sid,{'alias':event.detail.value.alias,'useBalance':useBalance},true)
+    .then(data => {
+      wx.hideLoading()
+      getApp().notificationCenter.post(carWash.UPDATE_CLERKS_MESSAGE, null)
+      wx.navigateBack({
+
+      })      
+    }).catch(e => {
+      wx.hideLoading()
+      
+      wx.showToast({
+        title: e.msg,
+        icon:'none'
+      })
+    })
+    
   }
 })

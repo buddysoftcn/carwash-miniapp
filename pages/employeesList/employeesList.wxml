@@ -1,20 +1,21 @@
 <!--pages/employeesList/employeesList.wxml-->
 <view class="weui-cells__title">当前店员</view>
 <view class="weui-panel weui-panel_access">            
-    <view class="weui-media-box weui-media-box_appmsg">
-      <van-swipe-cell style="width:100%;" right-width="{{ 80 }}" async-close bind:close="onClose" bind:click="onEditEmploye">
+    <view wx:for="{{clerks}}" wx:key="this" class="weui-media-box weui-media-box_appmsg">
+      <van-swipe-cell style="width:100%;" right-width="{{ 80 }}" async-close bind:close="onClose" data-clerk="{{item}}" bind:click="onEditEmploye">
         <van-cell-group>
           <van-cell>
             <view class="weui-media-box weui-media-box_appmsg">
                 <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                    <image class="weui-media-box__thumb_fixed" src="https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eprsWvMtFlzLqDumbicOePRyib4I5dI7ABvKmTsYbFydG06eBdQnVlFZPL5piaFY4zsVeBVMf460hH7A/132" />
+                    <image class="weui-media-box__thumb_fixed" src="{{item.user.avatarUrl}}" />
                 </view>
                 <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                    <view style='margin-left:-20px;' class="weui-media-box__title">毛宇</view>       
-                    <view style='margin-left:-20px;' class="font-size_13 font-color_9b">昵称：毛毛要吃鱼</view>                    
+                    <view wx:if="{{null != item.alias && '' != item.alias}}" style='margin-left:-20px;' class="weui-media-box__title">{{item.alias}}</view>
+                    <view wx:else style='margin-left:-20px;' class="weui-media-box__title">备注名</view>
+                    <view style='margin-left:-20px;' class="font-size_13 font-color_9b">昵称：{{item.user.nickName}}</view>                    
                 </view>
                 <view class="weui-cell__ft">
-                  <image style='width:24rpx;height:24rpx;margin-right:32rpx;' src="../../images/money.png" />
+                  <image wx:if="{{1 == item.useBalance}}" style='width:24rpx;height:24rpx;margin-right:32rpx;' src="../../images/money.png" />
                 </view>
             </view>
             
@@ -22,32 +23,14 @@
         </van-cell-group>
         <view class="cell-del" slot="right">删除</view>
       </van-swipe-cell>              
-    </view>    
-
-    <view class="weui-media-box weui-media-box_appmsg">
-      <van-swipe-cell style="width:100%;" right-width="{{ 80 }}" async-close bind:close="onClose">
-        <van-cell-group class="weui-panel">
-          <van-cell class="weui-panel">        
-            <view class="weui-media-box weui-media-box_appmsg">
-              <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                  <image class="weui-media-box__thumb_fixed" src="https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIcmzyS3AEgHKmlY4Wl67enrRScxhv0AAlfQ0txCqMqpUYt8DSPF4NSTCbuA4qiaeRiboUNa2qXCibWg/132" />
-              </view>
-              <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                  <view style='margin-left:-20px;' class="weui-media-box__title">英叔</view>                                  
-              </view>
-            </view>            
-          </van-cell>
-        </van-cell-group>
-        <view class="cell-del" slot="right">删除</view>
-      </van-swipe-cell>              
-    </view>                               
+    </view>                      
 </view>
 
 <view class="weui-cells__title">邀请链接</view>
 <view class="weui-cells weui-cells_after-title">
     <view wx:for="{{waitingClerks}}" wx:key="this" class="weui-cell">
-        <view class="weui-cell__bd">2019-05-10 18:30</view>
-        <view class="weui-cell__ft">等待回应</view>
+        <view class="weui-cell__bd">{{item.createdAtUI}}</view>
+        <view class="weui-cell__ft">{{item.waiting}}</view>
     </view>
 </view>
 
