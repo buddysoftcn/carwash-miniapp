@@ -74,7 +74,11 @@ Page({
     if (userModel.ROLE_NO_LOGIN == user.role) {
       authViewTemplate.showView(this, true)
     }else {
-      this.joinShop()
+      if (userModel.ROLE_CLERK == user.role || userModel.ROLE_OWNER) {
+        that.backHome()
+      }else {
+        this.joinShop()
+      }      
     }
     
   },
@@ -88,8 +92,13 @@ Page({
 
     getApp().login(event.detail, function (userInfo, message) {
       if (null != userInfo) {                   
-        userModel.setCurrentUser(userInfo)        
-        that.joinShop()
+        userModel.setCurrentUser(userInfo)  
+        let user = userModel.getRole()
+        if (userModel.ROLE_CLERK == user.role || userModel.ROLE_OWNER) {
+          that.backHome()
+        }else {
+          that.joinShop()
+        }        
       }else {
 
       }
@@ -97,6 +106,8 @@ Page({
   },
 
   joinShop:function() {
+    let that = this 
+
     wx.showLoading({
       title: '请稍候',
       mask: true
@@ -107,10 +118,8 @@ Page({
           wx.hideLoading()
 
           if (null != user) {
-            wx.reLaunch({
-              url: '../home/home',
-            })
-          }
+            that.backHome()
+          } 
         })            
       }).catch(e => {
         wx.hideLoading()
@@ -120,6 +129,12 @@ Page({
           })
         }
       })
+  },
+
+  backHome:function() {
+    wx.reLaunch({
+      url: '../home/home',
+    })
   }
 
 })
