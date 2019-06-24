@@ -32,10 +32,10 @@
 </view>
 
 <!-- 未处理预约视图 -->
-<van-popup show="{{ showOrderView }}" bind:close="onClose" custom-class="order-popup-view" custom-style="top:300px;">  
+<van-popup show="{{ showUnFinishedOrderView }}" bind:close="onClose" custom-class="order-popup-view" custom-style="top:300px;">  
   <view class="popup-view_title">有未处理的预约</view>
   <view class="line auth-view_line"></view>
-  <view class="popup-view_info auth-view_info">当前有 3 个未处理的预约尚未处理</view>
+  <view class="popup-view_info auth-view_info">当前有 {{popViewMessage}} 个未处理的预约尚未处理</view>
   <view style='margin-top:3px;' class="popup-view_info auth-view_info">完毕。请您尽快处理，以免影响预约</view>
   <view style='margin-top:3px;' class="popup-view_info auth-view_info">服务顺利进行。</view>
   <button class="auth-view_btn weui-btn popup-view-button font-weight" type="primary" bindtap='onUnOrder'>开始处理</button>

@@ -1,14 +1,8 @@
 {
   "pages": [
-    "pages/employeesList/employeesList",
     "pages/index/index",
-    "pages/authEmploye/authEmploye",
-    
-    
-    "pages/home/home",
-    
     "pages/addOrder/addOrder",
-    
+    "pages/authEmploye/authEmploye",
     "pages/authEmployeFailed/authEmployeFailed",
     "pages/authManagerSuccessed/authManagerSuccessed",
     "pages/announcementList/announcementList",
@@ -16,7 +10,9 @@
     "pages/editGoods/editGoods",
     "pages/editPayment/editPayment",
     "pages/editHoliday/editHoliday",
+    "pages/employeesList/employeesList",
     "pages/editAnnouncement/editAnnouncement",
+    "pages/home/home",
     "pages/inviteEmploye/inviteEmploye",
     "pages/goodsList/goodsList",
     "pages/settingList/settingList",
@@ -53,7 +49,8 @@
     "pages/editGoodsDiscount/editGoodsDiscount",
     "pages/lunchTimeDetail/lunchTimeDetail",
     "pages/editLunchTime/editLunchTime",
-    "pages/editSpecialDatePrice/editSpecialDatePrice"
+    "pages/editSpecialDatePrice/editSpecialDatePrice",
+    "pages/orderUnFinishedList/orderUnFinishedList"
   ],
   "window": {
     "backgroundTextStyle": "light",

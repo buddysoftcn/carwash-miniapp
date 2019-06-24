@@ -8,6 +8,7 @@ let worktimesMap = null // 所有工作时间放入字典中
 let worktimes = null    // 按小时将工作时间进行分组  
 let currentWorkTime = null // 当前要处理的工作时间
 let currentDate = null
+let unFinishedOrders = null // 未完成订单
 let shop = null
 
 Page({
@@ -19,7 +20,7 @@ Page({
     date:'',  // 时间导航日期
     week:'',  // 时间导航星期
     showHelpOrderView:false,
-    showOrderView:false,
+    showUnFinishedOrderView:false,
     showPaymentView:false,
     showWYBtn:true, // 显示违约按钮
     popViewMessage:'',  // 弹出视图动态显示的信息
@@ -41,7 +42,7 @@ Page({
     currentDate = util.today()
     this.initDate(currentDate)
     this.initWorktimeList()
-
+    this.getUnFinishedOrders()
     getApp().notificationCenter.register(carWash.UPDATE_WORKTIMES_MESSAGE, this, "initWorktimeList")
   },
 
@@ -78,6 +79,7 @@ Page({
    */
   onPullDownRefresh: function () {
     this.initWorktimeList()
+    this.getUnFinishedOrders()
   },
 
   /**
@@ -197,20 +199,33 @@ Page({
       showHelpOrderView: false
     })
   },
+  /**
+   * 显示未完成订单处理界面
+   */
   onUnOrder:function() {
     this.setData({
-      showOrderView: false
+      showUnFinishedOrderView: false
+    })
+
+    getApp().globalData.param = unFinishedOrders
+    wx.navigateTo({
+      url: '../orderUnFinishedList/orderUnFinishedList',
     })
   },
+
+  /**
+   * 未完成订单暂不处理
+   */
   onUnOrderLater:function() {
     this.setData({
-      showOrderView:false
+      showUnFinishedOrderView:false
     })
   },
+
   onClose:function() {
     this.setData({
       showHelpOrderView: false,
-      showOrderView: false,
+      showUnFinishedOrderView: false,
       showPaymentView: false
     })
   },
@@ -342,6 +357,9 @@ Page({
     })
   },
 
+  /**
+   * 查询某天订单
+   */
   getOrders:function() {
     wx.showLoading({
       title: '请稍候',
@@ -349,13 +367,32 @@ Page({
     })
 
     let that = this
-    request.getRequest('/orders?type=0&date=' + currentDate,null,true)
+    request.getRequest('/orders?category=onedayappoints&type=0&date=' + currentDate,null,true)
     .then(data => {
       wx.hideLoading()
       that.renderWorkTimeList(data.items)
     }).catch(e => {
       wx.hideLoading()
     })
+  },
+
+  /**
+   * 查询历史未完成的订单
+   */
+  getUnFinishedOrders:function() {
+    let that = this
+    request.getRequest('/orders?category=unfinished_appoints&type=0', null, true)
+      .then(data => {
+        console.log(data)
+        if (data.items && 0 < data.items.length) {
+          unFinishedOrders = data.items
+
+          this.setData({
+            showUnFinishedOrderView:true,
+            popViewMessage:data.items.length
+          })
+        }
+      })
   },
 
   makeNextWorktime:function(datetime,washMinutes) {    

@@ -66,10 +66,6 @@
   border-bottom: 1rpx solid #d8d8d8;
 }
 
-.order-list {
-
-}
-
 .order-list-cell_value {
   color:#0091FF;
 }

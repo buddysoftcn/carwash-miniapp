@@ -1,0 +1,28 @@
+<!--pages/orderUnFinishedList/orderUnFinishedList.wxml-->
+<block wx:for="{{orders}}" wx:key="this">
+  <view class="weui-cells__title">{{item.date}}</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view wx:for="{{item.orders}}" wx:key="this" wx:for-item="order" class="weui-cell" data-order="{{order}}" bindtap='onCell'>                
+        <view class="weui-cell__bd">{{order.uiTime}}</view>   
+        <view class="weui-cell__ft weui-cell__ft_in-access order-list-cell_value font-size_16"><label style='width:116px;margin-right:20px;' class="font-size_13 font-color_888"></label><label class="font-weight">{{order.plateNumber}}</label></view>              
+    </view>
+  </view>
+</block>
+
+<!-- 处理结账视图 -->
+<van-popup
+  show="{{ showPaymentView }}"
+  position="bottom"  
+  bind:close="onClose"
+  custom-class="payment-popup-view"
+  custom-style="background-color:#efeff4;"
+>
+  <view class="weui-flex payment-popup-view_header">
+    <view style='color:#6D7278;margin-left:14px;' class="payment-popup-view_header-btn" bindtap='onClose'>取消</view>
+    <view>{{popViewMessage}}</view>
+    <view style='margin-right:14px;' class="payment-popup-view_header-btn"></view>
+  </view>
+  <view style='color:#1AAD19' class="payment-popup-view_btn payment-popup-view_line" bindtap='onPayment'>洗车结账</view>
+  <view class="payment-popup-view_btn payment-popup-view_line" bindtap='onCancelOrder'>取消预约</view>
+  <view wx:if="{{'client' == currentOrder.createdBy}}" class="payment-popup-view_btn">车主违约</view>
+</van-popup>

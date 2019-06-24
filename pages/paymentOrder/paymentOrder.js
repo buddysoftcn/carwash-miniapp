@@ -4,6 +4,7 @@ let util = require('../../utils/util.js')
 let carWash = require('../../utils/carWash.js')
 let payTypeModel = require('../../model/payType.js')
 let request = require('../../operation/operation.js')
+let autoBack = false
 
 Page({
 
@@ -22,6 +23,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (options.source) {
+      autoBack = true
+    }
     currentOrder = getApp().globalData.param
 
     this.initView()   
@@ -98,9 +102,16 @@ Page({
       getApp().notificationCenter.post(carWash.UPDATE_WORKTIMES_MESSAGE, null)
 
       wx.hideLoading()
-      wx.navigateTo({
-        url: '../paymentOrderFinished/paymentOrderFinished',
-      })
+      if (autoBack) {  // 从未处理订单来的，直接返回上级界面
+        wx.navigateBack({
+          delta: 1,
+        })
+      }else {
+        wx.navigateTo({
+          url: '../paymentOrderFinished/paymentOrderFinished',
+        })
+      }
+      
     }).catch(e => {      
       wx.hideLoading()
 

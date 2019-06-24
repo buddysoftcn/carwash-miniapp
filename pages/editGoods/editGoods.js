@@ -232,7 +232,7 @@ Page({
         function (fail) {
           wx.showToast({
             title: fail,
-            icon: none
+            icon: 'none'
           })
         })
 

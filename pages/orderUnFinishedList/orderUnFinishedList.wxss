@@ -1,0 +1,32 @@
+/* pages/orderUnFinishedList/orderUnFinishedList.wxss */
+.order-list-cell_value {
+  color:#0091FF;
+}
+
+.payment-popup-view {
+  height: 424px;
+}
+
+.payment-popup-view_header {
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #d8d8d8;
+  height: 55px;
+}
+
+.payment-popup-view_header-btn {
+  width: 60px;
+}
+
+.payment-popup-view_btn {
+  margin-left: 15%;
+  width:70%;
+  height: 65px;
+  line-height: 65px;
+  text-align: center;
+  
+}
+
+.payment-popup-view_line {
+  border-bottom: 1rpx solid #d8d8d8;
+}
