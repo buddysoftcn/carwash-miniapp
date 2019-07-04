@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/index/index",
     "pages/addOrder/addOrder",
     "pages/authEmploye/authEmploye",
@@ -12,7 +13,7 @@
     "pages/editHoliday/editHoliday",
     "pages/employeesList/employeesList",
     "pages/editAnnouncement/editAnnouncement",
-    "pages/home/home",
+   
     "pages/inviteEmploye/inviteEmploye",
     "pages/goodsList/goodsList",
     "pages/settingList/settingList",
@@ -50,7 +51,8 @@
     "pages/lunchTimeDetail/lunchTimeDetail",
     "pages/editLunchTime/editLunchTime",
     "pages/editSpecialDatePrice/editSpecialDatePrice",
-    "pages/orderUnFinishedList/orderUnFinishedList"
+    "pages/orderUnFinishedList/orderUnFinishedList",
+    "pages/searchMemberIndex/searchMemberIndex"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -6,7 +6,7 @@
           <view class="weui-form-preview__hd">
               <view class="weui-form-preview__item">
                   <view class="weui-form-preview__label">付款金额</view>
-                  <view class="weui-form-preview__value_in-hd">¥{{order.amount}}</view>
+                  <view class="weui-form-preview__value_in-hd">¥ {{order.amount/100}}</view>
               </view>
           </view>
           <view class="weui-form-preview__bd">

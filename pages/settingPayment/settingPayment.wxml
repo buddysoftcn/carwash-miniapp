@@ -3,7 +3,7 @@
 
 <view class="weui-panel weui-panel_access">            
     <view wx:for="{{payTypes}}" wx:key="*this" wx:for-item="payType" class="weui-media-box weui-media-box_appmsg">
-      <van-swipe-cell style="width:100%;" right-width="{{ 80 }}" disabled="{{payType.type == 0 ? true : false}}" async-close bind:close="onDel" data-payType="{{payType}}" bind:click="onEditPayment">
+      <van-swipe-cell style="width:100%;" right-width="{{ 80 }}" disabled="{{payType.type == 0 ? false : true}}" async-close bind:close="onDel" data-payType="{{payType}}" bind:click="onEditPayment">
         <van-cell-group>
           <van-cell>
             <view class="weui-media-box weui-media-box_appmsg" style='justify-content: space-between;'>

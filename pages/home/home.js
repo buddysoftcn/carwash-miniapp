@@ -23,6 +23,7 @@ Page({
     showUnFinishedOrderView:false,
     showPaymentView:false,
     showWYBtn:true, // 显示违约按钮
+    showCancelBtn:true, // 显示取消预约按钮
     popViewMessage:'',  // 弹出视图动态显示的信息
     
     worktimes:[],
@@ -112,14 +113,17 @@ Page({
           url: '../cancelPaymentOrder/cancelPaymentOrder',
         })
       }else {
-        let showWYBtn = true
-        if ('clerk' == currentWorkTime.order.createdBy) {
+        let showWYBtn = true,showCancelBtn = true
+        if ('clerk' == currentWorkTime.order.createdBy) { // 店员自己创建的订单，不显示违约操作入口
           showWYBtn = false
+        }else if ('client' == currentWorkTime.order.createdBy) {
+          showCancelBtn = false
         }
         this.setData({  // 显示洗车结账、取消预约、车主违约视图
           popViewMessage: currentWorkTime.order.plateNumber,
           showPaymentView: true,
-          showWYBtn: showWYBtn
+          showWYBtn: showWYBtn,
+          showCancelBtn: showCancelBtn
         })
       }
       
@@ -181,12 +185,21 @@ Page({
       content: '取消后，车主可以预约此时刻，确定取消吗？',
       success(res) {
         if (res.confirm) {
+          wx.showLoading({
+            title: '请稍候',
+            mask:true
+          })
+
           request.postRequest('/orders/cancel/' + currentWorkTime.order.sid,null,true)
           .then(data => {
-            currentWorkTime.order.state = 'canceled'
-            that.renderWorkTimeList(null)
+            wx.hideLoading()
+            that.initWorktimeList()
           }).catch(e => {
-
+            wx.hideLoading()
+            wx.showToast({
+              title: e.msg,
+              icon:'none'
+            })
           })
         } 
       }
@@ -334,7 +347,7 @@ Page({
         if (worktime) {
           if ('canceled' != orders[index].state) {
             worktime.order = orders[index]
-          }          
+          }      
         }
 
         if ('created' == orders[index].state) {
@@ -351,7 +364,7 @@ Page({
         worktimesFinishedCount: worktimesFinishedCount
       })
     }
-    
+    console.log(worktimes)
     this.setData({
       worktimes: worktimes      
     })

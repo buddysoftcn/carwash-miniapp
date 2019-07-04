@@ -16,21 +16,21 @@
       <view class="weui-cell__hd">
           <view class="weui-label">付款方式</view>
       </view>
-      <view class="weui-cell__bd weui-input">{{mode.name}}</view>
+      <view class="weui-cell__bd weui-input">{{currentPayType.value}} <label wx:if="{{'会员卡' == currentPayType.value}}">( 余额：￥ {{member.balance}} )</label></view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
   </view>
 </view>
 
 <!-- 现金结账视图 -->
 <form bindsubmit="onPayment">
-  <view wx:if="{{'会员卡' != mode.value}}" class="weui-cells__title">补充信息</view>
-  <view wx:if="{{'现金' == mode.value}}" class="weui-cells weui-cells_after-title">
+  <view class="weui-cells__title">金额信息</view>
+  <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
           <view class="weui-cell__hd">
-              <view class="weui-label">现金</view>
+              <view class="weui-label">金额</view>
           </view>
           <view class="weui-cell__bd">
-              <input formType="submit" name="amount" type="number" class="weui-input" placeholder="请输入现金数额"/>
+              <input formType="submit" name="amount" type="number" class="weui-input" placeholder="请输入洗车金额" value="{{price}}"/>
           </view>
       </view>
   </view>

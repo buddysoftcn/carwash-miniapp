@@ -23,6 +23,6 @@
     <view style='margin-right:14px;' class="payment-popup-view_header-btn"></view>
   </view>
   <view style='color:#1AAD19' class="payment-popup-view_btn payment-popup-view_line" bindtap='onPayment'>洗车结账</view>
-  <view class="payment-popup-view_btn payment-popup-view_line" bindtap='onCancelOrder'>取消预约</view>
+  <view wx:if="{{'client' != currentOrder.createdBy}}" class="payment-popup-view_btn payment-popup-view_line" bindtap='onCancelOrder'>取消预约</view>
   <view wx:if="{{'client' == currentOrder.createdBy}}" class="payment-popup-view_btn">车主违约</view>
 </van-popup>

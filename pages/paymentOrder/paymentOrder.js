@@ -1,9 +1,11 @@
 // pages/paymentOrder.js
-let currentOrder = null
 let util = require('../../utils/util.js')
 let carWash = require('../../utils/carWash.js')
 let payTypeModel = require('../../model/payType.js')
+let shopModel = require('../../model/shop.js')
 let request = require('../../operation/operation.js')
+
+let currentOrder = null
 let autoBack = false
 
 Page({
@@ -15,8 +17,10 @@ Page({
     plateNumber:'',
     datatime:'',
     showPopupView:false,
-    payTypes: [],
-    mode: {}
+    payTypes: [], // 支付类型
+    currentPayType: {},  // 当前支付类型
+    member:null, // 会员卡信息,
+    price:''  // 洗车金额
   },
 
   /**
@@ -93,9 +97,9 @@ Page({
       make:true
     })
 
-    request.postRequest('/orders/finish/' + currentOrder.sid, { 'payTypeName': this.data.mode.name, 'amount': amount},true)
+    request.postRequest('/orders/finish/' + currentOrder.sid, { 'payTypeName': this.data.currentPayType.value, 'amount': amount},true)
     .then(data => {
-      currentOrder.payTypeName = this.data.mode.name
+      currentOrder.payTypeName = this.data.currentPayType.name
       currentOrder.amount = amount
 
       getApp().globalData.param = currentOrder
@@ -155,7 +159,7 @@ Page({
       }
     }
     this.setData({
-      mode: item,
+      currentPayType: item,
       showPopupView:false,
       payTypes: payTypes
     });
@@ -181,14 +185,88 @@ Page({
   },
 
   initPayTypeView:function() {
-    if ('clerk' == currentOrder.createdBy) {
+    if ('clerk' == currentOrder.createdBy) {  // 店员创建的订单，只支持现金结账
       this.setData({
         payTypes: [{ 'name': '现金', 'value': '现金', 'checked': true}],        
       })   
 
       this.setData({        
-        mode: this.data.payTypes[0]
+        currentPayType: this.data.payTypes[0]
       })             
+    }else {
+      this.getPayInfo()
     }
+  },
+
+  /**
+   * 初始化用户订单支付视图
+   */
+  initUserPayTypeView:function(payInfo) {
+    console.log(payInfo)
+    let payTypes = payTypeModel.getCurrentPayTypes(),tmpPayTypes = [],member = null
+    for (let index = 0, size = payTypes.length; index < size; index++) {
+      if ('会员卡' == payTypes[index].name && payInfo.member) {
+        tmpPayTypes.push({ 'name': payTypes[index].name + ' (' + payInfo.member.serial + ')', 'value': payTypes[index].name, 'checked': false })
+      }else {
+        tmpPayTypes.push({ 'name': payTypes[index].name, 'value': payTypes[index].name, 'checked': false })
+      }      
+    }
+    
+    if (null != payInfo && null != payInfo.member) { // 如果用户存在会员卡，默认选择会员卡
+      member = payInfo.member
+    }else { // 如果不存在会员卡，将会员卡选项移除
+      tmpPayTypes.splice(0,1)
+    }
+
+    tmpPayTypes[0].checked = true // 有会员卡时，会员卡会在第一个
+
+    this.setData({
+      payTypes: tmpPayTypes,
+      currentPayType: tmpPayTypes[0],
+      member: member
+    }) 
+  },
+
+  /**
+   * 初始化洗车价格
+   */
+  initPriceView:function(payInfo) {
+    if (payInfo.carModel) {
+      let shopSetting = shopModel.getShopInfo().shopSetting, price = ''
+      if (shopSetting.specialDateBegin && shopSetting.specialDateEnd) {
+        let today = util.today()
+
+        if (shopSetting.specialDateBegin <= today && shopSetting.specialDateEnd >= today) {
+          price = payInfo.carModel.specialPrice / 100  
+        }
+      }else {
+        price = payInfo.carModel.normalPrice/100
+      }
+
+      this.setData({
+        price:price
+      })
+    }
+  },
+
+  /**
+   * 获取用户结账信息
+   */
+  getPayInfo:function() {
+    let that = this
+    wx.showLoading({
+      title: '请稍候',
+    })
+
+    request.postRequest('/plates/pay-info', { 'number': currentOrder.plateNumber},true)
+    .then(data => {         
+      wx.hideLoading()
+      that.initUserPayTypeView(data.object)
+      that.initPriceView(data.object)
+    }).catch(e => {   
+      wx.hideLoading()   
+      that.initUserPayTypeView(null)
+    })
   }
+
 })

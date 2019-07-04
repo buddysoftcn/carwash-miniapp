@@ -92,7 +92,7 @@ Page({
         mask:true        
       })
 
-      let params = { 'type': 0, 'date': currentWorkTime.date, 'time': currentWorkTime.time,'plateNumber':plateNumber}
+      let params = { 'type': 0, 'date': currentWorkTime.date, 'time': currentWorkTime.time,'plateNumber':plateNumber,'amount':0}
       createOrderOperation.createOrder(params)
       .then(data => {
         wx.hideLoading()
