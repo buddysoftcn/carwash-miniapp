@@ -6,7 +6,7 @@
           <van-cell>
             <view class="weui-media-box weui-media-box_appmsg" style='justify-content: space-between;'>
                 <view class="cell">{{carModel.weight}}. {{carModel.model}}</view>
-                <view class="cell-value weui-cell__ft_in-access">{{carModel.normalPrice}}元</view>                                 
+                <view class="cell-value weui-cell__ft_in-access">{{carModel.normalPrice/100}}元</view>                                 
             </view>            
           </van-cell>
         </van-cell-group>

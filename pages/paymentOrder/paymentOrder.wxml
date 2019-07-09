@@ -16,7 +16,7 @@
       <view class="weui-cell__hd">
           <view class="weui-label">付款方式</view>
       </view>
-      <view class="weui-cell__bd weui-input">{{currentPayType.value}} <label wx:if="{{'会员卡' == currentPayType.value}}">( 余额：￥ {{member.balance}} )</label></view>
+      <view class="weui-cell__bd weui-input">{{currentPayType.value}} <label wx:if="{{'会员卡' == currentPayType.value}}">( 余额：￥ {{member.balance/100}} )</label></view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
   </view>
 </view>

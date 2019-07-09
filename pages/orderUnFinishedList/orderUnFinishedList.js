@@ -131,6 +131,39 @@ Page({
 
   },
 
+  onDiscreditOrder: function () {
+    let that = this
+
+    this.setData({
+      showPaymentView: false
+    })
+
+    wx.showModal({
+      title: '车主违约',
+      content: '违约操作将影响车主信誉值，确定车主违约吗？',
+      success(res) {
+        if (res.confirm) {
+          wx.showLoading({
+            title: '请稍候',
+            mask: true
+          })
+
+          request.postRequest('/orders/discredit/' + currentOrder.sid, null, true)
+            .then(data => {
+              wx.hideLoading()
+              that.refreshOrderList()
+            }).catch(e => {
+              wx.hideLoading()
+              wx.showToast({
+                title: e.msg,
+                icon: 'none'
+              })
+            })
+        }
+      }
+    })
+  },
+
   initOrderList: function (ordersParam) {
     let orderMap = new Map(),tmpOrders = []
     orders = []

@@ -18,9 +18,13 @@ Page({
   onLoad: function (options) {
     if (options.mode) {
       mode = options.mode
+      let carModel = getApp().globalData.param
+      carModel.normalPrice = carModel.normalPrice/100
       this.setData({
-        carModel: getApp().globalData.param
+        carModel: carModel
       })
+    }else {
+      mode = getApp().MODE_CREATE
     }
   },
 
@@ -49,7 +53,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    
   },
 
   /**
@@ -102,7 +106,7 @@ Page({
   create: function (model,normalPrice,weight) {
     let that = this
 
-    request.postRequest('/car-models', { 'model': model, 'normalPrice': normalPrice, 'weight': weight }, true)
+    request.postRequest('/car-models', { 'model': model, 'normalPrice': normalPrice * 100, 'weight': weight }, true)
       .then(data => {
         wx.hideLoading()
         that.back()
@@ -119,7 +123,7 @@ Page({
   edit: function (model, normalPrice, weight) {
     let that = this
 
-    request.putRequest('/car-models/' + this.data.carModel.sid, { 'model': model, 'normalPrice': normalPrice, 'weight': weight }, true)
+    request.putRequest('/car-models/' + this.data.carModel.sid, { 'model': model, 'normalPrice': normalPrice * 100, 'weight': weight }, true)
       .then(data => {
         wx.hideLoading()
         that.back()

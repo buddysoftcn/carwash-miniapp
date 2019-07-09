@@ -7,3 +7,8 @@
   margin-top:20px;
   background-color: white;
 }
+
+.credit-image {
+  width: 32rpx;
+  height: 32rpx;
+}

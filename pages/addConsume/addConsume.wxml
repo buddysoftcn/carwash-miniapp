@@ -1,39 +1,86 @@
 <!--pages/addConsume/addConsume.wxml-->
-<view class="weui-cells__title">会员卡号 33180918</view>
-<view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell weui-cell_input">
-        <view class="weui-cell__hd">
-            <view class="weui-label">消费时间</view>
-        </view>
-        <view class="weui-cell__bd weui-flex">
-            <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
-                <view class="weui-input">{{date}}</view>
-            </picker>
-            <view class="date-time_line">
-            </view>
-            <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
-                <view class="weui-input">{{time}}</view>
-            </picker>
-        </view>
-    </view>    
-    <view class="weui-cell weui-cell_input">
-        <view class="weui-cell__hd">
-            <view class="weui-label">消费金额</view>
-        </view>
-        <view class="weui-cell__bd">
-            <input class="weui-input" placeholder="请输入消费金额"/>
-        </view>
-    </view>
-    <view class="weui-cell weui-cell_input">
-        <view class="weui-cell__hd">
-            <view class="weui-label">效果项目</view>
-        </view>
-        <view class="weui-cell__bd">
-            <view class="weui-cell__bd">
-                <input class="weui-input" placeholder="选填"/>
-            </view>
-        </view>
-    </view>
-</view>
+<!-- <view class="weui-cells__title">会员卡号 33180918</view> -->
+<form bindsubmit="onAdd">
+  <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input" bindtap='onShowPlateView'>
+          <view class="weui-cell__hd">
+              <view class="weui-label">车牌号码</view>
+          </view>
+          <view class="weui-cell__bd weui-input">{{currentPlate.number}}</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+              <view class="weui-label">消费时间</view>
+          </view>
+          <view class="weui-cell__bd weui-flex">
+            <view class="weui-input">{{uiDatetime}}</view>
+              <!-- <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+                  <view class="weui-input">{{date}}</view>
+              </picker>
+              <view class="date-time_line">
+              </view>
+              <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+                  <view class="weui-input">{{time}}</view>
+              </picker> -->
+          </view>
+      </view>    
+      <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+              <view class="weui-label">消费金额</view>
+          </view>
+          <view class="weui-cell__bd">
+              <input class="weui-input" placeholder="请输入消费金额" type="number" name="amount"/>
+          </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+              <view class="weui-label">消费项目</view>
+          </view>
+          <view class="weui-cell__bd">
+              <view class="weui-cell__bd">
+                  <input class="weui-input" placeholder="选填" name="desc"/>
+              </view>
+          </view>
+      </view>
+  </view>
 
-<button style='margin-top:112rpx;' class="button button_margin_16" type="primary" bindtap="onSave">确定</button>
+  <button style='margin-top:112rpx;' class="button button_margin_16" type="primary" formType="submit">确定</button>
+</form>
+
+<!-- 车牌选择视图 -->
+<van-popup
+  show="{{ showPopupView }}"
+  position="bottom"  
+  bind:close="onClose"
+  custom-class="payment-popup-view"
+  custom-style="background-color:#efeff4;"
+>
+  <view class="weui-flex payment-popup-view_header">
+    <view style='color:#6D7278;margin-left:14px;' class="payment-popup-view_header-btn" bindtap='onClose'>取消</view>
+    <view>选择车牌</view>
+    <view style='margin-right:14px;' class="payment-popup-view_header-btn"></view>
+  </view>
+  
+  <view class="weui-cells weui-cells_after-title">
+      <checkbox-group bindchange="checkboxChange">
+          <label class="weui-cell weui-check__label payment-popup-view_cell" wx:for="{{plates}}" wx:key="sid">
+              <checkbox class="weui-check" value="{{item.sid}}" checked="{{item.checked}}"/>
+
+              <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                  <icon class="weui-icon-checkbox_circle" type="circle" size="16" wx:if="{{!item.checked}}"></icon>
+                  <icon class="weui-icon-checkbox_success" type="success" size="16" wx:if="{{item.checked}}"></icon>
+              </view>
+
+              <view class="weui-cell__bd">
+                <view>{{item.number}}</view>
+                <view class="font-size_14 font-color_666">{{item.desc}}</view>
+              </view>
+
+              <view wx:if="{{1 == item.binded}}" class="font-color_yellow font-size_12">已绑定到会员卡</view>
+
+          </label>
+      </checkbox-group>           
+  </view>
+
+</van-popup>

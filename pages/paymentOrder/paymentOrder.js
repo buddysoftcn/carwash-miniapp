@@ -97,7 +97,7 @@ Page({
       make:true
     })
 
-    request.postRequest('/orders/finish/' + currentOrder.sid, { 'payTypeName': this.data.currentPayType.value, 'amount': amount},true)
+    request.postRequest('/orders/finish/' + currentOrder.sid, { 'payTypeName': this.data.currentPayType.value, 'amount': amount*100},true)
     .then(data => {
       currentOrder.payTypeName = this.data.currentPayType.name
       currentOrder.amount = amount

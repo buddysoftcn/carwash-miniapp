@@ -33,6 +33,10 @@ page{
   color:#9b9b9b;
 }
 
+.font-color_yellow {
+  color:#FBC531;
+}
+
 .font-size_12{
   font-size: 24rpx;
 }

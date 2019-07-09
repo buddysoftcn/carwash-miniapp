@@ -4,17 +4,17 @@
       <view class="weui-search-bar__form">
           <view class="weui-search-bar__box">
               <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-              <input type="text" class="weui-search-bar__input" placeholder="输入车牌号" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
-              <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+              <input type="text" maxlength="7" class="weui-search-bar__input" placeholder="输入{{searchBarTitle}}" value="{{searchBarValue}}" focus="{{inputShowed}}" bindinput="onInputing" bindconfirm="onSearch" confirm-type="搜索" />
+              <view class="weui-icon-clear" wx:if="{{searchBarValue.length > 0}}" bindtap="clearInput">
                   <icon type="clear" size="14"></icon>
               </view>
           </view>          
       </view>      
   </view>
   <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell" bindtap='onShowMemberDetail'>
-          <view class="weui-cell__bd">豫CHP516</view>
-          <view class="weui-cell__ft">毛宇</view>
+      <view wx:for="{{users}}" wx:key="*this" wx:for-item="user" class="weui-cell" data-user="{{user}}" bindtap='onShowMemberDetail'>
+          <view class="weui-cell__bd">{{user.plateNumber}}</view>
+          <view class="weui-cell__ft">{{user.nickName}}</view>
       </view>
   </view>   
 

@@ -104,7 +104,7 @@ Page({
         mask:true
       })
 
-      request.postRequest('/orders/record',{'date':date,'plateNumber':plateNumber,'payTypeName':this.data.mode.value,'amount':amount},true)
+      request.postRequest('/orders/record',{'type':0,'date':date,'plateNumber':plateNumber,'payTypeName':this.data.mode.value,'amount':amount},true)
       .then(data => {
         wx.hideLoading()
         getApp().globalData.param = data.object

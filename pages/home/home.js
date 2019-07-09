@@ -90,13 +90,6 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
   onCell:function(event) {    
     currentWorkTime = event.currentTarget.dataset.worktime
 
@@ -106,7 +99,7 @@ Page({
         showHelpOrderView: true
       })
     }else {
-      if ('finished' == currentWorkTime.order.state) {
+      if ('finished' == currentWorkTime.order.state || 'discredit' == currentWorkTime.order.state) {  // 显示订单完成界面
         getApp().globalData.param = currentWorkTime.order
         
         wx.navigateTo({
@@ -179,7 +172,6 @@ Page({
       showPaymentView:false
     })
 
-    
     wx.showModal({
       title: '取消预约',
       content: '取消后，车主可以预约此时刻，确定取消吗？',
@@ -204,7 +196,39 @@ Page({
         } 
       }
     })
+  },
 
+  onDiscreditOrder:function() {
+    let that = this
+
+    this.setData({
+      showPaymentView: false
+    })
+
+    wx.showModal({
+      title: '车主违约',
+      content: '违约操作将影响车主信誉值，确定车主违约吗？',
+      success(res) {
+        if (res.confirm) {
+          wx.showLoading({
+            title: '请稍候',
+            mask: true
+          })
+
+          request.postRequest('/orders/discredit/' + currentWorkTime.order.sid, null, true)
+            .then(data => {
+              wx.hideLoading()
+              that.initWorktimeList()
+            }).catch(e => {
+              wx.hideLoading()
+              wx.showToast({
+                title: e.msg,
+                icon: 'none'
+              })
+            })
+        }
+      }
+    })
   },
 
   onOrderLater: function () {
@@ -363,8 +387,7 @@ Page({
         worktimesCreatedCount: worktimesCreatedCount,
         worktimesFinishedCount: worktimesFinishedCount
       })
-    }
-    console.log(worktimes)
+    }    
     this.setData({
       worktimes: worktimes      
     })
@@ -396,7 +419,6 @@ Page({
     let that = this
     request.getRequest('/orders?category=unfinished_appoints&type=0', null, true)
       .then(data => {
-        console.log(data)
         if (data.items && 0 < data.items.length) {
           unFinishedOrders = data.items
 

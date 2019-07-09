@@ -20,7 +20,8 @@
               </view>
               <view class="weui-form-preview__item">
                   <view class="weui-form-preview__label">付款方式</view>
-                  <view class="weui-form-preview__value">{{order.payTypeName}}</view>
+                  <view wx:if="{{null != order.payTypeName}}" class="weui-form-preview__value">{{order.payTypeName}}</view>
+                  <view wx:if="{{null == order.payTypeName}}" class="weui-form-preview__value">未付款（车主违约）</view>
               </view>
               <!-- <view class="weui-form-preview__item">
                   <view class="weui-form-preview__label">服务备注</view>

@@ -25,10 +25,10 @@
     <van-cell-group>
       <van-cell>    
         <view class="weui-cell border-bottom">
-          <view class="weui-cell__bd">{{rechargeType.payAmount}}元</view>
+          <view class="weui-cell__bd">{{rechargeType.payAmount/100}}元</view>
           <view class="weui-cell__ft">
             <label class="font-color_8e font-size_15">实际到账：</label>
-            <label class="font-size_15 font-color_black">{{rechargeType.rechargeAmount}}元</label>
+            <label class="font-size_15 font-color_black">{{rechargeType.rechargeAmount/100}}元</label>
           </view> 
         </view>
       </van-cell>

@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "用户",
+  "navigationBarTitleText": "失信用户",
   "usingComponents": {
     "van-popup": "../../lib/dist/popup/index"
   }

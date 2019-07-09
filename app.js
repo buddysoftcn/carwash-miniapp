@@ -31,7 +31,7 @@ App({
     if (options.path.indexOf('authEmploye/authEmploye') >= 0 && (options.scene == 1007 || options.scene == 1008 || options.scene == 1044)) {      
       // 通过群/个人分享卡片进来      
       this.globalData.param = { 'clerkSid': options.query.sid, 'nickname': options.query.nickname, 'shopname': options.query.shopname, 'avatar': options.query.avatar}
-      // this.initView()
+      this.initView()
     }
   },
 
@@ -41,14 +41,11 @@ App({
       success: function (res) {
         wxUserInfo.userInfo.code = res.code
         
-        var that = this, params = { 'wxCode': wxUserInfo.userInfo.code, 'shopSid':getApp().buddysoft.shopSid}
+        var that = this, params = { 'wxCode': wxUserInfo.userInfo.code, 'shopSid': getApp().buddysoft.shopSid, 'app':'shop'}
         if (wxUserInfo.encryptedData) {
           params.encryptedData = wxUserInfo.encryptedData
           params.iv = wxUserInfo.iv
-        }
-        // console.log(res.code)
-        // console.log(params)
-        // return 
+        }       
 
         request.postRequest('/user/wx-login', params, false)
           .then(data => {

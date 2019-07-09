@@ -1,7 +1,7 @@
 <!--pages/userList/userList.wxml-->
 <view class="page">
     <view class="page__bd">
-        <view style='border-width:0rpx;' class="weui-search-bar">
+        <!-- <view style='border-width:0rpx;' class="weui-search-bar">
             <view class="weui-search-bar__form">
                 <view class="weui-search-bar__box">
                     <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
@@ -16,17 +16,17 @@
                 </label>
             </view>
             <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
-        </view>
+        </view> -->
         
         <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell" hover-class="weui-cell_active" bindtap='onClickUser'>
+            <view wx:for="{{users}}" wx:key="*this" wx:for-item="user" class="weui-cell" hover-class="weui-cell_active" data-user="{{user}}" bindtap='onClickUser'>
                 <view class="weui-cell__hd">
-                    <image src="https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIcmzyS3AEgHKmlY4Wl67enrRScxhv0AAlfQ0txCqMqpUYt8DSPF4NSTCbuA4qiaeRiboUNa2qXCibWg/132" class="weui-media-box__thumb_fixed"></image>
+                    <image src="{{user.user.avatarUrl}}" class="weui-media-box__thumb_fixed"></image>
                 </view>
-                <view style='margin-left:16px;' class="weui-cell__bd">英叔</view>
+                <view style='margin-left:16px;' class="weui-cell__bd">{{user.user.nickName}}</view>
                 <view class="weui-cell__ft">
                   <label class="font-size_12 font-color_cell_value">禁止预约至：</label>
-                  <label class="font-size_14 font-color_cell_value">12月21日</label>
+                  <label class="font-size_14 font-color_cell_value">{{user.banDateEnd}}</label>
                 </view>
             </view>            
         </view>

@@ -1,5 +1,6 @@
 // pages/editSpecialPrice/editSpecialPrice.js
 let shopModel = require('../../model/shop.js')
+let carModel = require('../../model/carModel.js')
 let carWash = require('../../utils/carWash.js')
 let util = require('../../utils/util.js')
 let request = require('../../operation/operation.js')
@@ -171,15 +172,13 @@ Page({
       pickDisabled: pickDisabled,
       specialDateBegin: specialDateBegin,
       specialDateEnd: specialDateEnd,
-      carModels:shop.carModels
+      carModels: carModel.getCurrentCarModels()
     })
   },
 
-  updateView:function() {
-    shop = shopModel.getShopInfo()
-
+  updateView:function() {    
     this.setData({
-      carModels: shop.carModels
+      carModels: carModel.getCurrentCarModels()
     })
   },
 

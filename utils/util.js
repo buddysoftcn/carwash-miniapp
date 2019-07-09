@@ -103,6 +103,21 @@ function addOneDay(date) {
   return [year, month, day].map(formatNumber).join('-')
 }
 
+function addDays(date,days) {
+  date = date.split('-')
+  date = new Date(date[0], date[1], date[2])
+
+  let year = date.getFullYear()
+  let month = date.getMonth()
+  let day = date.getDate()
+
+  date = new Date(year, month, day + days)
+  year = date.getFullYear()
+  month = date.getMonth()
+  day = date.getDate()
+
+  return [year, month, day].map(formatNumber).join('-')
+}
 
 
 module.exports = {
@@ -115,5 +130,6 @@ module.exports = {
   makeDate: makeDate,
   subtractOneDay: subtractOneDay,
   addOneDay: addOneDay,
+  addDays: addDays,
   formatNumber: formatNumber
 }

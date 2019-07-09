@@ -97,7 +97,7 @@ Page({
   create: function (payAmount, rechargeAmount) {
     let that = this
 
-    request.postRequest('/recharge-types', { 'payAmount': payAmount, 'rechargeAmount': rechargeAmount},true)
+    request.postRequest('/recharge-types', { 'payAmount': payAmount * 100, 'rechargeAmount': rechargeAmount * 100},true)
     .then(data => {
       that.back('添加成功')  
     }).catch(e => {
@@ -108,7 +108,7 @@ Page({
   edit: function (payAmount, rechargeAmount) {
     let that = this
 
-    request.putRequest('/recharge-types/' + this.data.rechargeType.sid, { 'payAmount': payAmount, 'rechargeAmount': rechargeAmount }, true)
+    request.putRequest('/recharge-types/' + this.data.rechargeType.sid, { 'payAmount': payAmount * 100, 'rechargeAmount': rechargeAmount * 100 }, true)
       .then(data => {
         that.back('修改成功')
       }).catch(e => {

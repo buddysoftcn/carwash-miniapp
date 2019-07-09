@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "添加消费",
-  "usingComponents": {}
+  "usingComponents": {
+    "van-popup": "../../lib/dist/popup/index"
+  }
 }

@@ -1,18 +1,25 @@
 // pages/memberDetail/memberDetail.js
+let carWash = require('../../utils/carWash.js')
+let request = require('../../operation/operation.js')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    user:null,
+    member:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.initUserView()
+    this.getMemberInfo()
 
+    getApp().notificationCenter.register(carWash.UPDATE_MEMBER_INFO, this, "getMemberInfo");
   },
 
   /**
@@ -40,7 +47,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    getApp().notificationCenter.remove(carWash.UPDATE_MEMBER_INFO, this)
   },
 
   /**
@@ -57,16 +64,57 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
   onClickAddConsume:function() {
+    getApp().globalData.param = this.data.user
+    
     wx.navigateTo({
       url: '../addConsume/addConsume',
+    })
+  },
+
+  /**
+   * 显示会员卡
+   */
+  onShowPay:function() {
+    getApp().globalData.param = this.data.user
+
+    wx.navigateTo({
+      url: '../memberRecharge/memberRecharge',
+    })
+  },
+
+  /**
+   * 获取用户会员卡信息
+   */
+  getMemberInfo:function() {
+    let that = this
+    wx.showLoading({
+      title: '请稍候',
+    })
+    request.getRequest('/user/member?userSid=' + this.data.user.sid,null,true)
+    .then(data => {
+      if (null != data.object.expiredAt) {
+        data.object.uiExpiredAt = data.object.expiredAt.substring(0,10)
+      }else {
+        data.object.uiExpiredAt = ''
+      }
+      
+      wx.hideLoading()
+      that.setData({
+        member:data.object
+      })  
+    }).catch(e => {
+      wx.hideLoading()
+      wx.showToast({
+        title: e.msg,
+        icon:'none'
+      })
+    })
+  },
+
+  initUserView:function() {
+    this.setData({
+      user: getApp().globalData.param
     })
   }
  })
