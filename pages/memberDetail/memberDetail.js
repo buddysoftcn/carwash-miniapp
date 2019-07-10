@@ -64,6 +64,15 @@ Page({
 
   },
 
+  /**
+   * 查看用户信用记录
+   */
+  onShowUserCreditList:function() {
+    wx.navigateTo({
+      url: '../creditList/creditList?userSid=' + this.data.user.sid,
+    })
+  },
+
   onClickAddConsume:function() {
     getApp().globalData.param = this.data.user
     

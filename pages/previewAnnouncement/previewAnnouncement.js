@@ -67,6 +67,10 @@ Page({
 
   },
 
+  onShareAppMessage: function (event) {
+    console.log(event)
+  },
+
   onEdit:function() {
     getApp().globalData.param = this.data.announce
 

@@ -13,6 +13,10 @@ function getCurrentUser() {
   return wx.getStorageSync(CURRENT_USER_KEY)
 }
 
+function removeCurrentUser() {
+  wx.removeStorageSync(CURRENT_USER_KEY)
+}
+
 function getRole() {
   let user = getCurrentUser()
 
@@ -32,6 +36,7 @@ function getRole() {
 module.exports = {
   setCurrentUser: setCurrentUser,
   getCurrentUser: getCurrentUser,
+  removeCurrentUser: removeCurrentUser,
   getRole: getRole,
   ROLE_NO_LOGIN: ROLE_NO_LOGIN,
   ROLE_NORMAL: ROLE_NORMAL,

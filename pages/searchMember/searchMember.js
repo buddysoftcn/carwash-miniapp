@@ -48,7 +48,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    mode = 'number'
   },
 
   /**
@@ -75,7 +75,9 @@ Page({
 
   onSearch:function(event) {
     let value = event.detail.value,param = 'plateNumber',that = this
-    
+    if ('member' == mode) {
+      param = 'serial'
+    }
     wx.showLoading({
       title: '请稍候',
     })
@@ -107,6 +109,8 @@ Page({
     let title = ''
     if ('number' == mode) {
       title = '车牌号'
+    }else if ('member' == mode) {
+      title = '会员卡号'
     }
 
     wx.setNavigationBarTitle({

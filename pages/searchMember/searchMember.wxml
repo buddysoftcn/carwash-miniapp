@@ -13,7 +13,7 @@
   </view>
   <view class="weui-cells weui-cells_after-title">
       <view wx:for="{{users}}" wx:key="*this" wx:for-item="user" class="weui-cell" data-user="{{user}}" bindtap='onShowMemberDetail'>
-          <view class="weui-cell__bd">{{user.plateNumber}}</view>
+          <view class="weui-cell__bd">{{user.plateNumber}}{{user.serial}}</view>
           <view class="weui-cell__ft">{{user.nickName}}</view>
       </view>
   </view>   

@@ -59,6 +59,7 @@ Page({
               url: '../home/home',
             })
           }else {
+            userModel.removeCurrentUser()
             wx.navigateTo({
               url: '../employeLoginFailed/employeLoginFailed'
             })

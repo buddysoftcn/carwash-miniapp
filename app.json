@@ -1,17 +1,12 @@
 {
   "pages": [
-   
     "pages/index/index",
     "pages/home/home",
     "pages/addConsume/addConsume",
     "pages/searchMemberIndex/searchMemberIndex",
-   
     "pages/searchMember/searchMember",
     "pages/memberRecharge/memberRecharge",
-    
-    
     "pages/userList/userList",
-    
     "pages/addOrder/addOrder",
     "pages/authEmploye/authEmploye",
     "pages/authEmployeFailed/authEmployeFailed",
@@ -27,7 +22,6 @@
     "pages/goodsList/goodsList",
     "pages/settingList/settingList",
     "pages/settingTime/settingTime",
-    
     "pages/settingPayment/settingPayment",
     "pages/settingMemberCard/settingMemberCard",
     "pages/settingCredit/settingCredit",
@@ -37,7 +31,6 @@
     "pages/previewGoods/previewGoods",
     "pages/employeLoginFailed/employeLoginFailed",
     "pages/memberDetail/memberDetail",
-    
     "pages/creditIntroducion/creditIntroducion",
     "pages/editMemberCard/editMemberCard",
     "pages/editPaymentRemark/editPaymentRemark",
@@ -59,7 +52,8 @@
     "pages/lunchTimeDetail/lunchTimeDetail",
     "pages/editLunchTime/editLunchTime",
     "pages/editSpecialDatePrice/editSpecialDatePrice",
-    "pages/orderUnFinishedList/orderUnFinishedList"  
+    "pages/orderUnFinishedList/orderUnFinishedList",
+    "pages/creditList/creditList"
   ],
   "window": {
     "backgroundTextStyle": "light",

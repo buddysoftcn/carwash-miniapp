@@ -1,0 +1,8 @@
+<!--pages/creditList/creditList.wxml-->
+<view class="weui-cells__title">信用记录</view>
+<view class="weui-cells weui-cells_after-title">
+    <view wx:for="{{orders}}" wx:key="*this" wx:for-item="order" class="weui-cell">
+        <view class="weui-cell__bd">{{order.date}}</view>
+        <view class="weui-cell__ft">预约违约</view>
+    </view>    
+</view>
