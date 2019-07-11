@@ -25,10 +25,10 @@
     </view>  
 </view>
 
-<view class="add-consume-view font-size_17" bindtap='onClickAddConsume'>
+<view wx:if="{{true == useBalance}}" class="add-consume-view font-size_17" bindtap='onClickAddConsume'>
   添加消费
 </view>
 
-<view style="margin-top:10px" class="add-consume-view font-size_17" bindtap='onShowPay'>
+<view wx:if="{{true == useMember}}" style="margin-top:10px" class="add-consume-view font-size_17" bindtap='onShowPay'>
   会员卡充值
 </view>

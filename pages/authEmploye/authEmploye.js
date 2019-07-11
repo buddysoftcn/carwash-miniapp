@@ -94,7 +94,7 @@ Page({
       if (null != userInfo) {                   
         userModel.setCurrentUser(userInfo)  
         let user = userModel.getRole()
-        if (userModel.ROLE_CLERK == user.role || userModel.ROLE_OWNER) {
+        if (userModel.ROLE_CLERK == user.role || userModel.ROLE_OWNER == user.role) {
           that.backHome()
         }else {
           that.joinShop()

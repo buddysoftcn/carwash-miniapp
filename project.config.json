@@ -40,14 +40,28 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 2,
 			"list": [
 				{
 					"id": 0,
 					"name": "验证店员",
 					"pathName": "pages/authEmploye/authEmploye",
-					"query": "sid=5D0B3BFF586F4007077967&nickname=毛宇&shopname=半点小店&avatar=https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eq2sEocnS4WgavU8GymF22nicic3HptCiaBOp7S3ibWezKeX1VuNpibd439yReZxhxeDyPcSGibRST0tMhw/132",
+					"query": "sid=5D25502B2F26A501267610&nickname=毛宇&shopname=半点小店&avatar=https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eq2sEocnS4WgavU8GymF22nicic3HptCiaBOp7S3ibWezKeX1VuNpibd439yReZxhxeDyPcSGibRST0tMhw/132",
 					"scene": 1007
+				},
+				{
+					"id": 1,
+					"name": "分享公告",
+					"pathName": "pages/previewAnnouncement/previewAnnouncement",
+					"query": "sid=5D244D7216568764127086",
+					"scene": 1007
+				},
+				{
+					"id": -1,
+					"name": "分享商品",
+					"pathName": "pages/previewGoods/previewGoods",
+					"query": "sid=5D26A6890B51A563571254",
+					"scene": null
 				}
 			]
 		}

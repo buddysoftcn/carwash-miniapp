@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/home/home",
+    "pages/index/index",    
     "pages/addConsume/addConsume",
     "pages/searchMemberIndex/searchMemberIndex",
     "pages/searchMember/searchMember",
@@ -85,5 +85,8 @@
     "uploadFile": 10000,
     "downloadFile": 10000
   },
+  "navigateToMiniProgramAppIdList":[
+    "wx473f359927fe74ad"
+  ],
   "sitemapLocation": "sitemap.json"
 }

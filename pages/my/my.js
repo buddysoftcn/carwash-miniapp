@@ -21,6 +21,8 @@ Page({
         clerk:true
       })
     }
+
+    this.updateUserInfo()
   },
 
   /**
@@ -55,7 +57,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.updateUserInfo()
   },
 
   /**
@@ -68,6 +70,12 @@ Page({
   onClickMemberCard:function() {
     wx.navigateTo({
       url: '../searchMember/searchMember',
+    })
+  },
+
+  updateUserInfo:function() {
+    getApp().getUserInfo(function() {
+      wx.stopPullDownRefresh()
     })
   }
 })

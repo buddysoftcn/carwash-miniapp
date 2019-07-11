@@ -1,6 +1,10 @@
 // pages/previewGoods/previewGoods.js
 let request = require('../../operation/operation.js')
 let carWash = require('../../utils/carWash.js')
+let userModel = require('../../model/user.js')
+
+let goods = null
+let mode = 'view' // edit 店主正常进入界面；view 通过分享方式进入
 
 Page({
 
@@ -9,19 +13,32 @@ Page({
    */
   data: {
     goods:{},
+     // 滚动视图配置参数
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
-    duration: 1000
+    duration: 1000,
+
+    mode: 'view',
+    role: null // clerk/null clerk 代表用户是店铺工作人员；null 为普通用户或者游客
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      goods: getApp().globalData.param
-    })
+    if (options.sid) {
+      mode = 'view'
+      this.getGoods(options.sid)
+    } else {
+      mode = 'edit'
+      goods = getApp().globalData.param
+      this.setData({
+        goods: goods
+      })
+    }
+
+    this.initToolbarView()      
   },
 
   /**
@@ -66,6 +83,13 @@ Page({
 
   },
 
+  onShareAppMessage: function (event) {
+    return {
+      title: goods.name,
+      path: '/pages/previewGoods/previewGoods?sid=' + goods.sid
+    }
+  },
+
   onEdit: function () {
     getApp().globalData.param = this.data.goods
 
@@ -89,6 +113,21 @@ Page({
     })
   },
 
+  onOpenMiniApp: function () {
+    wx.navigateToMiniProgram({
+      appId: carWash.CAR_WASH_CLIENT_APPID,
+      success(res) {
+        console.log('打开成功')
+      }
+    })
+  },
+
+  onBackHome: function () {
+    wx.reLaunch({
+      url: '../../pages/home/home',
+    })
+  },
+
   // 删除公告
   delGoods: function () {
     wx.showLoading({
@@ -108,5 +147,38 @@ Page({
       }).catch(e => {
 
       })
+  },
+
+  getGoods: function (sid) {
+    let that = this
+    wx.showLoading({
+      title: '请稍候',
+    })
+    request.getRequest('/items/' + sid, null, false)
+      .then(data => {
+        wx.hideLoading()
+        goods = data.object
+        that.setData({
+          goods: data.object
+        })
+      }).catch(e => {
+        wx.hideLoading()
+        wx.showToast({
+          title: e.msg,
+        })
+      })
+  },
+
+  initToolbarView: function () {
+    let userRole = userModel.getRole(), role = null
+
+    if (userModel.ROLE_OWNER == userRole.role || userModel.ROLE_CLERK == userRole.role) {
+      role = 'clerk'
+    }
+
+    this.setData({
+      mode: mode,
+      role: role
+    })
   }
 })

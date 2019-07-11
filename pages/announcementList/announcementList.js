@@ -79,7 +79,7 @@ Page({
   getAnnouncements:function() {
     let self = this
 
-    request.getRequest('/announces', null, true)
+    request.getRequest('/announces?shopSid=' + getApp().buddysoft.shopSid, null, true)
     .then(data => {
       self.setData({
         announces:data.items

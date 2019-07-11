@@ -10,7 +10,11 @@ function setCurrentUser(user) {
 }
 
 function getCurrentUser() {
-  return wx.getStorageSync(CURRENT_USER_KEY)
+  let result = wx.getStorageSync(CURRENT_USER_KEY)
+  if (result) {
+    return result
+  }
+  return null
 }
 
 function removeCurrentUser() {
@@ -19,13 +23,13 @@ function removeCurrentUser() {
 
 function getRole() {
   let user = getCurrentUser()
-
+  console.log(user)
   if (null != user) {
     if (false == user.asOwner && false == user.asClerk) {
       return { 'role': ROLE_NORMAL, 'desc': '授权登录,未绑定身份' }    
     }else if (true == user.asOwner) {
       return { 'role': ROLE_OWNER, 'desc': '店长' }    
-    }else if (true == user.asClerk) {
+    }else if (false != user.asClerk) {
       return { 'role': ROLE_CLERK, 'desc': '店员' }    
     }
   }

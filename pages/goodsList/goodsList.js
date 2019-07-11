@@ -79,7 +79,7 @@ Page({
   getGoods: function () {
     let self = this
 
-    request.getRequest('/items', null, true)
+    request.getRequest('/items?shopSid=' + getApp().buddysoft.shopSid, null, true)
       .then(data => {
         self.setData({
           goodses: data.items

@@ -1,6 +1,7 @@
 // pages/home/home.js
 let util = require('../../utils/util.js')
 let shopModel = require('../../model/shop.js')
+let userModel = require('../../model/user.js')
 let request = require('../../operation/operation.js')
 let carWash = require('../../utils/carWash.js')
 
@@ -35,6 +36,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {    
+    if(true == this.openIndexPage()) {
+      return
+    }
+  
     wx.setNavigationBarTitle({
       title: getApp().buddysoft.name
     })
@@ -434,5 +439,19 @@ Page({
     datetime = datetime.setMinutes(datetime.getMinutes() + washMinutes) // 计算向后的时间
     datetime = new Date(datetime)
     return datetime
+  },
+
+  openIndexPage:function() {
+    let role = userModel.getRole()
+    if (userModel.ROLE_OWNER == role.role || userModel.ROLE_CLERK == role.role) {
+      return false  
+    } else {      
+      wx.reLaunch({
+        url: '/pages/index/index',
+      }) 
+
+      return true
+    }  
   }
+
 })

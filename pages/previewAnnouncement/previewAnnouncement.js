@@ -2,6 +2,10 @@
 let request = require('../../operation/operation.js')
 let upyun = require('../../utils/upyun.js')
 let carWash = require('../../utils/carWash.js')
+let userModel = require('../../model/user.js')
+
+let announce = null
+let mode = 'view' // edit 店主正常进入界面；view 通过分享方式进入
 
 Page({
 
@@ -10,19 +14,30 @@ Page({
    */
   data: {
     announce:null,
+    // 滚动视图配置参数
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
-    duration: 1000
+    duration: 1000,
+
+    mode:'view',
+    role:null // clerk/null clerk 代表用户是店铺工作人员；null 为普通用户或者游客
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      announce: getApp().globalData.param
-    })
+    if (options.sid) {      
+      mode = 'view'
+      this.getAnnounce(options.sid)          
+    }else {
+      mode = 'edit'
+      announce = getApp().globalData.param
+      this.initAnnounce()
+    }  
+
+    this.initToolbarView()  
   },
 
   /**
@@ -43,7 +58,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    announce = null
   },
 
   /**
@@ -68,7 +83,10 @@ Page({
   },
 
   onShareAppMessage: function (event) {
-    console.log(event)
+    return {
+      title: announce.title,
+      path: '/pages/previewAnniuncement/previewAnniuncement?sid=' + announce.sid
+    }
   },
 
   onEdit:function() {
@@ -94,6 +112,21 @@ Page({
     })
   },
 
+  onOpenMiniApp:function() {
+    wx.navigateToMiniProgram({
+      appId: carWash.CAR_WASH_CLIENT_APPID,
+      success(res) {
+        console.log('打开成功')
+      }
+    })    
+  },
+
+  onBackHome:function() {
+    wx.reLaunch({
+      url: '../../pages/home/home',
+    })
+  },
+
   // 删除公告
   delAnnounce:function() {
     wx.showLoading({
@@ -101,7 +134,6 @@ Page({
       mask: true
     })
 
-    let announce = this.data.announce
     // // 删除又拍云上的图片
     // if (announce.images && 0 < announce.images.length) {
     //   for (let index = 0; index < announce.images.length; index++) {
@@ -119,5 +151,42 @@ Page({
       }).catch(e => {
 
       })
+  },
+
+  getAnnounce:function(sid) {
+    let that = this
+    wx.showLoading({
+      title: '请稍候',
+    })
+    request.getRequest('/announces/' + sid,null,false)
+    .then(data => {
+      wx.hideLoading()
+      announce = data.object
+      that.initAnnounce()
+    }).catch(e => {
+      wx.hideLoading()
+      wx.showToast({
+        title: e.msg,
+      })
+    })
+  },
+
+  initAnnounce:function() {
+    this.setData({
+      announce: announce
+    })
+  },
+
+  initToolbarView:function() {
+    let userRole = userModel.getRole(),role = null
+
+    if (userModel.ROLE_OWNER == userRole.role || userModel.ROLE_CLERK == userRole.role) {
+      role = 'clerk'
+    }
+
+    this.setData({
+      mode:mode,
+      role:role
+    })
   }
 })

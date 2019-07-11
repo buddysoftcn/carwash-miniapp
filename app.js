@@ -12,27 +12,29 @@ App({
 
   onLaunch: function () {    
     this.buddysoft = buddysoft.buddysoftShop
-    this.notificationCenter = notificationCenter.center();
-
-    this.initView()
+    this.notificationCenter = notificationCenter.center();    
   },
 
   // 初始化界面
-  initView:function() {
-    let role = userModel.getRole()
+  initEnterPage:function() {
+    let role = userModel.getRole(),url = ''
     if (userModel.ROLE_OWNER == role.role || userModel.ROLE_CLERK == role.role) {
-      wx.reLaunch({
-        url: '/pages/home/home',
-      })      
+      url = '/pages/home/home'
+    }else {
+      url = '/pages/index/index'
     }
+
+    wx.reLaunch({
+      url: url,
+    }) 
   },
 
   onShow: function (options) {
-    if (options.path.indexOf('authEmploye/authEmploye') >= 0 && (options.scene == 1007 || options.scene == 1008 || options.scene == 1044)) {      
+    if (options.path.indexOf('authEmploye/authEmploye') >= 0 && (options.scene == 1007 || options.scene == 1008 || options.scene == 1044)) { // 验证会员界面
       // 通过群/个人分享卡片进来      
       this.globalData.param = { 'clerkSid': options.query.sid, 'nickname': options.query.nickname, 'shopname': options.query.shopname, 'avatar': options.query.avatar}
-      this.initView()
-    }
+      this.initEnterPage()
+    } 
   },
 
   // 登录请求

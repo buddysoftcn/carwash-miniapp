@@ -1,6 +1,7 @@
 // pages/memberDetail/memberDetail.js
 let carWash = require('../../utils/carWash.js')
 let request = require('../../operation/operation.js')
+let userModel = require('../../model/user.js')
 
 Page({
 
@@ -9,7 +10,9 @@ Page({
    */
   data: {
     user:null,
-    member:null
+    member:null,
+    useBalance:false,
+    useMember:false
   },
 
   /**
@@ -17,6 +20,7 @@ Page({
    */
   onLoad: function (options) {
     this.initUserView()
+    this.initPowerView()
     this.getMemberInfo()
 
     getApp().notificationCenter.register(carWash.UPDATE_MEMBER_INFO, this, "getMemberInfo");
@@ -125,5 +129,24 @@ Page({
     this.setData({
       user: getApp().globalData.param
     })
+  },
+
+  initPowerView:function() {
+    let currentUser = userModel.getCurrentUser(), useBalance = false,useMember = false
+    console.log(currentUser)
+    if (false == currentUser.asClerk) {
+      useBalance = true
+      useMember = true
+    }else {
+      if (1 == currentUser.asClerk.useBalance) {
+        useBalance = true
+      }
+    }
+
+    this.setData({
+      useBalance: useBalance,
+      useMember: useMember
+    })
   }
+
  })
