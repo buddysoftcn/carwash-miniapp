@@ -23,7 +23,7 @@ function removeCurrentUser() {
 
 function getRole() {
   let user = getCurrentUser()
-  console.log(user)
+  
   if (null != user) {
     if (false == user.asOwner && false == user.asClerk) {
       return { 'role': ROLE_NORMAL, 'desc': '授权登录,未绑定身份' }    

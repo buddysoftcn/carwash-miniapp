@@ -20,6 +20,7 @@ Page({
   data: {
     date:'',  // 时间导航日期
     week:'',  // 时间导航星期
+    holiday:'', //时间导航放假提示
     showHelpOrderView:false,
     showUnFinishedOrderView:false,
     showPaymentView:false,
@@ -288,9 +289,15 @@ Page({
   },
 
   initDate:function(date) {
+    let holiday = ''
+    if (null != shop.shopSetting.restBegin && shop.shopSetting.restEnd && (shop.shopSetting.restBegin <= currentDate && shop.shopSetting.restEnd >= currentDate)) {
+      holiday = '（今日休息）'
+    }
+
     this.setData({
       date:util.formatDate(date),
-      week:util.week(date)
+      week:util.week(date),
+      holiday: holiday
     })
   },
 

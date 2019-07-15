@@ -3,7 +3,7 @@
 <view class="header-view">
   <view class="weui-flex date-view">
     <view bindtap='onForwardDay' style='margin-left:16px;width:50px;'><van-icon size="16px" color="#666" name="arrow-left" /></view>
-    <view class="data-view_date font-size_17 font-weight">{{date}} {{week}}</view>
+    <view class="data-view_date font-size_17 font-weight">{{date}} {{week}}{{holiday}}</view>
     <view bindtap='onNextDay' style='text-align:right; margin-right:16px;width:50px'><van-icon size="16px" color="#666" name="arrow"  /></view>
   </view>
 
