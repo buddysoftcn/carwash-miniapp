@@ -12,7 +12,7 @@ Page({
   data: {
     date:'',
     time:'',
-    plateNumber:'豫CHP517'
+    plateNumber:''
   },
 
   /**

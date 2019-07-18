@@ -4,13 +4,20 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
 		"autoAudits": false,
-		"checkInvalidKey": true
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.5",
@@ -40,13 +47,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
 					"name": "验证店员",
 					"pathName": "pages/authEmploye/authEmploye",
-					"query": "sid=5D25502B2F26A501267610&nickname=毛宇&shopname=半点小店&avatar=https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eq2sEocnS4WgavU8GymF22nicic3HptCiaBOp7S3ibWezKeX1VuNpibd439yReZxhxeDyPcSGibRST0tMhw/132",
+					"query": "sid=5D2E762012FDC742862209&nickname=毛宇&shopname=半点小店&avatar=https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eq2sEocnS4WgavU8GymF22nicic3HptCiaBOp7S3ibWezKeX1VuNpibd439yReZxhxeDyPcSGibRST0tMhw/132",
 					"scene": 1007
 				},
 				{

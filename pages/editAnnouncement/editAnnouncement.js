@@ -30,6 +30,8 @@ Page({
       announce = getApp().globalData.param
       this.initView()
       wx.setNavigationBarTitle({title:'编辑公告'})
+    }else {
+      mode = getApp().MODE_CREATE
     }
 
     getApp().notificationCenter.register(carWash.EDIT_WEIGHT_MESSAGE, this, "handleEditWeightMessage");
@@ -189,7 +191,11 @@ Page({
       .then(data => {
         that.uploadImage()
       }).catch(e => {
-
+        wx.hideLoading()
+        wx.showToast({
+          title: e.msg,
+          iocn:'none'
+        })
       })
   },
 

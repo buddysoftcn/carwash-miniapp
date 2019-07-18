@@ -1,21 +1,29 @@
 <!--pages/previewAnnouncement/previewAnnouncement.wxml-->
-<swiper
-  indicator-dots="{{indicatorDots}}"
-  autoplay="{{autoplay}}"
-  interval="{{interval}}"
-  duration="{{duration}}"
-  class="swiper-view"
->
-  <block wx:for="{{announce.images}}">
-    <swiper-item>
-      <image lazy-load='true' mode="aspectFill" src="{{item.url}}" class="swiper-view" />
-    </swiper-item>
-  </block>
-</swiper>
+<view style="height:{{height}}px; z-index:1;" >
+  <swiper
+    indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}"
+    interval="{{interval}}"
+    duration="{{duration}}"
+    class="swiper-view"
+  >
+    <block wx:for="{{announce.images}}" wx:key="*this">
+      <swiper-item>
+        <image lazy-load='true' mode="aspectFill" src="{{item.url}}" class="swiper-view" />
+      </swiper-item>
+    </block>
+  </swiper>
 
-<view class="title button_margin_16 font-weight">{{announce.title}}</view>
-<view class="margin-top_16 button_margin_16 font-color_999 font-size_13">通知详情</view>
-<view class="button_margin_16 font-size_14 font-weight">{{announce.desc}}</view>
+  <view class="title button_margin_16 font-weight">{{announce.title}}</view>
+  <view class="margin-top_16 button_margin_16 font-color_999 font-size_13">通知详情</view>
+  <view class="button_margin_16 font-size_14 font-weight">
+    <text>{{announce.desc}}</text>
+  </view>
+
+  <!-- 占位视图 -->
+  <view style="width:1px; height:94px;"></view> 
+
+</view>
 
 <view class="add-employees-view">
   <view class="weui-flex add-employees-view_inner">

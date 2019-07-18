@@ -36,7 +36,8 @@ Page({
       announce = getApp().globalData.param
       this.initAnnounce()
     }  
-
+    
+    this.initViewHeight()
     this.initToolbarView()  
   },
 
@@ -188,5 +189,18 @@ Page({
       mode:mode,
       role:role
     })
+  },
+
+  initViewHeight: function () {
+    let that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res.windowHeight - 94)
+        that.setData({
+          height: (res.windowHeight - 94)
+        })
+      },
+    })
   }
+  
 })

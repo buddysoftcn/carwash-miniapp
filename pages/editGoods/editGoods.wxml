@@ -4,7 +4,7 @@
   <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell">
           <view class="weui-cell__bd">
-              <textarea name="name" value="{{name}}" class="weui-textarea" style="height: 240rpx" />              
+              <textarea maxlength="-1" name="name" value="{{name}}" class="weui-textarea" style="height: 240rpx" />              
           </view>
       </view>
   </view>

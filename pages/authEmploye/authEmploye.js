@@ -74,8 +74,8 @@ Page({
     if (userModel.ROLE_NO_LOGIN == user.role) {
       authViewTemplate.showView(this, true)
     }else {
-      if (userModel.ROLE_CLERK == user.role || userModel.ROLE_OWNER) {
-        that.backHome()
+      if (userModel.ROLE_CLERK == user.role || userModel.ROLE_OWNER == user.role) {
+        this.backHome()
       }else {
         this.joinShop()
       }      

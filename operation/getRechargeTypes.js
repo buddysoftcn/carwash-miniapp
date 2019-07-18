@@ -16,6 +16,7 @@ function getRechargeTypes() {
         }
       })
       .catch(e => {
+        reject(null)
         wx.showToast({
           title: e,
           icon: 'none'

@@ -13,7 +13,7 @@
   <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell">
           <view class="weui-cell__bd">
-              <textarea name="desc" class="weui-textarea" placeholder="请输入详情" style="height: 7em" value="{{desc}}" />             
+              <textarea maxlength="-1" name="desc" class="weui-textarea" placeholder="请输入详情" style="height: 7em" value="{{desc}}" />             
           </view>
       </view>
   </view>

@@ -82,15 +82,13 @@ Page({
             wx.navigateTo({
               url: '../authManagerSuccessed/authManagerSuccessed'
             })
-          }else {           
-            wx.showModal({
-              title: '提示',
-              content: data.msg,
-              showCancel: false
-            })
           }
         }).catch(e => {
           wx.hideLoading()
+          wx.showToast({
+            title: e.msg,
+            icon:'none'
+          })
         })
     }
   }

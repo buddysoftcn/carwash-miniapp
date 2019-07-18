@@ -1,6 +1,6 @@
 // pages/my/my.js
 let userModel = require('../../model/user.js')
-
+let getShopInfo = require('../../operation/getShopInfo.js')
 Page({
 
   /**
@@ -13,16 +13,10 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    let role = userModel.getRole()
-
-    if (userModel.ROLE_CLERK == role.role) {
-      this.setData({
-        clerk:true
-      })
-    }
-
+  onLoad: function (options) {    
+    this.initView()
     this.updateUserInfo()
+    this.updateShopInfo()
   },
 
   /**
@@ -58,6 +52,7 @@ Page({
    */
   onPullDownRefresh: function () {
     this.updateUserInfo()
+    this.updateShopInfo()
   },
 
   /**
@@ -73,9 +68,29 @@ Page({
     })
   },
 
+  initView:function() {
+    let role = userModel.getRole(),clerk = false
+
+    if (userModel.ROLE_OWNER != role.role) {
+      clerk = true
+    }
+
+    this.setData({
+      clerk: clerk
+    })
+  },
+
   updateUserInfo:function() {
+    let that = this 
+
     getApp().getUserInfo(function() {
       wx.stopPullDownRefresh()
+      that.initView()
     })
+  },
+
+  updateShopInfo:function() {
+    getShopInfo.getShopInfo()
   }
+
 })

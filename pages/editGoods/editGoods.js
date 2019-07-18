@@ -30,6 +30,8 @@ Page({
       goods = getApp().globalData.param
       this.initView()
       wx.setNavigationBarTitle({ title: '编辑商品' })
+    }else {
+      mode = getApp().MODE_CREATE
     }
 
     getApp().notificationCenter.register(carWash.EDIT_PRICE_MESSAGE, this, "handleEditPriceMessage")
@@ -55,7 +57,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    
   },
 
   /**

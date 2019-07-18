@@ -3,14 +3,13 @@ let base64 = require('base64.js')
 let md5 = require('md5.js')
 let sha1 = require('hmac_sha1.js')
 
-function uploadImage(path, success, fail) {
+function uploadImage(path, success, fail) {  
   let date = (new Date()).toGMTString()
   let tmpDate = new Date()
   let month = tmpDate.getMonth() + 1
 
-  let paths = path.split('.')
-  let imageName = paths[paths.length - 2] + '.' + paths[paths.length - 1]
-
+  let paths = path.split('//')
+  let imageName = paths[1]
   let opts = {
     'save-key': month + '/' + carWash.UP_YUN_IMAGE_PATH + imageName,
     bucket: carWash.UP_YUN_BUCKET,
@@ -32,7 +31,7 @@ function uploadImage(path, success, fail) {
       policy: policy
     },
     success: function (res) {
-      // 检查图片是否上传成功
+      // 检查图片是否上传成功     
       if (200 == res.statusCode) {
         success('http://' + carWash.UP_YUN_IMAGE_DOMAIN + '/' + month + carWash.UP_YUN_IMAGE_PATH + imageName)
       }else {

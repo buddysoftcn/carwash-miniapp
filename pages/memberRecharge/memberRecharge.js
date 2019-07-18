@@ -1,4 +1,5 @@
 // pages/memberRecharge/memberRecharge.js
+let getRechargeTypes = require('../../operation/getRechargeTypes.js')
 let rechargeTypeModel = require('../../model/rechargeType.js')
 let createOrderOperation = require('../../operation/createOrder.js')
 let carWash = require('../../utils/carWash.js')
@@ -21,6 +22,7 @@ Page({
   onLoad: function (options) {
     user = getApp().globalData.param
     this.initRechargeTypeList()
+    this.getPayTypes()
   },
 
   /**
@@ -145,7 +147,7 @@ Page({
       }
       result.push({ 'name': '充值 ' + rechargeTypes[index].payAmount/100 + ' 元，实际到账 ' + rechargeTypes[index].rechargeAmount/100 + ' 元', 'value': rechargeTypes[index].sid , 'checked': checked})
     }
-
+    console.log(result)
     this.setData({
       rechargeTypes:result
     })
@@ -154,5 +156,13 @@ Page({
     if (0 < result.length) {
       currentRechargeType = result[0]
     }
+  },
+
+  getPayTypes: function () {
+    let that = this
+    getRechargeTypes.getRechargeTypes()
+      .then(data => {        
+        that.initRechargeTypeList()
+      })
   }
 })
