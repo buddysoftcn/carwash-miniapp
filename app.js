@@ -12,7 +12,7 @@ App({
 
   onLaunch: function () {    
     this.buddysoft = buddysoft.buddysoftShop
-    this.notificationCenter = notificationCenter.center();    
+    this.notificationCenter = notificationCenter.center()
   },
 
   // 初始化界面
@@ -92,6 +92,7 @@ App({
       showCancel:false,
       success(res) {
         if (res.confirm) {
+          wx.clearStorage()
           userModel.removeCurrentUser()
           wx.reLaunch({
             url: '../../pages/home/home',
