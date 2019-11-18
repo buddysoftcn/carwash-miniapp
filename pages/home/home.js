@@ -4,6 +4,7 @@ let shopModel = require('../../model/shop.js')
 let userModel = require('../../model/user.js')
 let request = require('../../operation/operation.js')
 let carWash = require('../../utils/carWash.js')
+let getShopInfoRequest = require('../../operation/getShopInfo.js')
 
 let worktimesMap = null // 所有工作时间放入字典中
 let worktimes = null    // 按小时将工作时间进行分组  
@@ -30,27 +31,41 @@ Page({
     
     worktimes:[],
     worktimesCreatedCount:0,
-    worktimesFinishedCount:0
+    worktimesFinishedCount:0,
+
+    isAuth:false,
+    // 商铺信息
+    announces: [],
+    indicatorDots: true,
+    autoplay: true,
+    interval: 5000,
+    duration: 1000,
+    goods: null,
+    shop: null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {    
-    if(true == this.openIndexPage()) {
-      return
-    }
-  
+  onLoad: function (options) {   
     wx.setNavigationBarTitle({
-      title: getApp().buddysoft.name
+      title: getApp().buddysoft.name + '店家版'
     })
 
-    shop = shopModel.getShopInfo()
-    currentDate = util.today()
-    this.initDate(currentDate)
-    this.initWorktimeList()
-    this.getUnFinishedOrders()
-    getApp().notificationCenter.register(carWash.UPDATE_WORKTIMES_MESSAGE, this, "initWorktimeList")
+    let isAuth = this.isAuth(),that = this
+    if (false == isAuth) {
+      getShopInfoRequest.getShopInfo()
+      .then(res => {
+        that.initShopPage(res)
+      })
+    }else {
+      shop = shopModel.getShopInfo()
+      currentDate = util.today()
+      this.initDate(currentDate)
+      this.initWorktimeList()
+      this.getUnFinishedOrders()
+      getApp().notificationCenter.register(carWash.UPDATE_WORKTIMES_MESSAGE, this, "initWorktimeList")
+    }
   },
 
   /**
@@ -449,17 +464,41 @@ Page({
     return datetime
   },
 
-  openIndexPage:function() {
-    let role = userModel.getRole()
+  isAuth:function() {
+    let role = userModel.getRole(),result = true
     if (userModel.ROLE_OWNER == role.role || userModel.ROLE_CLERK == role.role) {
-      return false  
+        
     } else {      
-      wx.reLaunch({
-        url: '/pages/index/index',
-      }) 
-
-      return true
+      result = false
     }  
-  }
+
+    this.setData({
+      isAuth:result
+    })
+
+    return result
+  },
+
+  initShopPage(shop) {
+    shop.shopSetting.uiWorkTimeBegin = util.formatTime(shop.shopSetting.workTimeBegin)
+    shop.shopSetting.uiWorkTimeEnd = util.formatTime(shop.shopSetting.workTimeEnd)
+    this.setData({
+      shop: shop,
+      announces: shop.announces,
+      goods: shop.items
+    })
+  },
+
+  onManager() {
+    wx.navigateTo({
+      url: '../index/index',
+    })
+  },
+
+  onCallPhone: function () {
+    wx.makePhoneCall({
+      phoneNumber: this.data.shop.shop.phone
+    })
+  },
 
 })

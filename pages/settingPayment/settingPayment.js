@@ -82,10 +82,12 @@ Page({
 
   onEditPayment:function(event) { 
     if ('cell' == event.detail) {
-      getApp().globalData.param = event.currentTarget.dataset.paytype
-      wx.navigateTo({
-        url: '../editPayment/editPayment?mode=' + getApp().MODE_EDIT,
-      })
+      if (0 == event.currentTarget.dataset.paytype.type) {  // 自定义
+        getApp().globalData.param = event.currentTarget.dataset.paytype
+        wx.navigateTo({
+          url: '../editPayment/editPayment?mode=' + getApp().MODE_EDIT,
+        })
+      }      
     }   
   },
 

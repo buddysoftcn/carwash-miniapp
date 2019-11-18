@@ -9,5 +9,6 @@
     <view style='margin-top:3px;' class="popup-view_info auth-view_info">本信息。请在稍后的提示框中点</view>
     <view style='margin-top:3px;' class="popup-view_info auth-view_info">击“允许”</view>
     <button class="auth-view_btn weui-btn popup-view-button font-weight" type="primary" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">我知道了</button>
+    <button class="auth-view_btn weui-btn popup-view-button font-weight" bindtap="onClose">取消</button>
   </van-popup>
 </template>

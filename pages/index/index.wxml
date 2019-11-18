@@ -1,7 +1,7 @@
 <view class="logo-view">
   <image class="logo" src="../../images/logo.png"></image>
   <view>
-    <label style='margin-top:32rpx' class="font-color_444 font-size_17">“百邦汽车美容” 店铺版</label>
+    <label style='margin-top:32rpx' class="font-color_444 font-size_17">“{{shopName}}” 店铺版</label>
   </view>
 </view>
 
@@ -9,6 +9,8 @@
 
 <button style='margin-top:32rpx;' class="button" type="primary" bindtap="onClickManager">我是店长</button>
 <button style='margin-top:72rpx;' class="button" type="primary" bindtap="onClickEmploye">我是店员</button>
+
+<view style="margin-top:50rpx;" class="prompt font-size_12 font-color_999">温馨提示：本小程序仅限于 《{{shopName}}》 内部员工使用</view>
 
 <import src="../../template/authView/authView.wxml"/>
 <template is="authView" data="{{showAuthView}}"/>

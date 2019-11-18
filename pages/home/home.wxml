@@ -1,39 +1,88 @@
 <!--pages/home/home.wxml-->
-<!-- 头部视图 -->
-<view class="header-view">
-  <view class="weui-flex date-view">
-    <view bindtap='onForwardDay' style='margin-left:16px;width:50px;'><van-icon size="16px" color="#666" name="arrow-left" /></view>
-    <view class="data-view_date font-size_17 font-weight">{{date}} {{week}}{{holiday}}</view>
-    <view bindtap='onNextDay' style='text-align:right; margin-right:16px;width:50px'><van-icon size="16px" color="#666" name="arrow"  /></view>
-  </view>
-
-  <view class="weui-flex header-view-info button_margin_16">
-    <view>
-      <view class="font-size_18">正在预约 {{worktimesCreatedCount}} 辆</view>
-      <view class="font-size_13 font-color_666">已服务 {{worktimesFinishedCount}} 辆</view>
+<block wx:if="{{true == isAuth}}">
+  <!-- 头部视图 -->
+  <view class="header-view">
+    <view class="weui-flex date-view">
+      <view bindtap='onForwardDay' style='margin-left:16px;width:50px;'><van-icon size="16px" color="#666" name="arrow-left" /></view>
+      <view class="data-view_date font-size_17 font-weight">{{date}} {{week}}{{holiday}}</view>
+      <view bindtap='onNextDay' style='text-align:right; margin-right:16px;width:50px'><van-icon size="16px" color="#666" name="arrow"  /></view>
     </view>
-    <view>
-      <button class="header-view-info_btn font-size_14 font-weight" bindtap='onAddMoreOrder'>洗车补录</button>
-    </view>
-  </view>
-</view>
 
-<!-- 预约列表视图 -->
-<view style='margin-top:130px;'>
-  <block wx:for="{{worktimes}}" wx:key="this">
-    <view class="weui-cells__title">{{item.hour}}点</view>
-    <view class="weui-cells weui-cells_after-title">
-      <view wx:for="{{item.worktimes}}" wx:key="this" wx:for-item="worktime" class="weui-cell" data-worktime="{{worktime}}" bindtap='onCell'>                
-          <view class="weui-cell__bd">{{worktime.time}}</view>   
-          <view wx:if="{{null != worktime.order}}" class="weui-cell__ft weui-cell__ft_in-access order-list-cell_value font-size_16">
-            <label wx:if="{{'finished' == worktime.order.state}}" style='width:116px;margin-right:20px;' class="font-size_13 font-color_888">已结账 ({{worktime.order.payTypeName}})</label>
-            <label wx:if="{{'discredit' == worktime.order.state}}" style='width:116px;margin-right:20px;' class="font-size_13 font-color_888">车主违约</label>
-            <label class="font-weight">{{worktime.order.plateNumber}}</label>
-          </view>              
+    <view class="weui-flex header-view-info button_margin_16">
+      <view>
+        <view class="font-size_18">正在预约 {{worktimesCreatedCount}} 辆</view>
+        <view class="font-size_13 font-color_666">已服务 {{worktimesFinishedCount}} 辆</view>
+      </view>
+      <view>
+        <button class="header-view-info_btn font-size_14 font-weight" bindtap='onAddMoreOrder'>洗车补录</button>
       </view>
     </view>
-  </block>
+  </view>
+
+  <!-- 预约列表视图 -->
+  <view style='margin-top:130px;'>
+    <block wx:for="{{worktimes}}" wx:key="this">
+      <view class="weui-cells__title">{{item.hour}}点</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view wx:for="{{item.worktimes}}" wx:key="this" wx:for-item="worktime" class="weui-cell" data-worktime="{{worktime}}" bindtap='onCell'>                
+            <view class="weui-cell__bd">{{worktime.time}}</view>   
+            <view wx:if="{{null != worktime.order}}" class="weui-cell__ft weui-cell__ft_in-access order-list-cell_value font-size_16">
+              <label wx:if="{{'finished' == worktime.order.state}}" style='width:116px;margin-right:20px;' class="font-size_13 font-color_888">已结账 ({{worktime.order.payTypeName}})</label>
+              <label wx:if="{{'discredit' == worktime.order.state}}" style='width:116px;margin-right:20px;' class="font-size_13 font-color_888">车主违约</label>
+              <label class="font-weight">{{worktime.order.plateNumber}}</label>
+            </view>              
+        </view>
+      </view>
+    </block>
+  </view>
+</block>
+
+<block wx:if="{{false == isAuth}}">
+  <!-- 滚屏公告视图 -->
+<view class="swiper-view">
+  <swiper
+    indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}"
+    interval="{{interval}}"
+    duration="{{duration}}"
+    indicator-color="rgba(255,255,255,1)"
+    indicator-active-color="rgba(10,187,8,1)"
+    class="swiper-view_swiper"
+  >
+    <block wx:for="{{announces}}" wx:key="*this" wx:for-item="announce">
+      <swiper-item>
+        <image bindtap='onShowAnnouncement' lazy-load='true' mode="aspectFill" data-announcement="{{announce}}" src="{{announce.images[0].url}}" class="swiper-view" />
+      </swiper-item>
+    </block>
+  </swiper> 
 </view>
+
+  <!-- 店铺信息 -->
+  <view class="shop-view">
+    <view class="weui-flex"><view class="group-title font-weight_500 font-size_17 font-color_444 margin-left_16">洗车预约</view></view>
+    <view class="weui-flex shop-view_detail">
+      <view class="">
+        <view style='margin-bottom:20rpx;' class="font-size_15 margin-left_16"> 预约时间: {{shop.shopSetting.uiWorkTimeBegin}} ~ {{shop.shopSetting.uiWorkTimeEnd}}</view> 
+        <view bindtap='onCallPhone' class="font-size_15 margin-left_16"> 联系电话: {{shop.shop.phone}}</view> 
+      </view>
+      <view class="start-order_view font-size_15 margin-right_16" bindtap="onManager">开始管理</view>
+    </view>
+
+    <view class="group-title font-weight_500 font-size_17 font-color_444 margin-left_16">店主推荐</view>
+  </view>
+
+  <!-- 商品信息 -->
+  <view class="goods-cells">
+    <view wx:for="{{goods}}" wx:key="*this" wx:for-item="goods" class="goods-cell weui-flex" data-goods="{{goods}}" bindtap='onShowGoods'>
+      <image mode="aspectFill" lazy-load="true" class="goods-cell_image" src="{{goods.images[0].url}}" />
+      <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">{{goods.name}}</view>
+          <view class="font-size_17 font-weight_500 font-color_fa6400">￥{{goods.price}}</view>
+          <view class="goods-discount">{{goods.discount}}折</view>
+      </view>
+    </view>
+  </view>
+</block>
 
 <!-- 未处理预约视图 -->
 <van-popup show="{{ showUnFinishedOrderView }}" bind:close="onClose" custom-class="order-popup-view" custom-style="top:300px;">  

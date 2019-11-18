@@ -91,8 +91,8 @@ App({
       content: '账号在别处登录，请重新登录',
       showCancel:false,
       success(res) {
-        if (res.confirm) {
-          wx.clearStorage()
+        if (res.confirm) {          
+          wx.clearStorageSync()
           userModel.removeCurrentUser()
           wx.reLaunch({
             url: '../../pages/home/home',

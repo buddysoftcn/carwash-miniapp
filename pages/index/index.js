@@ -9,18 +9,21 @@ let mode = 'manager'
 
 Page({
   data: {  
-    showAuthView:false  
+    showAuthView:false,
+    shopName:''
   },
  
   onLoad: function () {    
-    
+    this.setData({
+      shopName:getApp().buddysoft.name
+    })
   },
 
   /**
   * 生命周期函数--监听页面显示
   */
   onShow: function () {
-    getShopInfoRequest.getShopInfo()
+    // getShopInfoRequest.getShopInfo()
   },
   
   /**
@@ -74,6 +77,12 @@ Page({
           
         }    
       }
+    })
+  },
+
+  onClose:function() {
+    this.setData({
+      showAuthView: false
     })
   }
   

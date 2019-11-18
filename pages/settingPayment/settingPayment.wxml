@@ -8,7 +8,7 @@
           <van-cell>
             <view class="weui-media-box weui-media-box_appmsg" style='justify-content: space-between;'>
                 <view class="cell">{{payType.weight}}. {{payType.name}}</view>
-                <view class="cell-value weui-cell__ft_in-access"></view>                                 
+                <view class="cell-value {{payType.type == 0 ? 'weui-cell__ft_in-access':''}}"></view>                                 
             </view>            
           </van-cell>
         </van-cell-group>

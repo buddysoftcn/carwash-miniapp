@@ -135,6 +135,12 @@ Page({
     wx.reLaunch({
       url: '../home/home',
     })
+  },
+
+  onClose: function () {
+    this.setData({
+      showAuthView: false
+    })
   }
 
 })

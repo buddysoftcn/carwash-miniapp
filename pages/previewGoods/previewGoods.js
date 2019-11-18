@@ -116,7 +116,7 @@ Page({
 
   onOpenMiniApp: function () {
     wx.navigateToMiniProgram({
-      appId: carWash.CAR_WASH_CLIENT_APPID,
+      appId: getApp().buddysoft.wxUserAppID,
       success(res) {
         console.log('打开成功')
       }

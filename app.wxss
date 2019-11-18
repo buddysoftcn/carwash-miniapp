@@ -89,6 +89,14 @@ page{
   margin-top: 32rpx;
 }
 
+.margin-left_16 {
+  margin-left: 32rpx;  
+}
+
+.margin-right_16 {
+  margin-right: 32rpx;  
+}
+
 .weui-media-box__thumb_fixed{width:36px;height:36px;vertical-align:middle;border-radius: 50%;}
 
 .weui-media-box__title_fixed{font-size:15px;width:auto;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;-webkit-line-clamp:2;line-clamp: 2;margin-top:5px;height:50px;}

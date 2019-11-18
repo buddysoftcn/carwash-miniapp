@@ -13,7 +13,7 @@ function getShopInfo() {
           shop.setShopInfo(data)
           carModel.setCurrentCarModels(data.carModels)
           payTypeModel.setCurrentPayTypes(data.payTypes)
-          resolve()
+          resolve(data)
         } else {
           reject(null)
         }

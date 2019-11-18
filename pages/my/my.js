@@ -15,8 +15,14 @@ Page({
    */
   onLoad: function (options) {    
     this.initView()
-    this.updateUserInfo()
-    this.updateShopInfo()
+    if (this.isAuth()) {
+      this.updateUserInfo()
+      this.updateShopInfo()
+    }else {
+      wx.navigateTo({
+        url: '../index/index',
+      })
+    }    
   },
 
   /**
@@ -51,8 +57,10 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.updateUserInfo()
-    this.updateShopInfo()
+    if (this.isAuth()) {
+      this.updateUserInfo()
+      this.updateShopInfo()
+    }  
   },
 
   /**
@@ -60,6 +68,28 @@ Page({
    */
   onReachBottom: function () {
 
+  },
+
+  onSearchByNumber:function() {
+    let url = '../searchMember/searchMember?mode=number' 
+    if (false == this.isAuth()) {
+      url = '../index/index'
+    }
+
+    wx.navigateTo({
+      url: url,
+    })
+  },
+
+  onSearchByMember:function() {
+    let url = '../searchMember/searchMember?mode=member'
+    if (false == this.isAuth()) {
+      url = '../index/index'
+    }
+
+    wx.navigateTo({
+      url: url,
+    })
   },
 
   onClickMemberCard:function() {
@@ -91,6 +121,17 @@ Page({
 
   updateShopInfo:function() {
     getShopInfo.getShopInfo()
-  }
+  },
+
+  isAuth:function () {
+    let role = userModel.getRole(), result = true
+    if (userModel.ROLE_OWNER == role.role || userModel.ROLE_CLERK == role.role) {
+
+    } else {
+      result = false
+    }
+
+    return result
+  },
 
 })
